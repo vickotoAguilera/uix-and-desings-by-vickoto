@@ -236,11 +236,50 @@ export const TESTIMONIAL_STYLES = {
 };
 
 export const GALLERY_STYLES = {
-  Bento: ['BentoClassic', 'BentoAsymmetric', 'BentoInteractiveHover', 'MosaicStyle', 'MosaicCompact'],
-  Interactive: ['ExpandingAccordionClassic', 'ExpandingAccordion', 'VerticalAccordion', 'BeforeAfterSlider', 'MagicalRevealGallery', 'HoverZoomGrid'],
-  '3D_Perspective': ['PerspectiveScrollWheel', 'ExperimentalPerspective', 'SkewedPerspectiveGrid', 'CircularOrbitGallery', 'StackHoverEffect'],
-  Artistic: ['NeonBorderGallery', 'PolaroidStyle', 'MinimalistPolaroidGrid', 'MinimalistWhite', 'ParallaxStack', 'BrutalistCollage', 'ModernPortfolioSlider', 'DarkCyberpunk', 'CyberpunkStaticGallery'],
-  Layouts: ['StandardGrid', 'MasonryStyle', 'GlassmorphismCards', 'HorizontalScroll', 'InfiniteMarqueeHorizontal', 'SplitScreenGallery', 'OverlayContent', 'ProductShowcase', 'BrutalistGrid', 'Retro8Bit', 'CinematicSlider', 'GridWithActiveState', 'FloatingInteractiveGrid', 'FloatingBubbleGallery', 'NeonGlassCarousel']
+  AppleStyle: [
+    'BentoInteractiveHover', 'GlassmorphismCards', 'MinimalistWhite', 'ModernPortfolioSlider', 
+    'StandardGrid', 'ExpandingAccordionClassic', 'OverlayContent', 'ProductShowcase', 
+    'SplitScreenGallery', 'Gallery_Placeholder_A1'
+  ],
+  Masonry: [
+    'MasonryStyle', 'PolaroidStyle', 'MinimalistPolaroidGrid', 'ParallaxStack', 
+    'BrutalistCollage', 'FloatingInteractiveGrid', 'FloatingBubbleGallery', 'StackHoverEffect', 
+    'HorizontalScroll', 'NeonBorderGallery'
+  ],
+  Bento: [
+    'BentoClassic', 'BentoAsymmetric', 'MosaicStyle', 'MosaicCompact', 
+    'PerspectiveScrollWheel', 'ExperimentalPerspective', 'SkewedPerspectiveGrid', 'CircularOrbitGallery', 
+    'NeonGlassCarousel', 'CinematicSlider'
+  ],
+  GridSystem: [
+    'BrutalistGrid', 'Retro8Bit', 'GridWithActiveState', 'DarkCyberpunk', 
+    'CyberpunkStaticGallery', 'VerticalAccordion', 'ExpandingAccordion', 'HoverZoomGrid', 
+    'MagicalRevealGallery', 'InfiniteMarqueeHorizontal'
+  ],
+  Carousel: [
+    'Carousel_CircularGallery', 'Carousel_DomeGallery', 
+    'Carousel_Placeholder_3', 'Carousel_Placeholder_4', 'Carousel_Placeholder_5',
+    'Carousel_Placeholder_6', 'Carousel_Placeholder_7', 'Carousel_Placeholder_8',
+    'Carousel_Placeholder_9', 'Carousel_Placeholder_10'
+  ],
+  Mosaic: [
+    'Mosaic_Placeholder_1', 'Mosaic_Placeholder_2', 'Mosaic_Placeholder_3', 
+    'Mosaic_Placeholder_4', 'Mosaic_Placeholder_5', 'Mosaic_Placeholder_6',
+    'Mosaic_Placeholder_7', 'Mosaic_Placeholder_8', 'Mosaic_Placeholder_9',
+    'Mosaic_Placeholder_10'
+  ],
+  Interactive: [
+    'Interactive_ImageComparison', 'Interactive_MagicBento', 'Interactive_SpotlightGridCard', 
+    'Interactive_ReflectiveMetallic', 'Interactive_Placeholder_5', 'Interactive_Placeholder_6',
+    'Interactive_Placeholder_7', 'Interactive_Placeholder_8', 'Interactive_Placeholder_9',
+    'Interactive_Placeholder_10'
+  ],
+  Dynamic: [
+    'Dynamic_FlyingPosters', 'Dynamic_ScrollStack', 'Dynamic_BounceCards', 
+    'Dynamic_Placeholder_4', 'Dynamic_Placeholder_5', 'Dynamic_Placeholder_6',
+    'Dynamic_Placeholder_7', 'Dynamic_Placeholder_8', 'Dynamic_Placeholder_9',
+    'Dynamic_Placeholder_10'
+  ]
 };
 
 export const INPUT_STYLES = {
