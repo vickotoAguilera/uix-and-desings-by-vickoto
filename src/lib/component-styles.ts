@@ -213,10 +213,26 @@ export const PRICING_STYLES = {
 
 
 export const TESTIMONIAL_STYLES = {
-  Social: ['TwitterStyle', 'TrustpilotStyle', 'ChatBubble', 'FloatingAvatars'],
-  Professional: ['CorporateFormal', 'ClassicCard', 'MinimalistBorder', 'DarkModeSaaS'],
-  Visual: ['NeonPinkGlow', 'Glassmorphism', 'GradientBackground', 'SingleQuoteLarge', 'VideoPlaceholder'],
-  Creative: ['Brutalist', 'Retro8Bit', 'CreativeAgency', 'StackedCards', 'ExperimentalGlitch', 'GridStyle', 'EcommerceProduct']
+  Social: [
+    'TwitterStyle', 'TrustpilotStyle', 'ChatBubble', 'FloatingAvatars',
+    'Social_RatingGroup', 'Social_MarqueeFeed', 'Social_ThreadConversation', 'Social_VerifiedBuyer',
+    'Social_VideoStory', 'Social_AudioWave'
+  ],
+  Professional: [
+    'CorporateFormal', 'ClassicCard', 'MinimalistBorder', 'DarkModeSaaS',
+    'Professional_BentoHighlight', 'Professional_MetricStats', 'Professional_SplitCompany', 'Professional_SSOValidated',
+    'Professional_CaseStudy', 'Professional_Timeline'
+  ],
+  Visual: [
+    'NeonPinkGlow', 'Glassmorphism', 'GradientBackground', 'SingleQuoteLarge',
+    'VideoPlaceholder', 'Visual_SpotlightReflect', 'Visual_Tilt3D', 'Visual_LiquidGlass',
+    'Visual_GlowBorder', 'Visual_BokehFloat'
+  ],
+  Creative: [
+    'Brutalist', 'Retro8Bit', 'CreativeAgency', 'StackedCards',
+    'ExperimentalGlitch', 'GridStyle', 'EcommerceProduct', 'Creative_InteractiveSwap',
+    'Creative_DecayFriction', 'Creative_NeumorphicConcave'
+  ]
 };
 
 export const GALLERY_STYLES = {
