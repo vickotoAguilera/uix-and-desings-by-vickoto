@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { SmartImage } from '../SmartImage';
-import { ArrowRight, CheckCircle2, Play, Layout, Zap, Shield, BarChart3, Globe, Users, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Play, Layout, Zap, Shield, BarChart3, Globe, Users, User, ArrowUpRight } from 'lucide-react';
 
 export const CorporateSaaSHero = {
   // Variante 01: Classic SaaS (Modern & Clean)

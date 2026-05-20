@@ -1,3 +1,12 @@
+## Sesión: 2026-05-20 | 14:55 (Hotfix: User is not defined - Casa)
+- **Ubicación:** Casa
+- **Objetivo:** Corregir error de referencia `User` en `CorporateSaaSHero.tsx`.
+- **Acciones Realizadas:**
+  - **Corrección:** Añadido `User` a los imports de `lucide-react` en [CorporateSaaSHero.tsx](src/components/neon/designs/CorporateSaaSHero.tsx).
+- **Resultado:**
+  - ✓ Error "User is not defined" resuelto.
+  - ✓ Build estable.
+
 ## Sesión: 2026-05-20 | 14:45 (Inicio Diseño 03: Corporate Clean SaaS - Casa)
 - **Ubicación:** Casa
 - **Objetivo:** Iniciar el tercer diseño base (Corporate SaaS) con sus primeras 10 variantes.
