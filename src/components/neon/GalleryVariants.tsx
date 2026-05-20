@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { Maximize2, ExternalLink, Heart, Share2 } from 'lucide-react';
+import { Maximize2, ExternalLink, Heart, Share2, ArrowLeft, ArrowRight, Play, Sparkles, Plus, Minus, Search, Image, Folder, FolderOpen, FileText, X, Volume2, User } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const ImagePlaceholder = ({ className, label }: { className?: string, label?: string }) => (
@@ -1844,6 +1844,959 @@ export const GalleryVariants: Record<string, React.FC> = {
       </div>
     );
   },
+
+  Carousel_CardFlow: () => {
+    const [activeIndex, setActiveIndex] = React.useState(2);
+    const cards = [
+      { id: 1, title: "SOLAR_WIND", tag: "Generative Art", color: "from-amber-500 to-orange-600", desc: "Interactive solar wind vector simulation." },
+      { id: 2, title: "CYBER_DOCK", tag: "Tactical HUD", color: "from-emerald-500 to-teal-600", desc: "Command center metrics & telemetry nodes." },
+      { id: 3, title: "LIQUID_GLASS", tag: "Visual Flow", color: "from-blue-500 to-indigo-600", desc: "Refractive glass with smooth fluid backdrop." },
+      { id: 4, title: "NEON_GLOW", tag: "Cyberpunk Vibe", color: "from-pink-500 to-rose-600", desc: "High-contrast neon overlay grid elements." },
+      { id: 5, title: "DEEP_SPACE", tag: "Minimalism", color: "from-purple-500 to-fuchsia-600", desc: "Cosmic purple dust particle field backdrop." }
+    ];
+
+    return (
+      <div className="w-full py-10 px-6 bg-zinc-950 border border-zinc-900 rounded-[2.5rem] overflow-hidden min-h-[380px] flex flex-col justify-between relative group">
+        <div className="flex justify-between items-center mb-6 z-10">
+          <span className="text-[9px] font-mono text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-0.5 rounded-md uppercase tracking-widest">
+            3D_COVERFLOW_FLOW
+          </span>
+          <span className="text-[9px] font-mono text-zinc-650">PERSPECTIVE: 1200px</span>
+        </div>
+
+        <div className="relative flex-1 flex items-center justify-center [perspective:1200px] h-52 overflow-visible select-none">
+          {cards.map((card, idx) => {
+            const offset = idx - activeIndex;
+            const absOffset = Math.abs(offset);
+            const isActive = idx === activeIndex;
+            
+            const rotateY = offset * -25;
+            const translateZ = isActive ? 100 : -120 - absOffset * 30;
+            const translateX = offset * 110;
+            const opacity = absOffset > 2 ? 0 : 1 - absOffset * 0.35;
+            const zIndex = 20 - absOffset;
+
+            return (
+              <div
+                key={card.id}
+                onClick={() => setActiveIndex(idx)}
+                style={{
+                  transform: `translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg)`,
+                  opacity: opacity,
+                  zIndex: zIndex,
+                  transition: "all 0.6s cubic-bezier(0.23, 1, 0.32, 1)"
+                }}
+                className={cn(
+                  "absolute w-56 h-36 rounded-2xl bg-zinc-900 border relative overflow-hidden group/card cursor-pointer shrink-0 p-5 flex flex-col justify-between",
+                  isActive ? "border-indigo-500/50 shadow-[0_15px_40px_rgba(99,102,241,0.25)]" : "border-white/5 hover:border-zinc-800"
+                )}
+              >
+                <div className={cn("absolute inset-0 bg-gradient-to-tr opacity-10 group-hover/card:opacity-20 transition-opacity", card.color)} />
+                <div className="absolute inset-0 bg-black/40 group-hover/card:bg-black/20 transition-colors" />
+                
+                <div className="flex justify-between items-start relative z-10">
+                  <span className="px-2 py-0.5 bg-zinc-950 border border-zinc-800 text-[7px] font-mono text-zinc-400 rounded">
+                    {card.tag}
+                  </span>
+                  <span className="text-[8px] font-mono text-zinc-600">0{card.id}</span>
+                </div>
+
+                <div className="relative z-10 space-y-1.5">
+                  <h4 className="text-[11px] font-bold text-white tracking-widest uppercase">{card.title}</h4>
+                  <p className="text-[8px] text-zinc-450 font-normal leading-normal line-clamp-2">{card.desc}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="flex justify-between items-center mt-6 z-10">
+          <button 
+            onClick={() => setActiveIndex(prev => (prev - 1 + cards.length) % cards.length)}
+            className="w-8 h-8 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-450 hover:text-white flex items-center justify-center transition-colors hover:border-indigo-500/30 active:scale-95"
+          >
+            &lt;
+          </button>
+          <div className="flex gap-1.5">
+            {cards.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setActiveIndex(idx)}
+                className={cn(
+                  "w-1.5 h-1.5 rounded-full transition-all duration-300",
+                  idx === activeIndex ? "bg-indigo-500 w-5" : "bg-zinc-800 hover:bg-zinc-700"
+                )}
+              />
+            ))}
+          </div>
+          <button 
+            onClick={() => setActiveIndex(prev => (prev + 1) % cards.length)}
+            className="w-8 h-8 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-450 hover:text-white flex items-center justify-center transition-colors hover:border-indigo-500/30 active:scale-95"
+          >
+            &gt;
+          </button>
+        </div>
+      </div>
+    );
+  },
+
+  Carousel_Thumbnails: () => {
+    const [activeIndex, setActiveIndex] = React.useState(0);
+    const slides = [
+      { id: 1, title: "COSMIC_DUST_FIELD", category: "PARTICLES", color: "from-purple-500/20 via-pink-500/10 to-transparent", spec: "1.2M particles, 60fps render rate" },
+      { id: 2, title: "KINETIC_FLOW_VECTOR", category: "FLUIDS", color: "from-cyan-500/20 via-blue-500/10 to-transparent", spec: "Vector force drift grid simulation" },
+      { id: 3, title: "REFRACTIVE_GLASS_MESH", category: "SHADERS", color: "from-emerald-500/20 via-teal-500/10 to-transparent", spec: "WebGL Glassmorphism depth field" },
+      { id: 4, title: "SOLAR_WIND_PROMO", category: "CYBER", color: "from-amber-500/20 via-orange-500/10 to-transparent", spec: "Interactive solar flare metrics grid" }
+    ];
+
+    return (
+      <div className="w-full p-8 bg-zinc-950 border border-zinc-900 rounded-[2.5rem] overflow-hidden min-h-[380px] flex flex-col justify-between group">
+        <div className="flex justify-between items-center mb-4">
+          <span className="text-[9px] font-mono text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 px-2.5 py-0.5 rounded-md uppercase tracking-widest">
+            SLIDER_THUMBNAIL_DOCK
+          </span>
+          <span className="text-[9px] font-mono text-zinc-650 tracking-wider">INDEX: 0{activeIndex+1} / 0{slides.length}</span>
+        </div>
+
+        <div className="relative flex-1 bg-zinc-900/50 border border-white/5 rounded-2xl overflow-hidden aspect-video max-w-md self-center w-full flex items-center justify-center p-6 mb-6">
+          <div className="absolute inset-0 bg-radial-gradient from-transparent to-black/70 pointer-events-none" />
+          <div className={cn("absolute inset-0 bg-gradient-to-tr transition-all duration-700", slides[activeIndex].color)} />
+          
+          <div className="absolute top-4 left-4 flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse shadow-[0_0_8px_rgba(6,182,212,0.6)]" />
+            <span className="text-[8px] font-mono text-zinc-400 tracking-widest">RENDER CORE ACTIVE</span>
+          </div>
+
+          <div className="text-center space-y-2 z-10 max-w-xs animate-fade-in" key={activeIndex}>
+            <span className="text-[8px] font-mono text-cyan-400 border border-cyan-500/30 px-2 py-0.5 rounded uppercase tracking-widest inline-block mb-1">
+              {slides[activeIndex].category}
+            </span>
+            <h3 className="text-white text-base font-black tracking-wider uppercase">{slides[activeIndex].title}</h3>
+            <p className="text-[9px] font-mono text-zinc-500 uppercase tracking-widest">{slides[activeIndex].spec}</p>
+          </div>
+        </div>
+
+        <div className="flex justify-center items-center gap-4">
+          {slides.map((slide, idx) => {
+            const isActive = idx === activeIndex;
+            return (
+              <button
+                key={slide.id}
+                onClick={() => setActiveIndex(idx)}
+                className={cn(
+                  "w-10 h-10 rounded-full bg-zinc-900 border flex items-center justify-center font-mono text-[10px] relative transition-all duration-300",
+                  isActive 
+                    ? "border-cyan-500 text-cyan-400 shadow-[0_0_15px_rgba(6,182,212,0.3)] scale-110" 
+                    : "border-white/5 text-zinc-500 hover:border-zinc-800 hover:text-zinc-300"
+                )}
+              >
+                {isActive && (
+                  <span className="absolute inset-0 rounded-full border border-cyan-400 animate-ping opacity-25" />
+                )}
+                0{slide.id}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    );
+  },
+
+  Carousel_ElasticSlider: () => {
+    const [activeIndex, setActiveIndex] = React.useState(0);
+    const [dragX, setDragX] = React.useState(0);
+    const [isDragging, setIsDragging] = React.useState(false);
+    const [startX, setStartX] = React.useState(0);
+    const containerRef = React.useRef<HTMLDivElement>(null);
+
+    const slides = [
+      { title: "ELASTIC_NODE_01", color: "from-rose-500/20 to-orange-500/10", label: "Spring physics grid" },
+      { title: "ELASTIC_NODE_02", color: "from-blue-500/20 to-teal-500/10", label: "Fluid matrix damping" },
+      { title: "ELASTIC_NODE_03", color: "from-purple-500/20 to-indigo-500/10", label: "Procedural layout float" }
+    ];
+
+    const handlePointerDown = (e: React.PointerEvent) => {
+      setIsDragging(true);
+      setStartX(e.clientX);
+    };
+
+    const handlePointerMove = (e: React.PointerEvent) => {
+      if (!isDragging) return;
+      const currentX = e.clientX;
+      const diffX = currentX - startX;
+      const maxDrag = 180;
+      const dampedX = Math.sign(diffX) * Math.min(Math.abs(diffX) * 0.7, maxDrag);
+      setDragX(dampedX);
+    };
+
+    const handlePointerUp = () => {
+      if (!isDragging) return;
+      setIsDragging(false);
+      
+      const threshold = 80;
+      if (dragX > threshold && activeIndex > 0) {
+        setActiveIndex(prev => prev - 1);
+      } else if (dragX < -threshold && activeIndex < slides.length - 1) {
+        setActiveIndex(prev => prev + 1);
+      }
+      setDragX(0);
+    };
+
+    return (
+      <div 
+        ref={containerRef}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerLeave={handlePointerUp}
+        className="w-full p-8 bg-zinc-950 border border-zinc-900 rounded-[2.5rem] overflow-hidden min-h-[380px] flex flex-col justify-between relative select-none cursor-grab active:cursor-grabbing"
+      >
+        <div className="flex justify-between items-start">
+          <span className="text-[9px] font-mono text-rose-400 bg-rose-500/10 border border-rose-500/20 px-2.5 py-0.5 rounded-md uppercase tracking-widest">
+            ELASTIC_DRAG_PHYSICS
+          </span>
+          <span className="text-[9px] font-mono text-zinc-650 uppercase">DAMPING: 0.70</span>
+        </div>
+
+        <div className="relative flex-1 w-full flex items-center justify-center my-6 overflow-visible">
+          <div 
+            style={{
+              transform: `translateX(${dragX}px) rotate(${dragX * 0.04}deg)`,
+              transition: isDragging ? "none" : "transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)"
+            }}
+            className="w-full max-w-sm aspect-[16/9] bg-zinc-900 rounded-2xl border border-white/10 relative p-6 overflow-hidden flex flex-col justify-between shadow-2xl"
+          >
+            <div className={cn("absolute inset-0 bg-gradient-to-tr opacity-20", slides[activeIndex].color)} />
+            <div className="flex justify-between items-start relative z-10">
+              <span className="text-[8px] font-mono text-zinc-500 uppercase tracking-wider">{slides[activeIndex].label}</span>
+              <span className="text-[8px] font-mono text-zinc-400">0{activeIndex+1} / 0{slides.length}</span>
+            </div>
+            
+            <h3 className="text-white text-base font-black tracking-widest uppercase relative z-10">{slides[activeIndex].title}</h3>
+            
+            <div className="relative z-10 flex justify-between items-center">
+              <div className="flex gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-zinc-800" />
+                <span className="w-1.5 h-1.5 rounded-full bg-zinc-800" />
+                <span className="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse" />
+              </div>
+              <span className="text-[7px] font-mono text-zinc-550">VELOCITY_DRIFT_Z: {Math.round(dragX)}</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex justify-between items-center text-[9px] font-mono text-zinc-600">
+          <span>&larr; SLIDE LEFT</span>
+          <div className="flex gap-1.5">
+            {slides.map((_, idx) => (
+              <div 
+                key={idx} 
+                className={cn(
+                  "w-1.5 h-1.5 rounded-full transition-all duration-300", 
+                  idx === activeIndex ? "bg-rose-500 w-4" : "bg-zinc-800"
+                )} 
+              />
+            ))}
+          </div>
+          <span>SLIDE RIGHT &rarr;</span>
+        </div>
+      </div>
+    );
+  },
+
+  Interactive_GlassIcons: () => {
+    const icons = [
+      { id: 1, title: "CYBER_SHIELD", desc: "Firewall & security system nodes.", color: "from-blue-500 to-indigo-600", glow: "rgba(59,130,246,0.3)", path: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" },
+      { id: 2, title: "LIQUID_CORE", desc: "Generative fluid physics simulator.", color: "from-pink-500 to-rose-600", glow: "rgba(236,72,153,0.3)", path: "M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" },
+      { id: 3, title: "VECTOR_DRIFT", desc: "High-contrast dynamic curve charts.", color: "from-emerald-500 to-teal-600", glow: "rgba(16,185,129,0.3)", path: "M3 3v18h18M18.7 8l-5.1 5.2-2.8-2.7L7 14.3" },
+      { id: 4, title: "SOLAR_METRIC", desc: "Energy distribution telemetry matrix.", color: "from-amber-500 to-orange-600", glow: "rgba(245,158,11,0.3)", path: "M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0 M12 2v20M2 12h20" }
+    ];
+
+    const [tiltStyles, setTiltStyles] = React.useState<Record<number, string>>({});
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, id: number) => {
+      const card = e.currentTarget;
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      
+      const tiltX = (y / (rect.height / 2)) * -12;
+      const tiltY = (x / (rect.width / 2)) * 12;
+
+      setTiltStyles(prev => ({
+        ...prev,
+        [id]: `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(1.03)`
+      }));
+    };
+
+    const handleMouseLeave = (id: number) => {
+      setTiltStyles(prev => ({
+        ...prev,
+        [id]: "perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)"
+      }));
+    };
+
+    return (
+      <div className="w-full p-8 bg-zinc-950 border border-zinc-900 rounded-[2.5rem] overflow-hidden min-h-[380px] flex flex-col justify-between group relative">
+        <div className="absolute top-4 left-4 z-20">
+          <span className="text-[9px] font-mono text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-0.5 rounded-md uppercase tracking-widest">
+            3D_INTERACTIVE_TILT_GRID
+          </span>
+        </div>
+
+        <div className="grid grid-cols-2 gap-4 my-8 relative z-10 max-w-sm self-center w-full">
+          {icons.map((item) => (
+            <div
+              key={item.id}
+              onMouseMove={(e) => handleMouseMove(e, item.id)}
+              onMouseLeave={() => handleMouseLeave(item.id)}
+              style={{
+                transform: tiltStyles[item.id] || "perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)",
+                transition: "transform 0.15s cubic-bezier(0.25, 0.8, 0.25, 1)",
+                boxShadow: tiltStyles[item.id] ? `0 15px 30px ${item.glow}` : "none"
+              }}
+              className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-5 cursor-crosshair flex flex-col justify-between aspect-square hover:bg-white/10"
+            >
+              <div className="flex justify-between items-start">
+                <div className={cn("w-8 h-8 rounded-lg flex items-center justify-center bg-gradient-to-tr text-white", item.color)}>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d={item.path} />
+                  </svg>
+                </div>
+                <span className="text-[7px] font-mono text-zinc-550">0{item.id}</span>
+              </div>
+
+              <div className="space-y-1 mt-4">
+                <h4 className="text-[10px] font-bold text-white tracking-widest uppercase">{item.title}</h4>
+                <p className="text-[8px] text-zinc-500 font-normal leading-normal">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  },
+
+  Interactive_FlowingMenu: () => {
+    const [hoveredIdx, setHoveredIdx] = React.useState<number | null>(null);
+    const menuItems = [
+      { id: 1, title: "BRANDING_CORE", color: "from-pink-500/20 to-purple-500/10", path: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" },
+      { id: 2, title: "EDITORIAL_SHOW", color: "from-blue-500/20 to-cyan-500/10", path: "M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" },
+      { id: 3, title: "KINETIC_MOTION", color: "from-emerald-500/20 to-teal-500/10", path: "M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" }
+    ];
+
+    return (
+      <div className="w-full p-8 bg-zinc-955 border border-zinc-900 rounded-[2.5rem] overflow-hidden min-h-[380px] flex flex-col justify-between group relative">
+        <style dangerouslySetInnerHTML={{__html: `
+          @keyframes menu-marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+          }
+          .animate-menu-marquee {
+            display: flex;
+            width: max-content;
+            animation: menu-marquee 12s linear infinite;
+          }
+        `}} />
+
+        <div className="flex justify-between items-start mb-6">
+          <span className="text-[9px] font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 rounded-md uppercase tracking-widest">
+            FLOWING_ACCORDION_MENU
+          </span>
+          <span className="text-[9px] font-mono text-zinc-650 uppercase">HOVER_MARQUEE</span>
+        </div>
+
+        <div className="flex flex-col border-t border-white/10 my-4">
+          {menuItems.map((item, idx) => {
+            const isHovered = hoveredIdx === idx;
+            return (
+              <div
+                key={item.id}
+                onMouseEnter={() => setHoveredIdx(idx)}
+                onMouseLeave={() => setHoveredIdx(null)}
+                className="border-b border-white/10 py-5 transition-all duration-350 cursor-pointer overflow-hidden relative group/item"
+              >
+                <div className={cn(
+                  "absolute inset-0 bg-gradient-to-r transition-all duration-500 -z-10",
+                  isHovered ? item.color : "from-transparent to-transparent opacity-0"
+                )} />
+
+                <div className="flex justify-between items-center relative z-10 px-2">
+                  <div className="flex items-center gap-4">
+                    <span className="text-[9px] font-mono text-zinc-550 group-hover/item:text-white transition-colors">0{item.id}</span>
+                    <h3 className="text-sm font-black tracking-widest text-zinc-300 group-hover/item:text-white transition-colors uppercase">
+                      {item.title}
+                    </h3>
+                  </div>
+                  <div className="w-5 h-5 rounded-full border border-white/10 flex items-center justify-center text-zinc-600 group-hover/item:border-white/35 group-hover/item:text-white transition-all">
+                    &rarr;
+                  </div>
+                </div>
+
+                <div 
+                  style={{
+                    maxHeight: isHovered ? "40px" : "0px",
+                    opacity: isHovered ? 1 : 0,
+                    transition: "all 0.4s cubic-bezier(0.23, 1, 0.32, 1)"
+                  }}
+                  className="overflow-hidden mt-2 relative z-10 px-2 flex items-center border-t border-white/5 pt-2"
+                >
+                  <div className="animate-menu-marquee">
+                    <span className="text-[8px] font-mono text-emerald-400 uppercase tracking-widest whitespace-nowrap mr-8">
+                      EXPLORE CORE CREATIVE • KINETIC DAMPING SYSTEM • PROCEDURAL FLUID GRAPHICS •
+                    </span>
+                    <span className="text-[8px] font-mono text-emerald-400 uppercase tracking-widest whitespace-nowrap mr-8">
+                      EXPLORE CORE CREATIVE • KINETIC DAMPING SYSTEM • PROCEDURAL FLUID GRAPHICS •
+                    </span>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  },
+
+  Interactive_Lanyard: () => {
+    const containerRef = React.useRef<HTMLDivElement>(null);
+    const [ropePath, setRopePath] = React.useState("M 150 0 Q 150 70 150 140");
+    const [cardPos, setCardPos] = React.useState({ x: 150, y: 140 });
+    const [cardRotation, setCardRotation] = React.useState(0);
+    const physicsRef = React.useRef({
+      x: 150, y: 140,
+      vx: 0, vy: 0,
+      targetX: 150, targetY: 140,
+      rotation: 0, vrot: 0
+    });
+
+    React.useEffect(() => {
+      let animId: number;
+      const step = () => {
+        const p = physicsRef.current;
+        const anchorX = 150;
+        const anchorY = 0;
+        const restLength = 130;
+        
+        const dx = p.x - anchorX;
+        const dy = p.y - anchorY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        
+        const springK = 0.08;
+        const damping = 0.90;
+        const gravity = 0.8;
+        
+        const forceSpringX = -springK * dx;
+        const forceSpringY = -springK * (dist - restLength) * (dy / (dist || 1));
+        
+        p.vx += forceSpringX;
+        p.vy += forceSpringY + gravity;
+        
+        p.vx *= damping;
+        p.vy *= damping;
+        
+        const pullK = 0.05;
+        p.vx += (p.targetX - p.x) * pullK;
+        p.vy += (p.targetY - p.y) * pullK;
+        
+        p.x += p.vx;
+        p.y += p.vy;
+
+        const targetRot = p.vx * 1.5;
+        p.vrot += (targetRot - p.rotation) * 0.05;
+        p.vrot *= 0.85;
+        p.rotation += p.vrot;
+
+        const ctrlX = 150 + dx * 0.5;
+        const ctrlY = dy * 0.5;
+
+        setRopePath(`M 150 0 Q ${ctrlX} ${ctrlY} ${p.x} ${p.y}`);
+        setCardPos({ x: p.x, y: p.y });
+        setCardRotation(p.rotation);
+
+        animId = requestAnimationFrame(step);
+      };
+      
+      step();
+      return () => cancelAnimationFrame(animId);
+    }, []);
+
+    const handleMouseMove = (e: React.MouseEvent) => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const mx = e.clientX - rect.left;
+      const my = e.clientY - rect.top;
+      
+      const anchorX = 150;
+      const dx = mx - anchorX;
+      const limit = 90;
+      const targetX = anchorX + Math.sign(dx) * Math.min(Math.abs(dx), limit);
+      const targetY = Math.max(100, Math.min(my, 200));
+
+      physicsRef.current.targetX = targetX;
+      physicsRef.current.targetY = targetY;
+    };
+
+    const handleMouseLeave = () => {
+      physicsRef.current.targetX = 150;
+      physicsRef.current.targetY = 140;
+    };
+
+    return (
+      <div 
+        ref={containerRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        className="w-full p-8 bg-zinc-955 border border-zinc-900 rounded-[2.5rem] overflow-hidden min-h-[380px] flex flex-col justify-between relative select-none cursor-pointer group"
+      >
+        <div className="absolute top-4 left-4 z-20">
+          <span className="text-[9px] font-mono text-pink-400 bg-pink-500/10 border border-pink-500/20 px-2.5 py-0.5 rounded-md uppercase tracking-widest">
+            2D_PHYSICS_LANYARD
+          </span>
+        </div>
+
+        <div className="relative flex-1 w-full flex items-center justify-center overflow-visible mt-8 min-h-[220px]">
+          <svg className="absolute inset-0 w-full h-full pointer-events-none z-10 overflow-visible" viewBox="0 0 300 240">
+            <defs>
+              <linearGradient id="rope-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#ec4899" />
+                <stop offset="100%" stopColor="#a855f7" />
+              </linearGradient>
+              <filter id="rope-glow">
+                <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                <feMerge>
+                  <feMergeNode in="coloredBlur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            </defs>
+            <path 
+              d={ropePath} 
+              fill="none" 
+              stroke="url(#rope-grad)" 
+              strokeWidth="2" 
+              strokeLinecap="round"
+              filter="url(#rope-glow)"
+              className="opacity-80"
+            />
+            <circle cx="150" cy="3" r="4" fill="none" stroke="#fff" strokeWidth="1.5" />
+          </svg>
+
+          <div 
+            style={{
+              left: `${cardPos.x}px`,
+              top: `${cardPos.y}px`,
+              transform: `translate(-50%, 0px) rotate(${cardRotation}deg)`,
+              transition: "transform 0.05s ease-out"
+            }}
+            className="absolute w-40 h-56 bg-zinc-900/90 backdrop-blur-xl border border-white/10 rounded-2xl p-4 flex flex-col justify-between shadow-2xl z-20 hover:border-pink-500/50 transition-colors"
+          >
+            <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 w-6 h-3 bg-zinc-850 border border-white/10 rounded-t-full flex items-center justify-center">
+              <div className="w-1.5 h-1.5 rounded-full bg-zinc-900" />
+            </div>
+
+            <div className="flex justify-between items-center border-b border-white/5 pb-2">
+              <span className="text-[7px] font-mono text-zinc-500 tracking-wider">SECURE_ID</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_5px_#10b981]" />
+            </div>
+
+            <div className="flex-1 flex flex-col items-center justify-center py-3 text-center space-y-2">
+              <div className="w-14 h-14 rounded-full border border-pink-500/20 bg-zinc-950 flex items-center justify-center p-1.5">
+                <div className="w-full h-full rounded-full bg-gradient-to-tr from-pink-500 to-purple-600 flex items-center justify-center font-black italic text-white text-[10px]">
+                  UIX
+                </div>
+              </div>
+              <div>
+                <h4 className="text-[10px] font-black text-white uppercase tracking-widest leading-none">VICKOTO AGUILERA</h4>
+                <span className="text-[6.5px] font-mono text-zinc-650 uppercase tracking-widest block mt-1">Lead Creative Architect</span>
+              </div>
+            </div>
+
+            <div className="border-t border-white/5 pt-2 flex justify-between items-center text-[7px] font-mono text-zinc-550">
+              <span>SCAN_NODE_404</span>
+              <span>VERIFIED OK</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  },
+
+  Dynamic_BubbleMenu: () => {
+    const [expanded, setExpanded] = React.useState(false);
+    const [hoveredIdx, setHoveredIdx] = React.useState<number | null>(null);
+
+    const bubbles = [
+      { id: 1, label: "CYBER", color: "from-blue-500 to-cyan-500", shadow: "rgba(59,130,246,0.3)", dx: -70, dy: -60, path: "M9 12l2 2 4-4" },
+      { id: 2, label: "SOLAR", color: "from-amber-500 to-orange-500", shadow: "rgba(245,158,11,0.3)", dx: 70, dy: -60, path: "M12 3v1m0 16v1m9-9h-1M4 12H3" },
+      { id: 3, label: "FLOW", color: "from-pink-500 to-rose-500", shadow: "rgba(236,72,153,0.3)", dx: -75, dy: 50, path: "M4 4h16v16H4z" },
+      { id: 4, label: "GRID", color: "from-emerald-500 to-teal-500", shadow: "rgba(16,185,129,0.3)", dx: 75, dy: 50, path: "M12 2v20M2 12h20" }
+    ];
+
+    return (
+      <div className="w-full p-8 bg-zinc-950 border border-zinc-900 rounded-[2.5rem] overflow-hidden min-h-[380px] flex flex-col justify-between group relative select-none">
+        <div className="absolute top-4 left-4 z-20">
+          <span className="text-[9px] font-mono text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2.5 py-0.5 rounded-md uppercase tracking-widest">
+            DYNAMIC_BUBBLE_DOCK
+          </span>
+        </div>
+
+        <div className="relative flex-1 w-full flex items-center justify-center overflow-visible mt-8 min-h-[220px]">
+          <button
+            onClick={() => setExpanded(prev => !prev)}
+            className={cn(
+              "w-16 h-16 rounded-full bg-zinc-900 border flex flex-col items-center justify-center z-20 relative transition-all duration-500",
+              expanded 
+                ? "border-amber-500 shadow-[0_0_25px_rgba(245,158,11,0.3)] rotate-45 scale-105" 
+                : "border-white/10 hover:border-zinc-800 hover:scale-105"
+            )}
+          >
+            <div className="w-6 h-6 flex items-center justify-center text-white relative">
+              {expanded ? (
+                <span className="text-lg font-mono">&times;</span>
+              ) : (
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
+                </svg>
+              )}
+            </div>
+            <span className="text-[6.5px] font-mono text-zinc-550 uppercase absolute -bottom-4 tracking-widest">
+              {expanded ? "COLLAPSE" : "EXPAND"}
+            </span>
+          </button>
+
+          {bubbles.map((bubble, idx) => {
+            const isHovered = hoveredIdx === idx;
+            return (
+              <div
+                key={bubble.id}
+                onMouseEnter={() => setHoveredIdx(idx)}
+                onMouseLeave={() => setHoveredIdx(null)}
+                style={{
+                  transform: expanded 
+                    ? `translate(${bubble.dx}px, ${bubble.dy}px) scale(${isHovered ? 1.15 : 1})`
+                    : "translate(0px, 0px) scale(0)",
+                  opacity: expanded ? 1 : 0,
+                  transition: `all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) ${idx * 0.05}s`,
+                  boxShadow: expanded ? `0 10px 20px ${bubble.shadow}` : "none",
+                  zIndex: isHovered ? 30 : 10
+                }}
+                className={cn(
+                  "absolute w-12 h-12 rounded-full bg-gradient-to-tr text-white flex items-center justify-center cursor-pointer border border-white/10"
+                )}
+              >
+                <div className={cn("absolute inset-0 rounded-full bg-black/35 group-hover:bg-transparent transition-all -z-10", bubble.color)} />
+                <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d={bubble.path} />
+                </svg>
+                
+                <div 
+                  style={{
+                    opacity: isHovered ? 1 : 0,
+                    transform: isHovered ? "translateY(28px) scale(1)" : "translateY(20px) scale(0.8)",
+                    transition: "all 0.25s cubic-bezier(0.23, 1, 0.32, 1)"
+                  }}
+                  className="absolute pointer-events-none bg-zinc-900 border border-white/10 px-2 py-0.5 rounded text-[8px] font-mono tracking-widest text-white shadow-xl whitespace-nowrap"
+                >
+                  {bubble.label}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  },
+
+  Dynamic_CardSwap: () => {
+    const [cardIndex, setCardIndex] = React.useState(0);
+    const [isSwapping, setIsSwapping] = React.useState(false);
+    
+    const cards = [
+      { id: 1, title: "CYBER_CORE_A", tag: "Procedural", color: "from-blue-600 to-indigo-700", spec: "Vector system tracking active." },
+      { id: 2, title: "KINETIC_SHADOW_B", tag: "Liquid", color: "from-pink-600 to-rose-700", spec: "Procedural depth blur mesh." },
+      { id: 3, title: "SOLAR_WIND_C", tag: "Solar", color: "from-amber-600 to-orange-700", spec: "Dynamic temperature flare telemetry." }
+    ];
+
+    const currentCard = cards[cardIndex % cards.length];
+    const nextCard = cards[(cardIndex + 1) % cards.length];
+    const nextNextCard = cards[(cardIndex + 2) % cards.length];
+
+    const triggerSwap = () => {
+      if (isSwapping) return;
+      setIsSwapping(true);
+      setTimeout(() => {
+        setCardIndex(prev => prev + 1);
+        setIsSwapping(false);
+      }, 550);
+    };
+
+    return (
+      <div className="w-full p-8 bg-zinc-950 border border-zinc-900 rounded-[2.5rem] overflow-hidden min-h-[380px] flex flex-col justify-between group relative select-none">
+        <div className="flex justify-between items-start mb-4">
+          <span className="text-[9px] font-mono text-purple-400 bg-purple-500/10 border border-purple-500/20 px-2.5 py-0.5 rounded-md uppercase tracking-widest">
+            KINETIC_SWAP_STACK
+          </span>
+          <span className="text-[9px] font-mono text-zinc-650 uppercase">CLICK TO SWAP</span>
+        </div>
+
+        <div className="relative flex-1 w-full flex items-center justify-center overflow-visible mt-6 min-h-[220px]">
+          <div 
+            style={{
+              transform: isSwapping 
+                ? "translateY(8px) scale(0.96) rotate(4deg)" 
+                : "translateY(16px) scale(0.92) rotate(-4deg)",
+              opacity: isSwapping ? 0.6 : 0.3,
+              transition: "all 0.5s cubic-bezier(0.23, 1, 0.32, 1)"
+            }}
+            className="absolute w-64 h-36 rounded-2xl bg-zinc-900 border border-white/5 shadow-md -z-20 p-5 flex flex-col justify-between"
+          >
+            <div className="flex justify-between">
+              <span className="text-[8px] font-mono text-zinc-600">{nextNextCard.tag}</span>
+            </div>
+            <h4 className="text-zinc-550 text-sm font-bold tracking-widest uppercase">{nextNextCard.title}</h4>
+          </div>
+
+          <div 
+            style={{
+              transform: isSwapping 
+                ? "translateY(0px) scale(1.02) rotate(0deg)" 
+                : "translateY(8px) scale(0.96) rotate(3deg)",
+              opacity: isSwapping ? 1 : 0.6,
+              transition: "all 0.5s cubic-bezier(0.23, 1, 0.32, 1)",
+              zIndex: isSwapping ? 10 : -10
+            }}
+            className="absolute w-64 h-36 rounded-2xl bg-zinc-900 border border-white/5 shadow-xl p-5 flex flex-col justify-between"
+          >
+            <div className="flex justify-between">
+              <span className="text-[8px] font-mono text-zinc-600">{nextCard.tag}</span>
+            </div>
+            <h4 className="text-zinc-550 text-sm font-bold tracking-widest uppercase">{nextCard.title}</h4>
+          </div>
+
+          <div
+            onClick={triggerSwap}
+            style={{
+              transform: isSwapping 
+                ? "translateY(160px) scale(0.85) rotate(15deg)" 
+                : "translateY(0px) scale(1.02) rotate(-2deg)",
+              opacity: isSwapping ? 0 : 1,
+              transition: "all 0.55s cubic-bezier(0.25, 0.8, 0.25, 1.1)",
+              zIndex: isSwapping ? -5 : 20
+            }}
+            className="absolute w-64 h-36 rounded-2xl bg-zinc-900 border border-white/10 shadow-2xl p-6 flex flex-col justify-between cursor-pointer hover:border-purple-500/50 transition-colors"
+          >
+            <div className={cn("absolute inset-0 bg-gradient-to-tr opacity-20", currentCard.color)} />
+            <div className="flex justify-between items-start relative z-10">
+              <span className="px-2 py-0.5 bg-zinc-950 border border-zinc-800 text-[8px] font-mono text-zinc-400 rounded">
+                {currentCard.tag}
+              </span>
+              <span className="text-[9px] font-mono text-zinc-650">0{currentCard.id}</span>
+            </div>
+            
+            <div className="relative z-10 space-y-1">
+              <h4 className="text-white text-base font-black tracking-widest uppercase">{currentCard.title}</h4>
+              <p className="text-[8.5px] text-zinc-400 font-normal leading-normal">{currentCard.spec}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  },
+
+  Dynamic_FluidGlass: () => {
+    const canvasRef = React.useRef<HTMLCanvasElement>(null);
+    const [mousePos, setMousePos] = React.useState({ x: 0, y: 0 });
+    const [isHovered, setIsHovered] = React.useState(false);
+
+    React.useEffect(() => {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+      
+      let animationFrameId: number;
+      let particles: Array<{ x: number, y: number, r: number, vx: number, vy: number, color: string, alpha: number }> = [];
+      
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+      
+      const render = () => {
+        ctx.fillStyle = 'rgba(9, 9, 11, 0.08)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        if (isHovered && Math.random() < 0.3) {
+          particles.push({
+            x: mousePos.x,
+            y: mousePos.y,
+            r: Math.random() * 25 + 10,
+            vx: (Math.random() - 0.5) * 1.5,
+            vy: (Math.random() - 0.5) * 1.5,
+            color: Math.random() > 0.5 ? '#3b82f6' : '#818cf8',
+            alpha: 0.6
+          });
+        }
+        
+        particles.forEach((p, idx) => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.alpha -= 0.008;
+          p.r += 0.2;
+          
+          ctx.save();
+          ctx.globalAlpha = p.alpha;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.shadowBlur = 30;
+          ctx.shadowColor = p.color;
+          ctx.fill();
+          ctx.restore();
+          
+          if (p.alpha <= 0) particles.splice(idx, 1);
+        });
+        
+        animationFrameId = requestAnimationFrame(render);
+      };
+      
+      render();
+      return () => {
+        cancelAnimationFrame(animationFrameId);
+      };
+    }, [isHovered, mousePos]);
+
+    const handleMouseMove = (e: React.MouseEvent) => {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+      const rect = canvas.getBoundingClientRect();
+      setMousePos({
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top
+      });
+    };
+
+    return (
+      <div 
+        onMouseMove={handleMouseMove}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        className="w-full p-8 bg-zinc-950 border border-zinc-900 rounded-[2.5rem] overflow-hidden min-h-[380px] flex flex-col justify-between relative group cursor-crosshair"
+      >
+        <canvas 
+          ref={canvasRef} 
+          className="absolute inset-0 w-full h-full pointer-events-none"
+        />
+
+        <div className="flex justify-between items-start relative z-10">
+          <span className="text-[9px] font-mono text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-0.5 rounded-md uppercase tracking-widest">
+            CANVAS_LIQUID_BACKDROP
+          </span>
+          <span className="text-[9px] font-mono text-zinc-650 uppercase">DYNAMIC_FLUID</span>
+        </div>
+
+        <div className="relative z-10 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 space-y-3 max-w-sm self-center w-full shadow-2xl my-6">
+          <div className="flex justify-between items-center">
+            <span className="text-[8px] font-mono text-indigo-400 tracking-wider">SECURE_DASHBOARD</span>
+            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+          </div>
+          <h3 className="text-white text-base font-black tracking-widest uppercase">LIQUID GLASS CORE</h3>
+          <p className="text-zinc-405 text-[10px] leading-relaxed">
+            Move your cursor across this container to draw interactive glowing organic fluid ripple fields directly rendered on HTML5 Canvas.
+          </p>
+        </div>
+
+        <p className="relative z-10 text-zinc-600 text-[7px] font-mono uppercase tracking-widest">
+          SYSTEM_STABLE // 120FPS_MODE
+        </p>
+      </div>
+    );
+  },
+
+  Dynamic_FolderAccordion: () => {
+    const [openFolder, setOpenFolder] = React.useState<number | null>(1);
+    
+    const folders = [
+      { 
+        id: 1, 
+        name: "CORE_COMPONENTS", 
+        count: 3, 
+        color: "text-blue-500",
+        docs: ["GalleryVariants.tsx", "ButtonVariants.tsx", "component-styles.ts"] 
+      },
+      { 
+        id: 2, 
+        name: "DOCUMENTATION_LOGS", 
+        count: 2, 
+        color: "text-pink-500",
+        docs: ["05_ESTADO_Y_TRASPASO.md", "06_MISION_50_20.md"] 
+      },
+      { 
+        id: 3, 
+        name: "ASSETS_CYBER_RESO", 
+        count: 2, 
+        color: "text-amber-500",
+        docs: ["cyber_hud_telemetry.svg", "solar_pulse_vector.svg"] 
+      }
+    ];
+
+    return (
+      <div className="w-full p-8 bg-zinc-955 border border-zinc-900 rounded-[2.5rem] overflow-hidden min-h-[380px] flex flex-col justify-between group relative select-none">
+        <div className="flex justify-between items-start mb-4">
+          <span className="text-[9px] font-mono text-blue-400 bg-blue-500/10 border border-blue-500/20 px-2.5 py-0.5 rounded-md uppercase tracking-widest">
+            DYNAMIC_FOLDER_ACCORDION
+          </span>
+          <span className="text-[9px] font-mono text-zinc-650 uppercase">FILES_DOCK</span>
+        </div>
+
+        <div className="flex-1 flex flex-col gap-3 justify-center max-w-sm self-center w-full my-4">
+          {folders.map((folder) => {
+            const isOpen = openFolder === folder.id;
+            return (
+              <div 
+                key={folder.id} 
+                className="border border-white/5 rounded-2xl bg-zinc-900 overflow-hidden transition-all duration-350"
+              >
+                <button
+                  onClick={() => setOpenFolder(isOpen ? null : folder.id)}
+                  className="w-full px-5 py-4 flex justify-between items-center hover:bg-white/5 transition-colors text-left"
+                >
+                  <div className="flex items-center gap-3">
+                    <span className={cn("text-lg", folder.color)}>
+                      {isOpen ? (
+                        <FolderOpen className="w-4.5 h-4.5" />
+                      ) : (
+                        <Folder className="w-4.5 h-4.5" />
+                      )}
+                    </span>
+                    <span className="text-[10px] font-bold text-white tracking-widest uppercase">{folder.name}</span>
+                  </div>
+                  <span className="text-[8px] font-mono text-zinc-550 uppercase tracking-widest">{folder.count} ITEMS</span>
+                </button>
+
+                <div
+                  style={{
+                    maxHeight: isOpen ? "160px" : "0px",
+                    opacity: isOpen ? 1 : 0,
+                    transition: "all 0.4s cubic-bezier(0.23, 1, 0.32, 1)"
+                  }}
+                  className="overflow-hidden bg-zinc-950/50"
+                >
+                  <div className="px-5 py-4 space-y-2 border-t border-white/5">
+                    {folder.docs.map((doc, dIdx) => (
+                      <div key={dIdx} className="flex items-center gap-2.5 text-zinc-450 hover:text-white transition-colors cursor-pointer">
+                        <FileText className="w-3.5 h-3.5 text-zinc-550" />
+                        <span className="text-[9px] font-mono">{doc}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
 };
 
 const Gallery_Placeholder = ({ label }: { label: string }) => (
@@ -1869,16 +2822,12 @@ const Gallery_Placeholder = ({ label }: { label: string }) => (
 
 const placeholderKeys = [
   'Gallery_Placeholder_A1',
-  'Carousel_Placeholder_5',
-  'Carousel_Placeholder_6', 'Carousel_Placeholder_7', 'Carousel_Placeholder_8',
+  'Carousel_Placeholder_8',
   'Carousel_Placeholder_9', 'Carousel_Placeholder_10',
   'Mosaic_Placeholder_3', 
   'Mosaic_Placeholder_4', 'Mosaic_Placeholder_5', 'Mosaic_Placeholder_6',
   'Mosaic_Placeholder_7', 'Mosaic_Placeholder_8', 'Mosaic_Placeholder_9',
-  'Mosaic_Placeholder_10',
-  'Interactive_Placeholder_8', 'Interactive_Placeholder_9', 'Interactive_Placeholder_10',
-  'Dynamic_Placeholder_7', 'Dynamic_Placeholder_8', 'Dynamic_Placeholder_9',
-  'Dynamic_Placeholder_10'
+  'Mosaic_Placeholder_10'
 ];
 
 placeholderKeys.forEach(key => {

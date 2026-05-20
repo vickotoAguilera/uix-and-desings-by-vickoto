@@ -258,8 +258,8 @@ export const GALLERY_STYLES = {
   ],
   Carousel: [
     'Carousel_CircularGallery', 'Carousel_DomeGallery', 
-    'Carousel_InfiniteSlider', 'Carousel_GlowNav', 'Carousel_Placeholder_5',
-    'Carousel_Placeholder_6', 'Carousel_Placeholder_7', 'Carousel_Placeholder_8',
+    'Carousel_InfiniteSlider', 'Carousel_GlowNav', 'Carousel_CardFlow',
+    'Carousel_Thumbnails', 'Carousel_ElasticSlider', 'Carousel_Placeholder_8',
     'Carousel_Placeholder_9', 'Carousel_Placeholder_10'
   ],
   Mosaic: [
@@ -271,14 +271,14 @@ export const GALLERY_STYLES = {
   Interactive: [
     'Interactive_ImageComparison', 'Interactive_MagicBento', 'Interactive_SpotlightGridCard', 
     'Interactive_ReflectiveMetallic', 'Interactive_TiltCardHover', 'Interactive_ProgressiveBlurGrid',
-    'Interactive_BorderTrailCard', 'Interactive_Placeholder_8', 'Interactive_Placeholder_9',
-    'Interactive_Placeholder_10'
+    'Interactive_BorderTrailCard', 'Interactive_GlassIcons', 'Interactive_FlowingMenu',
+    'Interactive_Lanyard'
   ],
   Dynamic: [
     'Dynamic_FlyingPosters', 'Dynamic_ScrollStack', 'Dynamic_BounceCards', 
     'Dynamic_ChromaGrid', 'Dynamic_DecayCardStack', 'Dynamic_PixelCardHover',
-    'Dynamic_Placeholder_7', 'Dynamic_Placeholder_8', 'Dynamic_Placeholder_9',
-    'Dynamic_Placeholder_10'
+    'Dynamic_BubbleMenu', 'Dynamic_CardSwap', 'Dynamic_FluidGlass',
+    'Dynamic_FolderAccordion'
   ]
 };
 
