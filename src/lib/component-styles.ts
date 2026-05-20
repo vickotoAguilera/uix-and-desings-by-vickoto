@@ -1,5 +1,21 @@
 export const HERO_STYLES = {
-  MaisonLuxury: ['Maison_Classic', 'Maison_Dark', 'Maison_Split'],
+  MaisonLuxury: [
+    'Maison_Classic', 'Maison_Dark', 'Maison_Split', 'Maison_GoldenBorder', 
+    'Maison_Editorial', 'Maison_GlassCards', 'Maison_MinimalShop', 'Maison_Archive', 
+    'Maison_VideoFocus', 'Maison_GeometricGrid', 'Maison_VerticalTypography', 
+    'Maison_ParallaxReveal', 'Maison_Brutalist', 'Maison_SoftPastel', 'Maison_HighTech', 
+    'Maison_Slider', 'Maison_Asymmetric', 'Maison_Monochrome', 'Maison_Newsletter', 
+    'Maison_FinalShowcase'
+  ],
+  CyberTerminal: [
+    'CyberTerminal_Classic', 'CyberTerminal_NeonOverride', 'CyberTerminal_DataStream',
+    'CyberTerminal_HolographicHUD', 'CyberTerminal_NightCity', 'CyberTerminal_MatrixRain',
+    'CyberTerminal_GlitchWarning', 'CyberTerminal_DeepWeb', 'CyberTerminal_CyberMechanic',
+    'CyberTerminal_NeonGridPulse', 'CyberTerminal_SecurityBreach', 'CyberTerminal_CyberLogin',
+    'CyberTerminal_NeonHUDStats', 'CyberTerminal_MatrixCode', 'CyberTerminal_CyberGlitchV2',
+    'CyberTerminal_NeuralInterface', 'CyberTerminal_SatelliteUplink', 'CyberTerminal_NeonAlley',
+    'CyberTerminal_BunkerAccess', 'CyberTerminal_SystemArchitecture'
+  ],
   Cyberpunk: ['Cyberpunk', 'CyberTerminal', 'CyberHUD', 'CyberLogin', 'NeonCity', 'Matrix'],
   Glassmorphism: ['GlassDeep', 'GlassLight', 'GlassStack', 'GlassBentoV2', 'GlassTilt'],
   Minimalist: ['MinimalDark', 'MinimalArch', 'PortfolioHero', 'Zen', 'ModernArch', 'TypeFocus', 'TypoFocus'],

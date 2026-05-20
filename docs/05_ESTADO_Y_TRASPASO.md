@@ -1,32 +1,34 @@
 # Estado y Traspaso - Proyecto Botones Neón
 
-## Última Actualización: 2026-05-19 | 21:15
-- **Agente Anterior:** Arquitecto de Software (Trae - Sesión Casa)
+## Última Update: 2026-05-20 | 14:15
+- **Agente Actual:** Arquitecto de Software (Trae - Sesión Casa)
 - **Entorno:** Casa
-- **Estado Global:** Sistema potenciado con SmartImages, Build reparado y Misión 50x20 iniciada.
+- **Estado Global:** Diseños 01 y 02 de Heros completados al 100% (40 variantes totales). Sistema estabilizado y documentado.
 
 ## PRÓXIMOS PASOS
-1.  **Continuar Maison Luxury (D01)**: Faltan 17 variantes para completar las 20 del primer diseño.
-2.  **Migrar Imágenes Antiguas**: Actualizar componentes viejos para que usen `<SmartImage />` en lugar de `<img>` directo.
-3.  **Diseño D02 (Cyber Industrial)**: Iniciar el segundo diseño base de la misión.
+1.  **Iniciar Diseño 03 (Corporate SaaS)**: Tercer estilo base de la misión de Heros. Objetivo: 20 variantes.
+2.  **Migrar Imágenes Antiguas**: Continuar actualizando componentes viejos para que usen `<SmartImage />`.
+3.  **Refuerzo de Estabilidad**: Verificar que el showcase cargue correctamente las 40 variantes de Heros.
+4.  **Expansión de Categorías**: Tras alcanzar hitos en Heros, pivotar hacia Navbars o Buttons según prioridad.
 
 ## Tareas Realizadas
-- [x] Implementar `SmartImage` y switch global de fotos en el Sidebar.
-- [x] Corregir error de `useSearchParams` con límites de `Suspense`.
-- [x] Crear las primeras 3 variantes de `MaisonLuxuryHero`.
+- [x] Fase de Inicialización y Escaneo de errores completada (0 errores).
+- [x] Completar 20 variantes de `CyberpunkTerminalHero` (D02).
+- [x] Resolver errores de build por caracteres `>` en JSX.
+- [x] Sincronizar taxonomía completa de Heros en `component-styles.ts`.
+- [x] Push a GitHub con estado estable de la Misión 50x20.
 
 ## Credenciales y Entorno
-- **GitHub Token**: [REGISTRADO EN MEMORIA DE PROYECTO] (Usar para sincronización).
-- **Entorno**: Trabajo. El PATH para `npm` sigue restringido, pero la estructura del código es estable.
+- **GitHub Token**: [REGISTRADO EN MEMORIA DE PROYECTO].
+- **Entorno**: Casa. Build estable.
 
 ## Tareas Pendientes
-- [ ] Implementar lote de Navbars minimalistas y corporativos.
-- [ ] Implementar lote de Botones para E-commerce y Oficinas.
-- [ ] Expandir galería de fotos y efectos visuales.
-- [ ] Documentar nuevos componentes en el showcase.
+- [ ] Iniciar Diseño 03 de Heros: Corporate Clean SaaS.
+- [ ] Completar 50 diseños de Hero antes de pasar a Navbars.
+- [ ] Migrar componentes antiguos a SmartImage.
 
 ## Notas Técnicas
-- **Entorno Trabajo**: Se observó restricción en el PATH para `npm`. Las validaciones se hicieron mediante revisión de estructura y tipos.
-- **Lazy Loading**: Todos los nuevos catálogos consumen `LazyComponent` para evitar picos de CPU al navegar.
-- **Navegación**: Home [page.tsx](src/app/page.tsx) ahora incluye accesos directos a todas las secciones activas.
+- **Cyberpunk Terminal**: Finalizado con variantes de alta complejidad visual (Orbital Strike, Neural Link, System Architecture).
+- **Escape JSX**: Recordar usar `{">"}` para evitar errores de parsing en futuros componentes de terminal.
+- **Rendimiento**: El Lazy Loading sigue siendo vital para la fluidez del showcase.
 

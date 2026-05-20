@@ -5,12 +5,52 @@ import { cn } from '@/lib/utils';
 import { ChevronRight, Zap, Shield, Cpu, Globe, ArrowRight, Terminal } from 'lucide-react';
 
 import { MaisonLuxuryHero } from './designs/MaisonLuxuryHero';
+import { CyberpunkTerminalHero } from './designs/CyberpunkTerminalHero';
 
 export const HeroVariants = {
-  // D01. Maison Luxury Designs
+  // D01. Maison Luxury Designs (20 Variantes)
   Maison_Classic: MaisonLuxuryHero.Classic,
   Maison_Dark: MaisonLuxuryHero.Dark,
   Maison_Split: MaisonLuxuryHero.Split,
+  Maison_GoldenBorder: MaisonLuxuryHero.GoldenBorder,
+  Maison_Editorial: MaisonLuxuryHero.Editorial,
+  Maison_GlassCards: MaisonLuxuryHero.GlassCards,
+  Maison_MinimalShop: MaisonLuxuryHero.MinimalShop,
+  Maison_Archive: MaisonLuxuryHero.Archive,
+  Maison_VideoFocus: MaisonLuxuryHero.VideoFocus,
+  Maison_GeometricGrid: MaisonLuxuryHero.GeometricGrid,
+  Maison_VerticalTypography: MaisonLuxuryHero.VerticalTypography,
+  Maison_ParallaxReveal: MaisonLuxuryHero.ParallaxReveal,
+  Maison_Brutalist: MaisonLuxuryHero.Brutalist,
+  Maison_SoftPastel: MaisonLuxuryHero.SoftPastel,
+  Maison_HighTech: MaisonLuxuryHero.HighTech,
+  Maison_Slider: MaisonLuxuryHero.Slider,
+  Maison_Asymmetric: MaisonLuxuryHero.Asymmetric,
+  Maison_Monochrome: MaisonLuxuryHero.Monochrome,
+  Maison_Newsletter: MaisonLuxuryHero.Newsletter,
+  Maison_FinalShowcase: MaisonLuxuryHero.FinalShowcase,
+
+  // D02. Cyberpunk Terminal (20/20 Variantes)
+  CyberTerminal_Classic: CyberpunkTerminalHero.Classic,
+  CyberTerminal_NeonOverride: CyberpunkTerminalHero.NeonOverride,
+  CyberTerminal_DataStream: CyberpunkTerminalHero.DataStream,
+  CyberTerminal_HolographicHUD: CyberpunkTerminalHero.HolographicHUD,
+  CyberTerminal_NightCity: CyberpunkTerminalHero.NightCity,
+  CyberTerminal_MatrixRain: CyberpunkTerminalHero.MatrixRain,
+  CyberTerminal_GlitchWarning: CyberpunkTerminalHero.GlitchWarning,
+  CyberTerminal_DeepWeb: CyberpunkTerminalHero.DeepWeb,
+  CyberTerminal_CyberMechanic: CyberpunkTerminalHero.CyberMechanic,
+  CyberTerminal_NeonGridPulse: CyberpunkTerminalHero.NeonGridPulse,
+  CyberTerminal_SecurityBreach: CyberpunkTerminalHero.SecurityBreach,
+  CyberTerminal_CyberLogin: CyberpunkTerminalHero.CyberLogin,
+  CyberTerminal_NeonHUDStats: CyberpunkTerminalHero.NeonHUDStats,
+  CyberTerminal_MatrixCode: CyberpunkTerminalHero.MatrixCode,
+  CyberTerminal_CyberGlitchV2: CyberpunkTerminalHero.CyberGlitchV2,
+  CyberTerminal_NeuralInterface: CyberpunkTerminalHero.NeuralInterface,
+  CyberTerminal_SatelliteUplink: CyberpunkTerminalHero.SatelliteUplink,
+  CyberTerminal_NeonAlley: CyberpunkTerminalHero.NeonAlley,
+  CyberTerminal_BunkerAccess: CyberpunkTerminalHero.BunkerAccess,
+  CyberTerminal_SystemArchitecture: CyberpunkTerminalHero.SystemArchitecture,
 
   // 1. Cyberpunk Neon
   Cyberpunk: () => (
