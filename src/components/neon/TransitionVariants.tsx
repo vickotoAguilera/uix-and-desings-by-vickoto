@@ -661,5 +661,204 @@ export const TransitionVariants = {
         <p className="text-[#0fa] text-xs font-mono mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 delay-700 uppercase">Interactive Experience</p>
       </div>
     </div>
+  ),
+
+  // 61. Hologram Static (Glitches) - Fail animation with chromatic aberrations
+  HologramStatic: () => (
+    <div className="group relative w-full aspect-video rounded-2xl overflow-hidden cursor-pointer bg-zinc-950 flex items-center justify-center border border-cyan-900/30">
+      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0)_95%,rgba(6,182,212,0.15)_95%)] bg-[size:100%_8px] opacity-30" />
+      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80')] bg-cover bg-center opacity-40 mix-blend-color-dodge transition-all group-hover:opacity-20" />
+      
+      {/* Glitch layers */}
+      <div className="absolute inset-0 bg-cyan-500/20 translate-x-[-2px] translate-y-[1px] mix-blend-screen hidden group-hover:block animate-[pulse_0.1s_infinite]" />
+      <div className="absolute inset-0 bg-rose-500/20 translate-x-[2px] translate-y-[-1px] mix-blend-screen hidden group-hover:block animate-[pulse_0.15s_infinite]" />
+      
+      <div className="relative text-center z-10 px-6 py-3 border border-cyan-500/30 bg-zinc-900/80 backdrop-blur rounded-lg shadow-[0_0_15px_rgba(6,182,212,0.2)] group-hover:shadow-[0_0_25px_rgba(244,63,94,0.4)] group-hover:border-rose-500/40 transition-all duration-300">
+        <span className="text-cyan-400 font-mono tracking-widest text-sm group-hover:text-rose-400 transition-colors animate-pulse">PROJ_ACTIVE</span>
+      </div>
+    </div>
+  ),
+
+  // 62. Scanline Interference (Glitches) - CRT screen sweep roll
+  ScanlineInterference: () => (
+    <div className="group relative w-full aspect-video rounded-2xl overflow-hidden cursor-pointer bg-black flex flex-col justify-between p-6 border border-emerald-950">
+      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80')] bg-cover bg-center opacity-30 group-hover:opacity-60 transition-opacity duration-300" />
+      
+      {/* Scanline Sweep */}
+      <div className="absolute top-0 left-0 w-full h-8 bg-gradient-to-b from-transparent via-[#0fa]/20 to-transparent -translate-y-full group-hover:animate-[slide_1.5s_linear_infinite]" style={{
+        animationName: 'scanline-roll'
+      }} />
+      
+      <style>{`
+        @keyframes scanline-roll {
+          0% { transform: translateY(-100%); }
+          100% { transform: translateY(500%); }
+        }
+      `}</style>
+      
+      <div className="flex justify-between items-center z-10">
+        <span className="text-[10px] font-mono text-emerald-500">CRT_MONITOR_v1.09</span>
+        <div className="w-2 h-2 rounded-full bg-emerald-500 group-hover:animate-ping" />
+      </div>
+      <div className="z-10 mt-auto">
+        <h3 className="text-xl font-bold text-white font-mono tracking-wide group-hover:text-[#0fa] transition-colors">TERMINAL_SECURE</h3>
+      </div>
+    </div>
+  ),
+
+  // 63. Window Blinds (Structural) - 3D rotating horizontal slats
+  WindowBlinds: () => (
+    <div className="group relative w-full aspect-video rounded-2xl overflow-hidden cursor-pointer bg-indigo-900 flex items-center justify-center [perspective:1000px]">
+      {/* Underlying Image */}
+      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80')] bg-cover bg-center" />
+      
+      {/* Slat overlays */}
+      <div className="absolute inset-0 flex flex-col z-10 pointer-events-none">
+        {[...Array(4)].map((_, i) => (
+          <div 
+            key={i} 
+            className="w-full h-1/4 bg-zinc-950 border-b border-zinc-900 transition-transform duration-500 origin-top group-hover:[transform:rotateX(90deg)]"
+            style={{ transitionDelay: `${i * 75}ms` }}
+          />
+        ))}
+      </div>
+      <div className="relative z-20 text-white font-black text-2xl tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300">
+        UNCOVER
+      </div>
+    </div>
+  ),
+
+  // 64. Cube Rotate (Perspective) - 3D rotating box face reveal
+  CubeRotate: () => (
+    <div className="w-full aspect-video group cursor-pointer [perspective:1000px]">
+      <div className="relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateX(90deg)]">
+        {/* Front Face */}
+        <div className="absolute inset-0 bg-zinc-900 border border-zinc-800 rounded-2xl flex flex-col justify-between p-6 [backface-visibility:hidden] [transform:translateZ(90px)]">
+          <div className="w-8 h-8 bg-zinc-800 rounded-lg" />
+          <h3 className="text-xl font-bold text-zinc-400">Front Surface</h3>
+        </div>
+        {/* Bottom Face */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-cyan-600 to-indigo-600 rounded-2xl flex flex-col justify-between p-6 [backface-visibility:hidden] [transform:rotateX(-90deg)_translateZ(90px)]">
+          <div className="w-8 h-8 bg-white/20 rounded-lg" />
+          <h3 className="text-xl font-bold text-white">Underworld</h3>
+        </div>
+      </div>
+    </div>
+  ),
+
+  // 65. Perspective Unfold (Perspective) - Center split 3D page unfold
+  PerspectiveUnfold: () => (
+    <div className="group relative w-full aspect-video rounded-2xl overflow-hidden cursor-pointer bg-zinc-950 flex items-center justify-center [perspective:1000px]">
+      {/* Background Image to Reveal */}
+      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?auto=format&fit=crop&w=800&q=80')] bg-cover bg-center" />
+      
+      {/* Split Folding Panels */}
+      <div className="absolute inset-0 flex z-10 pointer-events-none">
+        {/* Left Panel */}
+        <div className="w-1/2 h-full bg-zinc-900 border-r border-zinc-800 transition-transform duration-500 origin-left group-hover:[transform:rotateY(-90deg)]" />
+        {/* Right Panel */}
+        <div className="w-1/2 h-full bg-zinc-900 border-l border-zinc-800 transition-transform duration-500 origin-right group-hover:[transform:rotateY(90deg)]" />
+      </div>
+      
+      <div className="relative z-20 text-cyan-400 font-bold tracking-widest text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-300">
+        SYSTEM_INIT
+      </div>
+    </div>
+  ),
+
+  // 66. Depth Zoom (Perspective) - Multiple depth translation layers
+  DepthZoom: () => (
+    <div className="group relative w-full aspect-video rounded-2xl overflow-hidden cursor-pointer bg-black [perspective:1000px]">
+      {/* Deepest Background */}
+      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?auto=format&fit=crop&w=800&q=80')] bg-cover bg-center transition-transform duration-[1.5s] group-hover:scale-125" />
+      
+      {/* Midground Grid overlay */}
+      <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:16px_16px] transition-transform duration-1000 [transform:translateZ(50px)] group-hover:[transform:translateZ(100px)]" />
+      
+      {/* Foreground UI Ring */}
+      <div className="absolute inset-10 border-2 border-dashed border-[#0fa]/30 rounded-xl transition-all duration-[1.2s] group-hover:inset-4 group-hover:border-[#0fa]/80 flex items-center justify-center [transform:translateZ(100px)] group-hover:[transform:translateZ(180px)]">
+        <span className="text-white font-black tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-500">DEPTH_ACTIVE</span>
+      </div>
+    </div>
+  ),
+
+  // 67. Gooey Merge (Liquid) - CSS SVG gooey organic merger
+  GooeyMerge: () => (
+    <div className="group relative w-full aspect-video rounded-2xl overflow-hidden cursor-pointer bg-zinc-950 flex items-center justify-center border border-zinc-900">
+      {/* Custom hidden SVG Gooey Filter */}
+      <svg className="hidden">
+        <defs>
+          <filter id="gooey-merge-filter">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -9" result="goo" />
+            <feBlend in="SourceGraphic" in2="goo" />
+          </filter>
+        </defs>
+      </svg>
+      
+      {/* Gooey container */}
+      <div className="relative w-full h-full flex items-center justify-center" style={{ filter: 'url(#gooey-merge-filter)' }}>
+        <div className="w-16 h-16 bg-[#0fa] rounded-full absolute transition-transform duration-500 ease-out translate-x-[-30px] group-hover:translate-x-0" />
+        <div className="w-16 h-16 bg-[#0fa] rounded-full absolute transition-transform duration-500 ease-out translate-x-[30px] group-hover:translate-x-0" />
+        <div className="w-14 h-14 bg-zinc-100 rounded-full absolute scale-0 group-hover:scale-100 transition-transform duration-500 ease-out delay-100" />
+      </div>
+      
+      <span className="absolute text-black font-black text-xs z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-200">MERGED</span>
+    </div>
+  ),
+
+  // 68. Gelatin Bounce (Liquid) - Jelly soft squish feedback
+  GelatinBounce: () => (
+    <div className="group relative w-full aspect-video rounded-2xl bg-zinc-900 border border-zinc-800 cursor-pointer flex items-center justify-center overflow-hidden">
+      <style>{`
+        @keyframes gelatin-bounce {
+          0%, 100% { transform: scale(1, 1); }
+          25% { transform: scale(0.85, 1.15); }
+          50% { transform: scale(1.15, 0.85); }
+          75% { transform: scale(0.95, 1.05); }
+        }
+        .group:hover .animate-jelly {
+          animation: gelatin-bounce 0.8s ease-in-out;
+        }
+      `}</style>
+      <div className="animate-jelly w-24 h-24 bg-gradient-to-tr from-amber-400 to-rose-500 rounded-3xl shadow-lg flex items-center justify-center text-white font-black transition-all group-hover:rounded-[50%]">
+        <span className="text-xl tracking-tight">JELLY</span>
+      </div>
+    </div>
+  ),
+
+  // 69. Fluid Vortex (Liquid) - Spiral swirl expansion
+  FluidVortex: () => (
+    <div className="group relative w-full aspect-video rounded-2xl overflow-hidden cursor-pointer bg-zinc-900 flex items-center justify-center">
+      {/* Vortex Background */}
+      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&w=800&q=80')] bg-cover bg-center" />
+      
+      {/* Vortex Spiral Mask overlay */}
+      <div className="absolute inset-0 bg-zinc-950 transition-all duration-700 ease-out origin-center group-hover:scale-0 group-hover:rotate-[360deg] flex items-center justify-center">
+        <svg className="w-24 h-24 text-[#0fa]/30" viewBox="0 0 100 100" fill="currentColor">
+          <path d="M50 0 C22 0 0 22 0 50 C0 78 22 100 50 100 C78 100 100 78 100 50 C100 22 78 0 50 0 Z M50 90 C28 90 10 72 10 50 C10 28 28 10 50 10 C72 10 90 28 90 50 C90 72 72 90 50 90 Z" />
+        </svg>
+      </div>
+      
+      <span className="relative z-10 text-white font-black text-xl tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-300">VORTEX</span>
+    </div>
+  ),
+
+  // 70. Splatter Reveal (Liquid) - Vector ink blot splatter scale merge
+  SplatterReveal: () => (
+    <div className="group relative w-full aspect-video rounded-2xl overflow-hidden cursor-pointer bg-zinc-950 flex items-center justify-center">
+      {/* Image behind splatters */}
+      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80')] bg-cover bg-center" />
+      
+      {/* Splatter masks (scale down on hover to reveal background) */}
+      <div className="absolute inset-0 bg-zinc-900 transition-opacity duration-500 group-hover:opacity-0 z-10 flex items-center justify-center gap-2">
+        <div className="w-12 h-12 bg-zinc-950 rounded-full transition-transform duration-500 group-hover:scale-0" style={{ clipPath: 'polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)' }} />
+        <div className="w-16 h-16 bg-zinc-950 rounded-full transition-transform duration-500 group-hover:scale-0 delay-75" style={{ clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)' }} />
+        <div className="w-10 h-10 bg-zinc-950 rounded-full transition-transform duration-500 group-hover:scale-0 delay-150" style={{ clipPath: 'polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%)' }} />
+      </div>
+      
+      <span className="relative z-20 text-white font-black text-2xl tracking-[0.2em] mix-blend-difference">SPLATTER</span>
+    </div>
   )
 };
+

@@ -1156,5 +1156,419 @@ export const NavbarVariants = {
       </div>
     </nav>
   ),
+
+  // 61. SaaS Floating Expand (Modern)
+  SaaS_FloatingExpand: () => {
+    const [expanded, setExpanded] = React.useState(false);
+    return (
+      <div className="w-full py-4 flex justify-center px-4">
+        <nav 
+          onMouseEnter={() => setExpanded(true)}
+          onMouseLeave={() => setExpanded(false)}
+          className={cn(
+            "bg-zinc-950/90 border border-zinc-800/80 rounded-full px-4 py-2.5 flex items-center gap-4 shadow-2xl backdrop-blur-md transition-all duration-500 ease-out",
+            expanded ? "max-w-xl px-6" : "max-w-[200px]"
+          )}
+        >
+          <div className="flex items-center gap-2 text-white font-bold cursor-pointer shrink-0">
+            <Zap className="text-emerald-400 w-5 h-5 fill-current" />
+            <span className="text-sm tracking-tight">Expand.io</span>
+          </div>
+          
+          <div className={cn(
+            "flex items-center gap-6 overflow-hidden transition-all duration-500 ease-out text-xs font-semibold text-zinc-400",
+            expanded ? "w-auto opacity-100 translate-x-0" : "w-0 opacity-0 -translate-x-4 pointer-events-none"
+          )}>
+            <a href="#" className="hover:text-white transition-colors shrink-0">Features</a>
+            <a href="#" className="hover:text-white transition-colors shrink-0">Pricing</a>
+            <a href="#" className="hover:text-white transition-colors shrink-0">Docs</a>
+            <button className="bg-emerald-400 hover:bg-emerald-300 text-black text-[11px] font-black uppercase px-3 py-1.5 rounded-full transition-colors shrink-0">
+              Go
+            </button>
+          </div>
+        </nav>
+      </div>
+    );
+  },
+
+  // 62. SaaS Interactive Dropdown (Modern)
+  SaaS_InteractiveDropdown: () => {
+    const [activeTab, setActiveTab] = React.useState<string | null>(null);
+    return (
+      <nav className="w-full bg-zinc-950 border-b border-zinc-900 px-8 py-5 flex items-center justify-between relative">
+        <div className="flex items-center gap-12">
+          <div className="flex items-center gap-2 text-white font-black text-xl">
+            <Layers className="text-blue-500 w-6 h-6" />
+            <span>MegaSaaS</span>
+          </div>
+          <div className="hidden md:flex items-center gap-8 text-sm font-semibold text-zinc-400">
+            <div 
+              onMouseEnter={() => setActiveTab('features')}
+              onMouseLeave={() => setActiveTab(null)}
+              className="relative py-2 cursor-pointer hover:text-white"
+            >
+              <span>Features</span>
+              {activeTab === 'features' && (
+                <div className="absolute top-full left-0 mt-2 w-[340px] bg-zinc-900 border border-zinc-800 rounded-2xl p-4 grid grid-cols-2 gap-3 shadow-2xl z-50">
+                  <div className="p-2 hover:bg-zinc-800/50 rounded-xl transition-colors">
+                    <span className="block text-white text-xs font-bold">Analytics</span>
+                    <span className="text-[10px] text-zinc-500">Realtime dashboards</span>
+                  </div>
+                  <div className="p-2 hover:bg-zinc-800/50 rounded-xl transition-colors">
+                    <span className="block text-white text-xs font-bold">Security</span>
+                    <span className="text-[10px] text-zinc-500">AES-256 encryption</span>
+                  </div>
+                  <div className="p-2 hover:bg-zinc-800/50 rounded-xl transition-colors">
+                    <span className="block text-white text-xs font-bold">Webhooks</span>
+                    <span className="text-[10px] text-zinc-500">Instant notifications</span>
+                  </div>
+                  <div className="p-2 hover:bg-zinc-800/50 rounded-xl transition-colors">
+                    <span className="block text-white text-xs font-bold">Database</span>
+                    <span className="text-[10px] text-zinc-500">Postgres integrations</span>
+                  </div>
+                </div>
+              )}
+            </div>
+            <a href="#" className="hover:text-white transition-colors">Pricing</a>
+            <a href="#" className="hover:text-white transition-colors">Enterprise</a>
+          </div>
+        </div>
+        <button className="bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow-lg shadow-blue-500/20 transition-all active:scale-95">
+          Get Started
+        </button>
+      </nav>
+    );
+  },
+
+  // 63. SaaS Dark Command Menu (Modern)
+  SaaS_DarkCommandMenu: () => {
+    const [cmdOpen, setCmdOpen] = React.useState(false);
+    return (
+      <nav className="w-full bg-zinc-950 px-8 py-4 flex items-center justify-between border-b border-zinc-900 relative">
+        <div className="flex items-center gap-10">
+          <div className="flex items-center gap-2 text-white font-bold">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-emerald-500 to-cyan-500 flex items-center justify-center font-black text-black">C</div>
+            <span className="tracking-tight">CmdUI</span>
+          </div>
+          <button 
+            onClick={() => setCmdOpen(!cmdOpen)}
+            className="flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800/80 border border-zinc-800 rounded-xl px-4 py-2 text-xs text-zinc-500 font-medium transition-all"
+          >
+            <Search size={14} className="text-zinc-600" />
+            <span>Search or jump to...</span>
+            <div className="flex gap-0.5">
+              <kbd className="bg-zinc-950 px-1.5 py-0.5 rounded border border-zinc-800 text-[9px]">⌘</kbd>
+              <kbd className="bg-zinc-950 px-1.5 py-0.5 rounded border border-zinc-800 text-[9px]">K</kbd>
+            </div>
+          </button>
+        </div>
+        <div className="flex items-center gap-6 text-xs text-zinc-400 font-semibold">
+          <a href="#" className="hover:text-white transition-colors">Specs</a>
+          <a href="#" className="hover:text-white transition-colors">Changelog</a>
+          <div className="w-px h-4 bg-zinc-800" />
+          <User className="w-5 h-5 text-zinc-500 hover:text-white cursor-pointer transition-colors" />
+        </div>
+
+        {cmdOpen && (
+          <div className="absolute top-full left-8 mt-2 w-80 bg-zinc-900 border border-zinc-800 rounded-2xl p-3 shadow-2xl z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+            <span className="block text-[10px] font-bold text-zinc-500 uppercase tracking-widest px-2 mb-2">Quick Actions</span>
+            <div className="space-y-1">
+              {['Go to Billing', 'Configure Webhooks', 'View Documentation', 'API Tokens'].map(action => (
+                <div key={action} className="flex items-center justify-between p-2 hover:bg-zinc-800 rounded-lg cursor-pointer text-xs text-white font-medium group transition-colors">
+                  <span>{action}</span>
+                  <ArrowRight size={12} className="text-zinc-600 group-hover:text-emerald-400 transition-colors" />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </nav>
+    );
+  },
+
+  // 64. Glass Aurora Shift (Glassmorphism)
+  Glass_AuroraShift: () => {
+    const [mousePos, setMousePos] = React.useState({ x: 50, y: 50 });
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      setMousePos({ x, y });
+    };
+    return (
+      <div 
+        onMouseMove={handleMouseMove}
+        className="w-full bg-zinc-950 p-6 relative overflow-hidden flex justify-center"
+      >
+        <div 
+          className="absolute w-[400px] h-[150px] rounded-full blur-[100px] opacity-40 bg-gradient-to-r from-cyan-500 via-purple-500 to-rose-500 transition-transform duration-300 pointer-events-none"
+          style={{
+            left: `${mousePos.x}%`,
+            top: `${mousePos.y}%`,
+            transform: 'translate(-50%, -50%)',
+          }}
+        />
+        
+        <nav className="w-full max-w-5xl bg-white/5 backdrop-blur-2xl border border-white/10 rounded-[32px] px-8 py-4 flex items-center justify-between shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-10 relative">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center bg-white/5 shadow-inner">
+              <Globe className="text-cyan-400 w-4 h-4 animate-[spin_8s_linear_infinite]" />
+            </div>
+            <span className="text-white font-black tracking-widest text-lg">AURORA</span>
+          </div>
+          <div className="flex gap-10 text-white/50 font-medium text-sm">
+            <a href="#" className="hover:text-white transition-colors">Ecosystem</a>
+            <a href="#" className="hover:text-white transition-colors">Tokens</a>
+            <a href="#" className="hover:text-white transition-colors">Governance</a>
+          </div>
+          <button className="bg-white hover:bg-zinc-200 text-black text-xs font-black uppercase tracking-wider px-5 py-2.5 rounded-2xl shadow-xl transition-all active:scale-95">
+            Connect
+          </button>
+        </nav>
+      </div>
+    );
+  },
+
+  // 65. Brutalist Sticker Box (Brutalist)
+  Brutalist_StickerBox: () => (
+    <nav className="w-full bg-orange-500 border-b-4 border-black p-6 flex flex-col md:flex-row items-center justify-between gap-4 font-black">
+      <div className="bg-yellow-300 border-4 border-black px-5 py-2 rotate-[-2deg] shadow-[4px_4px_0px_black] text-black text-2xl uppercase tracking-tighter cursor-pointer hover:rotate-0 transition-transform">
+        STICKER_NAV!
+      </div>
+      
+      <div className="flex flex-wrap gap-3">
+        {[
+          { name: '🔥 TRENDS', color: 'bg-white' },
+          { name: '💿 MUSIC', color: 'bg-pink-400' },
+          { name: '👾 ARCADE', color: 'bg-cyan-300' }
+        ].map((item, i) => (
+          <a 
+            key={i} 
+            href="#" 
+            className={cn(
+              "border-4 border-black px-4 py-1.5 shadow-[3px_3px_0px_black] hover:translate-y-0.5 hover:shadow-[1px_1px_0px_black] transition-all text-black text-xs uppercase tracking-wide",
+              item.color
+            )}
+          >
+            {item.name}
+          </a>
+        ))}
+      </div>
+      
+      <button className="bg-black text-white hover:bg-white hover:text-black border-4 border-black px-6 py-3 rounded-none transition-colors shadow-[4px_4px_0px_black] hover:shadow-none hover:translate-x-1 hover:translate-y-1">
+        BUY_TICKET
+      </button>
+    </nav>
+  ),
+
+  // 66. Retro Game Console (Brutalist)
+  Retro_GameConsole: () => {
+    const [hearts, setHearts] = React.useState(3);
+    return (
+      <nav className="w-full bg-[#1b122c] border-b-4 border-[#3c2a63] px-8 py-5 flex items-center justify-between font-mono">
+        <div className="flex items-center gap-3">
+          <div className="w-6 h-6 bg-[#ff2a6d] flex items-center justify-center animate-bounce">
+            <span className="text-white text-xs font-bold">🎮</span>
+          </div>
+          <span className="text-[#05d9e8] text-lg font-black tracking-wider uppercase">RETRO_STAGE</span>
+        </div>
+        
+        <div className="hidden lg:flex items-center gap-8 text-[#01c4e7] text-xs font-bold">
+          <a href="#" className="hover:text-[#ff2a6d] hover:bg-[#2e1d4b] px-3 py-1.5 border-2 border-transparent hover:border-[#ff2a6d]">1P_START</a>
+          <a href="#" className="hover:text-[#ff2a6d] hover:bg-[#2e1d4b] px-3 py-1.5 border-2 border-transparent hover:border-[#ff2a6d]">HIGHSCORES</a>
+          <a href="#" className="hover:text-[#ff2a6d] hover:bg-[#2e1d4b] px-3 py-1.5 border-2 border-transparent hover:border-[#ff2a6d]">CONTROLS</a>
+        </div>
+        
+        <div className="flex items-center gap-4">
+          <div className="flex gap-1">
+            {[...Array(3)].map((_, i) => (
+              <span 
+                key={i} 
+                onClick={() => setHearts(i + 1)}
+                className={cn(
+                  "cursor-pointer text-sm transition-opacity",
+                  i < hearts ? "opacity-100" : "opacity-30"
+                )}
+              >
+                ❤️
+              </span>
+            ))}
+          </div>
+          <div className="bg-[#2e1d4b] border-2 border-[#05d9e8] px-3 py-1 text-[10px] text-white">
+            HP: {hearts * 33}%
+          </div>
+        </div>
+      </nav>
+    );
+  },
+
+  // 67. Bento Asymmetric Header (Bento)
+  Bento_AsymmetricHeader: () => (
+    <div className="w-full p-4 bg-zinc-950">
+      <div className="max-w-5xl mx-auto grid grid-cols-12 gap-3">
+        <div className="col-span-12 md:col-span-3 bg-zinc-900 border border-zinc-800 hover:border-indigo-500/50 rounded-2xl p-4 flex items-center gap-3 transition-all duration-300 group cursor-pointer">
+          <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center group-hover:rotate-12 transition-transform">
+            <Cpu className="text-white w-5 h-5" />
+          </div>
+          <div className="flex flex-col">
+            <span className="text-white font-bold leading-none">Bento</span>
+            <span className="text-[10px] text-zinc-500 mt-1">Header</span>
+          </div>
+        </div>
+        <div className="col-span-8 md:col-span-6 bg-zinc-900 border border-zinc-800 hover:border-emerald-500/50 rounded-2xl p-4 flex items-center justify-around text-xs font-bold text-zinc-400 transition-all duration-300">
+          <a href="#" className="hover:text-white transition-colors">Core API</a>
+          <div className="w-1 h-1 bg-zinc-700 rounded-full" />
+          <a href="#" className="hover:text-white transition-colors">Benchmarks</a>
+          <div className="w-1 h-1 bg-zinc-700 rounded-full" />
+          <a href="#" className="hover:text-white transition-colors">Ecosystem</a>
+        </div>
+        <div className="col-span-4 md:col-span-3 bg-emerald-500 hover:bg-emerald-400 rounded-2xl p-4 flex items-center justify-center gap-2 text-black font-black text-xs uppercase tracking-widest transition-all duration-300 cursor-pointer shadow-lg hover:shadow-emerald-500/10">
+          <span>Deploy</span>
+          <ArrowRight size={14} />
+        </div>
+      </div>
+    </div>
+  ),
+
+  // 68. Bento Vertical Drawer (Bento)
+  Bento_VerticalDrawer: () => {
+    const [collapsed, setCollapsed] = React.useState(false);
+    return (
+      <div className="w-full flex justify-center bg-zinc-950 p-6">
+        <style>{`
+          @keyframes drawer-fade-in {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+          }
+          .animate-drawer-fade-in {
+            animation: drawer-fade-in 0.3s ease-out forwards;
+          }
+        `}</style>
+        <div 
+          className={cn(
+            "bg-zinc-900 border border-zinc-800 rounded-3xl p-4 flex items-center justify-between transition-all duration-500 shadow-2xl overflow-hidden",
+            collapsed ? "w-40" : "w-full max-w-3xl"
+          )}
+        >
+          <div className="flex items-center gap-3 shrink-0">
+            <button 
+              onClick={() => setCollapsed(!collapsed)}
+              className="w-10 h-10 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 rounded-xl flex items-center justify-center text-white transition-colors"
+            >
+              <Menu size={18} />
+            </button>
+            {!collapsed && (
+              <span className="text-white font-black text-sm tracking-widest uppercase animate-drawer-fade-in">DRAWER_SYSTEM</span>
+            )}
+          </div>
+          
+          {!collapsed && (
+            <div className="flex gap-8 text-xs font-mono text-zinc-500 items-center animate-drawer-fade-in">
+              <a href="#" className="hover:text-white transition-colors">/NODE_MONITOR</a>
+              <a href="#" className="hover:text-white transition-colors">/DB_REDUNDANCY</a>
+              <a href="#" className="hover:text-white transition-colors">/LOG_VAULT</a>
+            </div>
+          )}
+          
+          <div className="flex items-center gap-2 shrink-0">
+            <div className="w-3.5 h-3.5 bg-emerald-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.5)]" />
+            {!collapsed && <span className="text-emerald-400 font-mono text-[10px] animate-drawer-fade-in">SYS_ONLINE</span>}
+          </div>
+        </div>
+      </div>
+    );
+  },
+
+  // 69. Creative Liquid Morph (Creative)
+  Creative_LiquidMorph: () => {
+    const [hoverIndex, setHoverIndex] = React.useState<number | null>(null);
+    return (
+      <div className="w-full bg-zinc-950 p-6 flex justify-center border-b border-zinc-900">
+        <svg className="hidden">
+          <defs>
+            <filter id="liquid-morph-nav">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur" />
+              <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+              <feBlend in="SourceGraphic" in2="goo" />
+            </filter>
+          </defs>
+        </svg>
+        
+        <nav 
+          className="relative bg-zinc-900/60 border border-zinc-800 rounded-full px-4 py-2 flex items-center gap-2 shadow-2xl"
+          style={{ filter: 'url(#liquid-morph-nav)' }}
+        >
+          {['Home', 'Products', 'Changelog', 'Contact'].map((tab, i) => (
+            <a 
+              key={tab}
+              href="#"
+              onMouseEnter={() => setHoverIndex(i)}
+              onMouseLeave={() => setHoverIndex(null)}
+              className={cn(
+                "relative z-10 px-6 py-2.5 rounded-full text-xs font-bold uppercase transition-all duration-300",
+                hoverIndex === i ? "text-black bg-[#0fa]" : "text-zinc-500 hover:text-zinc-300"
+              )}
+            >
+              {tab}
+            </a>
+          ))}
+        </nav>
+      </div>
+    );
+  },
+
+  // 70. Interactive Circular Orb (Creative)
+  Interactive_CircularOrb: () => {
+    const [active, setActive] = React.useState(false);
+    return (
+      <div className="w-full bg-zinc-950 border-b border-zinc-900 p-8 flex items-center justify-between relative overflow-hidden h-[180px]">
+        <div className="flex flex-col">
+          <span className="text-white font-black text-lg tracking-widest uppercase">ORBIT_CORE</span>
+          <span className="text-[10px] text-zinc-500 mt-1 uppercase font-mono">Radial Navigation Interface</span>
+        </div>
+        
+        <div className="relative w-32 h-32 flex items-center justify-center">
+          {[
+            { icon: '📁', label: 'Docs', angle: 0 },
+            { icon: '📡', label: 'Sync', angle: 60 },
+            { icon: '🛡️', label: 'Sec', angle: 120 },
+            { icon: '⚙️', label: 'Set', angle: 180 }
+          ].map((item, i) => {
+            const rad = (item.angle * Math.PI) / 180;
+            const radius = active ? 64 : 0;
+            const x = Math.cos(rad) * radius;
+            const y = Math.sin(rad) * radius * -1;
+            return (
+              <div
+                key={i}
+                className={cn(
+                  "absolute w-10 h-10 bg-zinc-800 hover:bg-[#0fa] hover:text-black text-white rounded-full flex items-center justify-center text-sm shadow-xl border border-zinc-700 hover:border-black transition-all duration-500 ease-out cursor-pointer z-10",
+                  active ? "opacity-100 scale-100" : "opacity-0 scale-50 pointer-events-none"
+                )}
+                style={{
+                  transform: `translate(${x}px, ${y}px)`,
+                }}
+                title={item.label}
+              >
+                {item.icon}
+              </div>
+            );
+          })}
+          
+          <button 
+            onClick={() => setActive(!active)}
+            className={cn(
+              "absolute w-14 h-14 rounded-full flex items-center justify-center text-lg z-20 transition-all duration-300 font-bold border-2",
+              active 
+                ? "bg-[#0fa] text-black border-black shadow-[0_0_20px_#0fa] rotate-45" 
+                : "bg-zinc-900 text-zinc-400 border-zinc-700 hover:border-zinc-500 hover:text-white"
+            )}
+          >
+            {active ? '×' : '⊙'}
+          </button>
+        </div>
+      </div>
+    );
+  }
 };
 

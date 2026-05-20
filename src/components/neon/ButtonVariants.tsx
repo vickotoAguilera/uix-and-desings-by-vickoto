@@ -470,5 +470,173 @@ export const ButtonVariants = {
       <div className="absolute bottom-0 right-0 w-2 h-2 bg-[#0fa]" />
       <span className="relative z-10 group-hover:tracking-widest transition-all duration-500 uppercase">Master_Control</span>
     </button>
+  ),
+
+  // 61. Double Shadow (Retro pop-art)
+  DoubleShadow: () => (
+    <button className="px-8 py-3 bg-white text-zinc-900 font-bold rounded-xl border border-zinc-100 shadow-[5px_5px_0_0_#ff7a00,10px_10px_0_0_#fef3c7] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all duration-300">
+      Multi Layer
+    </button>
+  ),
+
+  // 62. Sketch HandDrawn style
+  HandDrawn: () => (
+    <button className="px-8 py-3 border-2 border-zinc-900 text-zinc-900 font-bold rounded-[20%_80%_20%_80%/80%_20%_80%_20%] hover:rounded-2xl hover:bg-zinc-900 hover:text-white transition-all duration-300">
+      Sketch Style
+    </button>
+  ),
+
+  // 63. Monospaced Text Scramble / Decrypt
+  TextScramble: () => (
+    <button className="px-8 py-3 bg-zinc-900 text-white font-mono font-bold tracking-[0.2em] hover:tracking-[0.5em] transition-all duration-300">
+      DECRYPT
+    </button>
+  ),
+
+  // 64. Aurora Glass Fusion
+  GlassFusion: () => (
+    <div className="relative p-4 group inline-block">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-emerald-400/20 blur-[30px] rounded-full group-hover:bg-emerald-400/40 transition-colors duration-500 pointer-events-none" />
+      <button className="relative px-8 py-3 bg-white/40 dark:bg-zinc-900/40 backdrop-blur-xl border border-white/60 dark:border-white/10 text-emerald-900 dark:text-emerald-100 font-black rounded-2xl shadow-[0_10px_30px_-10px_rgba(0,0,0,0.1),inset_0_1px_1px_rgba(255,255,255,0.8)] hover:scale-105 active:scale-95 transition-all duration-300 overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/40 to-transparent pointer-events-none" />
+        <span className="relative z-10">Aurora Glass</span>
+      </button>
+    </div>
+  ),
+
+  // 65. PaperFold Origami Reveal
+  PaperFold: () => (
+    <button className="relative px-8 py-3 bg-white text-zinc-900 font-bold border-l-4 border-zinc-900 group overflow-hidden">
+      <span className="relative z-10">Paper Fold</span>
+      <div className="absolute top-0 right-0 w-4 h-4 bg-zinc-100 transition-all group-hover:w-full group-hover:h-full group-hover:bg-zinc-900 group-hover:text-white -z-0" />
+    </button>
+  ),
+
+  // 66. Gooey Button / Organic Blobs
+  GooeyButton: () => (
+    <button className="px-8 py-3 bg-orange-500 text-white font-bold rounded-full relative group hover:scale-105 active:scale-95 transition-all">
+      Gooey Pop
+      <span className="absolute -top-1 -right-1 w-4 h-4 bg-orange-400 rounded-full group-hover:translate-x-4 group-hover:-translate-y-4 transition-transform duration-500" />
+      <span className="absolute -bottom-1 -left-1 w-3 h-3 bg-orange-600 rounded-full group-hover:-translate-x-3 group-hover:translate-y-3 transition-transform duration-500" />
+    </button>
+  ),
+
+  // 67. Neumorphic Deep Pill Well
+  NeumorphicConcavePill: () => (
+    <button className="relative px-12 py-3.5 bg-gradient-to-b from-[#ececf1] to-[#dcdce5] dark:from-[#1a1a22] dark:to-[#12121a] text-gray-600 dark:text-gray-400 font-semibold rounded-full shadow-[inset_0_16px_32px_-12px_rgba(0,0,0,0.18),inset_0_-16px_32px_-12px_rgba(255,255,255,0.55)] dark:shadow-[inset_0_16px_32px_-12px_rgba(0,0,0,0.55),inset_0_-16px_32px_-12px_rgba(255,255,255,0.08)] hover:shadow-[inset_0_20px_40px_-14px_rgba(0,0,0,0.22),inset_0_-20px_40px_-14px_rgba(255,255,255,0.65)] dark:hover:shadow-[inset_0_20px_40px_-14px_rgba(0,0,0,0.65),inset_0_-20px_40px_-14px_rgba(255,255,255,0.1)] active:shadow-[inset_0_10px_20px_-8px_rgba(0,0,0,0.15),inset_0_-10px_20px_-8px_rgba(255,255,255,0.4)] transition-all duration-500 active:scale-95 hover:text-gray-900 dark:hover:text-gray-100">
+      Pill Well
+    </button>
+  ),
+
+  // 68. Skeuomorphic Brown Leather Stitched
+  LeatherStitch: () => (
+    <button className="relative px-10 py-4 bg-gradient-to-br from-amber-900 via-amber-800 to-amber-950 text-amber-50 font-bold rounded-lg border-4 border-amber-950 shadow-[inset_0_1px_0_rgba(255,255,255,0.2),inset_0_-3px_8px_rgba(0,0,0,0.5),0_8px_16px_rgba(0,0,0,0.4)] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),inset_0_-3px_8px_rgba(0,0,0,0.6),0_12px_24px_rgba(0,0,0,0.5)] active:shadow-[inset_0_3px_8px_rgba(0,0,0,0.6),0_2px_4px_rgba(0,0,0,0.3)] transition-all duration-200 active:translate-y-1 overflow-hidden group">
+      <span className="relative z-10">Leather Press</span>
+      <div className="absolute inset-0 opacity-30 bg-[repeating-linear-gradient(90deg,transparent,transparent_2px,rgba(0,0,0,0.1)_2px,rgba(0,0,0,0.1)_4px)]" />
+    </button>
+  ),
+
+  // 69. Tactile Rubber Press (Big Emergency Button)
+  RubberPress: () => (
+    <button className="relative px-10 py-4 bg-gradient-to-b from-red-500 via-red-600 to-red-700 text-white font-bold rounded-full border-4 border-red-900 shadow-[inset_0_2px_4px_rgba(255,255,255,0.2),inset_0_-4px_8px_rgba(0,0,0,0.3),0_8px_16px_rgba(0,0,0,0.4)] hover:shadow-[inset_0_2px_4px_rgba(255,255,255,0.2),inset_0_-4px_8px_rgba(0,0,0,0.4),0_12px_24px_rgba(0,0,0,0.5)] active:shadow-[inset_0_4px_8px_rgba(0,0,0,0.5),0_2px_4px_rgba(0,0,0,0.2)] transition-all duration-200 active:translate-y-1 overflow-hidden">
+      <span className="relative z-10">Big Red</span>
+      <div className="absolute inset-0 opacity-20 bg-radial-gradient(circle at 20% 20%, rgba(255,255,255,0.3), transparent 50%)" />
+    </button>
+  ),
+
+  // 70. Dash Rotate Spin Border
+  DashRotate: () => (
+    <button className="relative px-8 py-3 bg-white text-zinc-900 font-bold rounded-lg group">
+      <span className="relative z-10">Dash Spin</span>
+      <div className="absolute inset-0 border-2 border-dashed border-zinc-200 rounded-lg group-hover:animate-[spin_4s_linear_infinite] group-hover:border-orange-500 transition-colors" />
+    </button>
+  ),
+
+  // 71. Magic Rainbow (Magic UI inspired - Conic gradient animated border)
+  MagicRainbow: () => (
+    <button className="relative p-[2px] rounded-xl overflow-hidden group transition-all duration-300 hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.05)]">
+      <div className="absolute inset-0 bg-[conic-gradient(from_0deg,#ff453a,#ff9f0a,#30d158,#0a84ff,#5e5ce6,#bf5af2,#ff453a)] animate-[spin_4s_linear_infinite]" />
+      <div className="relative px-8 py-3 bg-zinc-950 rounded-[10px] text-white font-bold tracking-wide transition-colors group-hover:bg-zinc-900">
+        Rainbow Magic
+      </div>
+    </button>
+  ),
+
+  // 72. Magic Shimmer (Magic UI inspired - Shine sweep light overlay)
+  MagicShimmer: () => (
+    <button className="relative px-8 py-3 bg-zinc-900 text-white font-bold rounded-lg overflow-hidden group shadow-lg transition-transform duration-300 hover:scale-105 active:scale-95 border border-zinc-800">
+      <div className="absolute inset-0 translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12" />
+      Shimmer Light
+    </button>
+  ),
+
+  // 73. Magic Shiny (Magic UI inspired - Glossy sweep light effect)
+  MagicShiny: () => (
+    <button className="relative px-8 py-3 bg-gradient-to-b from-zinc-800 to-zinc-900 text-zinc-100 font-bold rounded-full border border-zinc-700 shadow-[0_4px_10px_rgba(0,0,0,0.3)] overflow-hidden group transition-all hover:scale-105 hover:border-zinc-500 active:scale-95">
+      <div className="absolute inset-0 translate-y-[100%] group-hover:translate-y-[-100%] transition-transform duration-[1.2s] ease-in-out bg-gradient-to-t from-transparent via-white/10 to-transparent" />
+      Shiny Sweep
+    </button>
+  ),
+
+  // 74. Magic Interactive Hover (Magic UI inspired - Text shift, reveal arrow icon)
+  MagicInteractiveHover: () => (
+    <button className="relative px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-full overflow-hidden group flex items-center justify-center gap-2 transition-all duration-300 hover:pr-12 active:scale-95">
+      <span>Interactive</span>
+      <ChevronRight size={18} className="absolute right-4 opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+    </button>
+  ),
+
+  // 75. Creative Offset 3D (HyperUI inspired - Layered 3D block offset press)
+  CreativeOffset3D: () => (
+    <button className="relative px-8 py-3 bg-amber-400 border-2 border-black text-black font-black uppercase tracking-wider rounded-lg transition-transform duration-150 hover:-translate-x-1 hover:-translate-y-1 active:translate-x-0 active:translate-y-0 before:absolute before:inset-0 before:bg-black before:rounded-lg before:-z-10 before:translate-x-1.5 before:translate-y-1.5 before:transition-transform before:duration-150 hover:before:translate-x-2 hover:before:translate-y-2 active:before:translate-x-0 active:before:translate-y-0">
+      Offset 3D
+    </button>
+  ),
+
+  // 76. Reveal Border (HyperUI inspired - Hidden border draw-in on hover)
+  RevealBorder: () => (
+    <button className="relative px-8 py-3 bg-zinc-950 text-white font-bold rounded-lg border-2 border-transparent transition-all duration-300 hover:border-emerald-500 hover:shadow-[0_0_15px_rgba(16,185,129,0.3)]">
+      Reveal Border
+    </button>
+  ),
+
+  // 77. Rotate & Scale (HyperUI inspired - Playful skew tilt and expansion)
+  RotateScale: () => (
+    <button className="px-8 py-3 bg-[#ff5a5f] text-white font-black rounded-xl border-2 border-zinc-900 shadow-[4px_4px_0_0_#18181b] transition-all duration-250 hover:scale-105 hover:-rotate-3 active:scale-95 active:rotate-0">
+      Rotate & Tilt
+    </button>
+  ),
+
+  // 78. Auth Google (MerakiUI/Tailgrids inspired - Official Google Login with SVG path)
+  AuthGoogle: () => (
+    <button className="flex items-center justify-center gap-3 px-6 py-2.5 bg-white hover:bg-zinc-50 text-zinc-700 font-semibold rounded-lg border border-zinc-300 shadow-sm transition-all hover:shadow-md active:scale-95">
+      <svg className="w-5 h-5" viewBox="0 0 24 24">
+        <path fill="#EA4335" d="M12 5.04c1.62 0 3.08.56 4.22 1.65l3.17-3.17C17.47 1.6 14.94 1 12 1 7.28 1 3.32 3.74 1.46 7.73l3.86 3C6.27 7.7 8.87 5.04 12 5.04z" />
+        <path fill="#4285F4" d="M23.49 12.27c0-.81-.07-1.59-.2-2.36H12v4.51h6.46c-.28 1.48-1.12 2.74-2.38 3.59l3.7 2.87c2.16-1.99 3.41-4.91 3.41-8.61z" />
+        <path fill="#FBBC05" d="M5.32 14.73A7.16 7.16 0 0 1 4.9 12c0-.96.16-1.9.42-2.73L1.46 6.27A11.96 11.96 0 0 0 0 12c0 2.12.55 4.12 1.46 5.88l3.86-3.15z" />
+        <path fill="#34A853" d="M12 23c3.24 0 5.95-1.08 7.93-2.91l-3.7-2.87c-1.03.69-2.35 1.1-4.23 1.1-3.13 0-5.73-2.66-6.68-5.69l-3.86 3C3.32 20.26 7.28 23 12 23z" />
+      </svg>
+      <span>Sign in with Google</span>
+    </button>
+  ),
+
+  // 79. Auth GitHub (MerakiUI/Tailgrids inspired - Official GitHub Login with SVG path)
+  AuthGitHub: () => (
+    <button className="flex items-center justify-center gap-3 px-6 py-2.5 bg-[#24292f] hover:bg-[#1c1f23] text-white font-semibold rounded-lg shadow-sm transition-all hover:shadow-md active:scale-95">
+      <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+        <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z" />
+      </svg>
+      <span>Sign in with GitHub</span>
+    </button>
+  ),
+
+  // 80. Kbd Accent (Shadcn v4 inspired - Button with keyboard shortcut indicators)
+  KbdAccent: () => (
+    <button className="flex items-center gap-4 px-6 py-2.5 bg-zinc-900 border border-zinc-800 hover:border-zinc-700 text-zinc-300 hover:text-white rounded-lg shadow-sm transition-all duration-300 group active:scale-95">
+      <span className="font-semibold text-sm">Quick Search</span>
+      <kbd className="inline-flex items-center gap-0.5 px-2 py-0.5 bg-zinc-800 border border-zinc-700 text-[10px] font-mono text-zinc-400 rounded group-hover:bg-zinc-700 group-hover:text-zinc-200">
+        ⌘K
+      </kbd>
+    </button>
   )
 };
