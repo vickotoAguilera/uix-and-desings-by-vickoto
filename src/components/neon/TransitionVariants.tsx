@@ -859,6 +859,304 @@ export const TransitionVariants = {
       
       <span className="relative z-20 text-white font-black text-2xl tracking-[0.2em] mix-blend-difference">SPLATTER</span>
     </div>
+  ),
+
+  // 71. Mirror Split (Creative)
+  MirrorSplit: () => (
+    <div className="group relative w-full aspect-video rounded-2xl overflow-hidden cursor-pointer bg-zinc-950 flex items-center justify-center">
+      {/* Background to reveal */}
+      <div className="absolute inset-0 bg-gradient-to-r from-cyan-900/50 via-purple-900/50 to-pink-900/50 flex flex-col items-center justify-center p-6">
+        <h3 className="text-[#0fa] font-black text-3xl tracking-widest animate-pulse">MIRROR SPLIT</h3>
+        <span className="text-zinc-400 text-xs font-mono mt-2 tracking-[0.2em]">SYSTEM_ONLINE</span>
+      </div>
+      
+      {/* Left Mirror Half */}
+      <div 
+        className="absolute inset-y-0 left-0 w-1/2 bg-[url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80')] bg-cover bg-[position:left_center] border-r border-[#0fa]/30 transition-all duration-700 ease-in-out group-hover:-translate-x-full group-hover:opacity-0"
+      />
+      {/* Right Mirror Half */}
+      <div 
+        className="absolute inset-y-0 right-0 w-1/2 bg-[url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80')] bg-cover bg-[position:right_center] border-l border-[#0fa]/30 transition-all duration-700 ease-in-out group-hover:translate-x-full group-hover:opacity-0"
+      />
+      <div className="absolute inset-0 border border-white/10 rounded-2xl pointer-events-none" />
+    </div>
+  ),
+
+  // 72. Page Curl (Creative)
+  PageCurl: () => (
+    <div className="group relative w-full aspect-video rounded-2xl overflow-hidden cursor-pointer bg-zinc-950">
+      {/* Revealed content */}
+      <div className="absolute inset-0 bg-gradient-to-br from-indigo-900 via-zinc-900 to-purple-950 flex flex-col justify-between p-6">
+        <span className="text-[10px] font-mono text-indigo-400">PAGE_02_INDEX</span>
+        <h4 className="text-white text-2xl font-black italic">UNCOVERED LAYER</h4>
+        <span className="text-zinc-500 text-xs">Aesthetic Interface Systems</span>
+      </div>
+      
+      {/* Cover Page */}
+      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80')] bg-cover bg-center transition-all duration-700 origin-bottom-left group-hover:[transform:rotate3d(1,-1,0,35deg)] group-hover:opacity-0" />
+      
+      {/* Curl Corner Overlay */}
+      <div className="absolute top-0 right-0 w-0 h-0 bg-gradient-to-bl from-white/30 via-white/10 to-transparent transition-all duration-700 group-hover:w-16 group-hover:h-16 shadow-lg rounded-bl-xl border-l border-b border-white/20" />
+      <div className="absolute inset-0 border border-white/10 rounded-2xl pointer-events-none" />
+    </div>
+  ),
+
+  // 73. Lens Blur (Creative)
+  LensBlur: () => (
+    <div className="group relative w-full aspect-video rounded-2xl overflow-hidden cursor-pointer bg-zinc-950 flex items-center justify-center">
+      {/* Base Image */}
+      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80')] bg-cover bg-center transition-all duration-700 group-hover:scale-105 group-hover:blur-md" />
+      
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/30 group-hover:bg-black/60 transition-colors duration-500" />
+      
+      {/* Bokeh circles */}
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-8 h-8 bg-cyan-400/20 rounded-full blur-[2px] animate-[pulse_2s_infinite] scale-75 group-hover:scale-110 transition-transform duration-700" />
+        <div className="absolute top-1/2 right-1/3 w-12 h-12 bg-pink-400/20 rounded-full blur-[2px] animate-[pulse_3s_infinite] scale-50 group-hover:scale-125 transition-transform duration-700 delay-100" />
+        <div className="absolute bottom-1/4 left-1/2 w-6 h-6 bg-yellow-300/10 rounded-full blur-[2px] animate-[pulse_2.5s_infinite] scale-90 group-hover:scale-150 transition-transform duration-700 delay-200" />
+        <div className="absolute bottom-1/3 right-1/4 w-10 h-10 bg-purple-500/20 rounded-full blur-[2px] animate-[pulse_4s_infinite] scale-50 group-hover:scale-100 transition-transform duration-700 delay-300" />
+      </div>
+
+      <div className="relative text-center z-10 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+        <span className="text-xs font-mono tracking-widest text-[#0fa] bg-black/40 px-3 py-1.5 rounded-full border border-[#0fa]/30">BOKEH_EFFECT</span>
+      </div>
+      <div className="absolute inset-0 border border-white/10 rounded-2xl pointer-events-none" />
+    </div>
+  ),
+
+  // 74. Ink Bleed (Creative)
+  InkBleed: () => (
+    <div className="group relative w-full aspect-video rounded-2xl overflow-hidden cursor-pointer bg-zinc-950 flex items-center justify-center">
+      <svg className="absolute w-0 h-0">
+        <defs>
+          <filter id="ink-bleed-filter">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -9" result="goo" />
+            <feBlend in="SourceGraphic" in2="goo" />
+          </filter>
+        </defs>
+      </svg>
+      
+      {/* Background Image to reveal */}
+      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1511367461989-f85a21fda167?auto=format&fit=crop&w=800&q=80')] bg-cover bg-center opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10" />
+      
+      {/* Ink blots container */}
+      <div className="absolute inset-0 z-0 bg-white flex items-center justify-center group-hover:bg-zinc-950 transition-colors duration-500" style={{ filter: 'url(#ink-bleed-filter)' }}>
+        <div className="w-10 h-10 bg-zinc-950 rounded-full transition-transform duration-700 scale-[25] group-hover:scale-0" />
+        <div className="w-8 h-8 bg-zinc-950 rounded-full absolute transition-transform duration-700 scale-[20] group-hover:scale-0 translate-x-12 translate-y-8 delay-75" />
+        <div className="w-6 h-6 bg-zinc-950 rounded-full absolute transition-transform duration-700 scale-[15] group-hover:scale-0 -translate-x-14 -translate-y-6 delay-150" />
+        <div className="w-7 h-7 bg-zinc-950 rounded-full absolute transition-transform duration-700 scale-[18] group-hover:scale-0 translate-x-[-10px] translate-y-[-12px] delay-200" />
+      </div>
+      
+      <span className="relative z-20 text-white font-black text-2xl tracking-[0.25em] group-hover:text-black mix-blend-difference uppercase">INK_BLEED</span>
+      <div className="absolute inset-0 border border-white/10 rounded-2xl pointer-events-none z-30" />
+    </div>
+  ),
+
+  // 75. Neon Drawing (Creative)
+  NeonDrawing: () => (
+    <div className="group relative w-full aspect-video rounded-2xl cursor-pointer flex items-center justify-center bg-zinc-950 overflow-hidden border border-zinc-900">
+      {/* Background Image */}
+      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80')] bg-cover bg-center opacity-30 group-hover:opacity-10 transition-opacity duration-500" />
+      
+      {/* SVG drawing borders */}
+      <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <rect 
+          x="1" y="1" width="98" height="98" rx="8"
+          fill="none" 
+          stroke="url(#neon-draw-grad)" 
+          strokeWidth="1.5" 
+          strokeDasharray="400" 
+          strokeDashoffset="400"
+          className="transition-all duration-1000 group-hover:stroke-dashoffset-0"
+        />
+        <defs>
+          <linearGradient id="neon-draw-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#0fa" />
+            <stop offset="50%" stopColor="#8b5cf6" />
+            <stop offset="100%" stopColor="#ec4899" />
+          </linearGradient>
+        </defs>
+      </svg>
+      
+      {/* Scanning laser line */}
+      <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#0fa] to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-[scan-line_2s_linear_infinite]" />
+      
+      <style>{`
+        @keyframes scan-line {
+          0% { top: 0%; }
+          50% { top: 100%; }
+          100% { top: 0%; }
+        }
+      `}</style>
+      
+      <div className="relative text-center z-10">
+        <span className="text-sm font-mono text-zinc-500 group-hover:text-white transition-colors duration-500 tracking-[0.3em]">LASER_ENGRAVE</span>
+      </div>
+      <div className="absolute inset-0 border border-white/10 rounded-2xl pointer-events-none" />
+    </div>
+  ),
+
+  // 76. Magnetic Particle (Creative)
+  MagneticParticle: () => {
+    return (
+      <div className="group relative w-full aspect-video rounded-2xl overflow-hidden cursor-pointer bg-zinc-950 flex items-center justify-center border border-zinc-900">
+        <div className="absolute inset-0 bg-radial-gradient from-purple-900/10 to-transparent pointer-events-none" />
+        
+        {/* Floating particles */}
+        <div className="absolute inset-0 opacity-40 group-hover:opacity-100 transition-opacity duration-500">
+          {[...Array(8)].map((_, i) => (
+            <div 
+              key={i} 
+              className="absolute w-2.5 h-2.5 rounded-full bg-[#0fa] blur-[1px] transition-all duration-700 ease-out group-hover:top-1/2 group-hover:left-1/2 group-hover:-translate-x-1/2 group-hover:-translate-y-1/2 group-hover:scale-0 group-hover:opacity-0"
+              style={{
+                top: `${20 + (i * 9) + (i % 2 ? 10 : 0)}%`,
+                left: `${15 + (i * 11) + (i % 3 ? 12 : 0)}%`,
+                boxShadow: '0 0 8px #0fa',
+                transitionDelay: `${i * 40}ms`
+              }}
+            />
+          ))}
+        </div>
+        
+        <div className="relative z-10 w-16 h-16 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center transition-all duration-500 group-hover:scale-125 group-hover:border-[#0fa]/50 group-hover:shadow-[0_0_20px_rgba(0,255,170,0.2)]">
+          <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-[#0fa] to-blue-500 animate-pulse" />
+        </div>
+        
+        <span className="absolute bottom-4 text-[10px] font-mono text-zinc-600 group-hover:text-[#0fa] tracking-[0.2em] transition-colors">MAGNET_FORCE</span>
+        <div className="absolute inset-0 border border-white/10 rounded-2xl pointer-events-none" />
+      </div>
+    );
+  },
+
+  // 77. Matrix Rain (Creative)
+  MatrixRain: () => {
+    return (
+      <div className="group relative w-full aspect-video rounded-2xl overflow-hidden cursor-pointer bg-black flex flex-col justify-between p-6 border border-green-950/40">
+        {/* Matrix rain columns */}
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500 flex justify-around pointer-events-none font-mono text-[9px] text-[#0fa] select-none overflow-hidden">
+          {[...Array(12)].map((_, i) => (
+            <div 
+              key={i} 
+              className="flex flex-col animate-[matrix-fall_3s_linear_infinite]"
+              style={{
+                animationDelay: `${i * 150}ms`,
+                transform: 'translateY(-100%)'
+              }}
+            >
+              {"1010011010010110".split("").map((char, cIndex) => (
+                <span key={cIndex} className="my-0.5">{char}</span>
+              ))}
+            </div>
+          ))}
+        </div>
+        
+        <style>{`
+          @keyframes matrix-fall {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+          }
+        `}</style>
+        
+        <div className="flex justify-between items-start z-10">
+          <span className="text-[10px] font-mono text-green-500/60 group-hover:text-green-500">DECRYPTING_SECURE_NODE</span>
+          <span className="text-[10px] font-mono text-green-500/40 group-hover:text-green-400">80%</span>
+        </div>
+        <div className="z-10 mt-auto">
+          <h3 className="text-xl font-bold font-mono tracking-widest text-zinc-600 group-hover:text-green-400 transition-colors">MATRIX_FLOW</h3>
+        </div>
+        <div className="absolute inset-0 border border-white/5 rounded-2xl pointer-events-none" />
+      </div>
+    );
+  },
+
+  // 78. Kaleidoscope (Creative)
+  Kaleidoscope: () => (
+    <div className="group relative w-full aspect-video rounded-2xl overflow-hidden cursor-pointer bg-zinc-950 flex items-center justify-center border border-zinc-900">
+      {/* 4 Quadrants mirror reflection */}
+      <div className="absolute inset-0 grid grid-cols-2 grid-rows-2 transition-all duration-700 group-hover:rotate-45">
+        {/* Quadrant 1 */}
+        <div className="relative overflow-hidden w-full h-full border-r border-b border-white/5">
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80')] bg-cover bg-center transition-transform duration-700 group-hover:scale-110" />
+        </div>
+        {/* Quadrant 2 */}
+        <div className="relative overflow-hidden w-full h-full border-l border-b border-white/5">
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80')] bg-cover bg-center scale-x-[-1] transition-transform duration-700 group-hover:scale-[1.1_1.1]" />
+        </div>
+        {/* Quadrant 3 */}
+        <div className="relative overflow-hidden w-full h-full border-r border-t border-white/5">
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80')] bg-cover bg-center scale-y-[-1] transition-transform duration-700 group-hover:scale-[1.1_1.1]" />
+        </div>
+        {/* Quadrant 4 */}
+        <div className="relative overflow-hidden w-full h-full border-l border-t border-white/5">
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80')] bg-cover bg-center scale-[-1] transition-transform duration-700 group-hover:scale-[1.1_1.1]" />
+        </div>
+      </div>
+      
+      {/* Central lens overlay */}
+      <div className="relative z-10 w-12 h-12 bg-black/60 backdrop-blur-md rounded-full border border-white/20 flex items-center justify-center transition-transform duration-700 group-hover:scale-125">
+        <div className="w-4 h-4 bg-[#0fa] rotate-45 group-hover:rotate-[135deg] transition-transform duration-700" />
+      </div>
+      
+      <div className="absolute inset-0 border border-white/10 rounded-2xl pointer-events-none" />
+    </div>
+  ),
+
+  // 79. Holographic Flicker (Creative)
+  HolographicFlicker: () => (
+    <div className="group relative w-full aspect-video rounded-2xl overflow-hidden cursor-pointer bg-zinc-950 flex items-center justify-center border border-purple-950/40">
+      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0)_94%,rgba(139,92,246,0.1)_94%)] bg-[size:100%_6px]" />
+      
+      {/* Base Image */}
+      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&w=800&q=80')] bg-cover bg-center opacity-30 group-hover:opacity-50 transition-opacity duration-300" />
+      
+      {/* Flicker elements */}
+      <div className="absolute inset-0 bg-purple-500/10 mix-blend-color-dodge opacity-0 group-hover:opacity-100 group-hover:animate-[flicker-anim_0.15s_infinite]" />
+      <div className="absolute inset-0 bg-cyan-500/10 mix-blend-color-dodge opacity-0 group-hover:opacity-100 group-hover:animate-[flicker-anim_0.2s_infinite] translate-x-[2px]" />
+      
+      <style>{`
+        @keyframes flicker-anim {
+          0%, 100% { opacity: 0.1; }
+          50% { opacity: 0.8; }
+        }
+      `}</style>
+      
+      <div className="relative text-center z-10">
+        <h4 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-cyan-400 to-pink-400 tracking-[0.3em] font-mono group-hover:animate-pulse">HOLO_LINK</h4>
+        <span className="text-[9px] font-mono text-purple-400/60 group-hover:text-cyan-400 mt-2 block tracking-widest animate-pulse">FREQ_78.4_MHz</span>
+      </div>
+      <div className="absolute inset-0 border border-white/10 rounded-2xl pointer-events-none" />
+    </div>
+  ),
+
+  // 80. Paper Fold (Creative)
+  PaperFold: () => (
+    <div className="group w-full aspect-video cursor-pointer [perspective:1200px]">
+      <div className="relative w-full h-full flex transition-all duration-700 [transform-style:preserve-3d]">
+        {/* Background layer */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0fa]/30 via-indigo-900 to-purple-950 rounded-2xl flex flex-col justify-between p-6">
+          <span className="text-[10px] font-mono text-[#0fa]/80">LAYER_REVEAL_SECURE</span>
+          <h4 className="text-white text-2xl font-black italic">FOLD COMPLETED</h4>
+          <span className="text-zinc-500 text-xs">3D Brochure System</span>
+        </div>
+        
+        {/* Panel 1 (Left Fold) */}
+        <div 
+          className="w-1/3 h-full bg-[url('https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?auto=format&fit=crop&w=400&q=80')] bg-cover bg-left rounded-l-2xl border-r border-zinc-950/20 transition-transform duration-700 origin-left group-hover:[transform:rotateY(-120deg)]"
+          style={{ backfaceVisibility: 'hidden' }}
+        />
+        {/* Panel 2 (Center Base) */}
+        <div 
+          className="w-1/3 h-full bg-[url('https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?auto=format&fit=crop&w=400&q=80')] bg-cover bg-center border-x border-zinc-950/20 transition-transform duration-700 group-hover:scale-y-95 group-hover:opacity-10"
+        />
+        {/* Panel 3 (Right Fold) */}
+        <div 
+          className="w-1/3 h-full bg-[url('https://images.unsplash.com/photo-1534972195531-d756b9bfa9f2?auto=format&fit=crop&w=400&q=80')] bg-cover bg-right rounded-r-2xl border-l border-zinc-950/20 transition-transform duration-700 origin-right group-hover:[transform:rotateY(120deg)]"
+          style={{ backfaceVisibility: 'hidden' }}
+        />
+      </div>
+    </div>
   )
 };
 

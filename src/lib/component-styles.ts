@@ -253,7 +253,7 @@ export const TRANSITION_STYLES = {
   ],
   Masks: [
     'MaskReveal', 'VerticalMask', 'DiagonalSlice', 'DiagonalWipe', 'DiagonalGreen', 
-    'MosaicFade', 'MaskDiamond', 'SplatterReveal', 'SpotlightFocus', 'NoiseReveal'
+    'MosaicFade', 'MaskDiamond', 'PixelFade', 'SpotlightFocus', 'NoiseReveal'
   ],
   Glitches: [
     'GlitchHover', 'NeonTrail', 'GlitchSlice', 'UltimateGlitch', 'GlitchDistortion', 
@@ -269,11 +269,15 @@ export const TRANSITION_STYLES = {
   ],
   Liquid: [
     'LiquidSpread', 'LiquidLarge', 'PulseRipple', 'RipplePulse', 'GooeyMerge', 
-    'GelatinBounce', 'FluidVortex', 'BubbleExpand', 'CornerFill', 'ScaleGlow'
+    'GelatinBounce', 'FluidVortex', 'BubbleExpand', 'CornerFill', 'SplatterReveal'
   ],
   Interactive: [
-    'BorderDraw', 'TextWave', 'ShimmerOverlay', 'PixelFade', 'Magnetic', 
+    'BorderDraw', 'TextWave', 'ShimmerOverlay', 'ColorSweep', 'Magnetic', 
     'DotExpand', 'BorderRotate', 'TextStagger', 'PathDraw', 'MagneticBorder'
+  ],
+  Creative: [
+    'MirrorSplit', 'PageCurl', 'LensBlur', 'InkBleed', 'NeonDrawing',
+    'MagneticParticle', 'MatrixRain', 'Kaleidoscope', 'HolographicFlicker', 'PaperFold'
   ]
 };
 
