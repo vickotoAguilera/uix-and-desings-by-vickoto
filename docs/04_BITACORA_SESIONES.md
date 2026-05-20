@@ -1,3 +1,27 @@
+## Sesión: 2026-05-20 | 15:35 (Expansión del Catálogo de Pricing a 30 Variantes Simétricas Premium - Casa)
+- **Ubicación:** Casa
+- **Objetivo:** Ampliar y estructurar el catálogo de Tarjetas de Precios (Pricing) a 30 variantes simétricas (3 categorías de exactamente 10 variantes cada una: `Business`, `Tech`, `Creative`), integrando y adaptando 4 de los efectos más interactivos y premium de `react-bits` (`SpotlightCard`, `ElectricBorder`, `PixelCard`, y `StarBorder`).
+- **Acciones Realizadas:**
+  - **Integración de Componentes JSX (react-bits references):** Modificado `src/components/neon/PricingVariants.tsx` para incorporar e implementar 10 nuevas variantes premium de alta fidelidad:
+    1. `Bento_Tier` (Business) - Estructura bento de tarjetas asimétricas compactas.
+    2. `Editorial_Luxury` (Business) - Branding de lujo minimalista Serif clásico con acentos champán.
+    3. `SaaS_Spotlight` (Business) - Trackeo interactivo del mouse (`onMouseMove`) que proyecta un gradiente radial (SpotlightCard).
+    4. `Brutalist_Kinetic` (Business) - Neo-brutalismo con sombras rígidas y botones interactivos desplazables.
+    5. `Cyber_Console` (Tech) - Consola de diagnóstico con simulación secuencial interactiva en hover.
+    6. `Electric_Border` (Tech) - Borde de descarga eléctrica interactiva usando Canvas y Perlin noise multi-octava (ElectricBorder).
+    7. `Matrix_Terminal` (Tech) - Terminal con lluvia de código binario fósforo verde sobre Canvas en hover.
+    8. `Pixel_Card` (Tech) - Cuadrícula de Canvas interactiva con partículas de píxeles que brillan y flotan al pasar el cursor (PixelCard).
+    9. `Star_Border` (Creative) - Borde de gradiente animado continuo emulando estrellas que orbitan los límites (StarBorder).
+    10. `3D_FoldCard` (Creative) - Perspectiva 3D interactiva ultra-fluida que se inclina y sigue al cursor en tiempo real.
+  - **Soporte de Animación y Tematización:** Modificado `src/app/globals.css` para registrar los keyframes y clases de animación `star-movement-bottom` y `star-movement-top` requeridos por la variante `Star_Border` manteniendo compatibilidad con Tailwind CSS v4.
+  - **Estructuración Jerárquica:** Sincronizado y estructurado el registro `PRICING_STYLES` en `src/lib/component-styles.ts` para lograr simetría perfecta: exactamente 3 categorías (`Business`, `Tech`, `Creative`) con 10 variantes cada una (30 en total).
+  - **Verificación de Compilación de Producción:** Ejecutado `npm run build` en local de Next.js confirmando compilación 100% exitosa sin errores de hidratación, tipado o JSX estático.
+- **Resultado:**
+  - ✓ Catálogo de Pricing ampliado con éxito a **30 variantes premium**.
+  - ✓ 3 categorías perfectamente simétricas indexadas e interactivas en la UI.
+  - ✓ Integración limpia de efectos avanzados de Canvas / mouse tracking respetando compatibilidad SSR.
+  - ✓ Compilación de producción validada y 100% estable.
+
 ## Sesión: 2026-05-20 | 15:25 (Expansión del Catálogo de Transiciones a 80 Variantes Simétricas - Casa)
 - **Ubicación:** Casa
 - **Objetivo:** Auditar la base de código de transiciones, resolver la duplicidad de `ScaleGlow` en las categorías, indexar la variante huérfana `ColorSweep`, implementar 10 nuevas variantes premium en `TransitionVariants.tsx` (variantes 71 a 80) y estructurar todo el catálogo en 8 categorías de exactamente 10 transiciones cada una (80 variantes totales).

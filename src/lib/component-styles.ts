@@ -194,11 +194,23 @@ export const BUTTON_STYLES = {
 };
 
 export const PRICING_STYLES = {
-  Business: ['CorporateBlue', 'EnterpriseTiered', 'ProfessionalGold', 'Minimalist'],
-  Tech: ['DarkModeSaaS', 'TechStartup', 'NeonCyberpunk', 'ExperimentalFlicker'],
-  Creative: ['NeonPink', 'GradientBorder', 'Brutalist', 'CreativeAgency'],
-  Specialized: ['HealthWellness', 'LuxuryBlack', 'MobileApp', 'FreeTierFocused', 'ModernEcommerce', 'Retro8Bit', 'ToggleYearlyMonthly', 'Glassmorphism']
+  Business: [
+    'CorporateBlue', 'EnterpriseTiered', 'ProfessionalGold', 'Minimalist', 
+    'ModernEcommerce', 'ToggleYearlyMonthly', 'Bento_Tier', 'Editorial_Luxury', 
+    'SaaS_Spotlight', 'Brutalist_Kinetic'
+  ],
+  Tech: [
+    'DarkModeSaaS', 'TechStartup', 'NeonCyberpunk', 'ExperimentalFlicker', 
+    'MobileApp', 'FreeTierFocused', 'Cyber_Console', 'Electric_Border', 
+    'Matrix_Terminal', 'Pixel_Card'
+  ],
+  Creative: [
+    'NeonPink', 'GradientBorder', 'Brutalist', 'CreativeAgency', 
+    'HealthWellness', 'LuxuryBlack', 'Retro8Bit', 'Glassmorphism', 
+    'Star_Border', '3D_FoldCard'
+  ]
 };
+
 
 export const TESTIMONIAL_STYLES = {
   Social: ['TwitterStyle', 'TrustpilotStyle', 'ChatBubble', 'FloatingAvatars'],

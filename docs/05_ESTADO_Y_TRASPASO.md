@@ -1,16 +1,18 @@
 # Estado y Traspaso - Proyecto Botones Neón
 
-## Última Update: 2026-05-20 | 15:25
+## Última Update: 2026-05-20 | 15:35
 - **Agente Actual:** Arquitecto de Software (Antigravity - Sesión Casa)
 - **Entorno:** Casa
-- **Estado Global:** Hito de Botones (80 variantes), Transiciones (80 variantes premium en 8 categorías simétricas de 10), Navbars (80 variantes) e Inputs (70 variantes premium en 7 categorías simétricas de 10) alcanzados. Compilación de producción 100% estable.
+- **Estado Global:** Hito de Botones (80 variantes), Transiciones (80 variantes premium en 8 categorías simétricas de 10), Navbars (80 variantes), Inputs (70 variantes premium en 7 categorías simétricas de 10) y **Pricing Tables (30 variantes premium en 3 categorías simétricas de 10)** alcanzados. Compilación de producción 100% estable.
 
 
 ## PRÓXIMOS PASOS
-1. **Evaluar siguientes componentes del catálogo**: Retomar los Heros (Diseño 14) o expandir otra sección del catálogo de componentes como Pricing Tables o Footers según se decida con el usuario.
-2. **Autorización de Push**: Sincronizar todos los hitos a GitHub (Heros, Botones, Transiciones, Navbars e Inputs).
+1. **Autorización de Push / Sync**: Realizar un push a GitHub para sincronizar todos los hitos (Heros, Botones, Transiciones, Navbars, Inputs y Pricing).
+2. **Retomar los Heros (Diseño 14)**: Continuar hasta 50 diseños de Hero antes de pasar a otros componentes.
 
 ## Tareas Realizadas
+- [x] Diseñados e integrados 10 nuevos estilos de precios premium e interactivos (`Bento_Tier`, `Editorial_Luxury`, `SaaS_Spotlight`, `Brutalist_Kinetic`, `Cyber_Console`, `Electric_Border`, `Matrix_Terminal`, `Pixel_Card`, `Star_Border`, `3D_FoldCard`), incorporando e integrando efectos interactivos como spotlight tracking, fractal electric borders, rain code, shimmering pixel grid y radial star animations de la carpeta `react-bits` del usuario.
+- [x] Sincronizado e indexado el registro `PRICING_STYLES` en `src/lib/component-styles.ts` en exactamente 3 categorías de 10 elementos cada una (`Business`, `Tech`, `Creative`), logrando la simetría perfecta de 30 pricing tables en total.
 - [x] Diseñados e integrados 10 nuevos estilos de transiciones premium e interactivas (`MirrorSplit`, `PageCurl`, `LensBlur`, `InkBleed`, `NeonDrawing`, `MagneticParticle`, `MatrixRain`, `Kaleidoscope`, `HolographicFlicker`, `PaperFold`).
 - [x] Sincronizado e indexado el registro `TRANSITION_STYLES` en `src/lib/component-styles.ts` para lograr una simetría perfecta de 8 categorías de 10 transiciones cada una (80 transiciones totales), resolviendo la duplicación de `ScaleGlow`, mapeando `PixelFade` a `Masks` y rescatando la variante huérfana `ColorSweep` en `Interactive`.
 - [x] Diseñados e integrados 10 nuevos estilos de inputs premium y dinámicos inspirados en el visual DNA (`Interactive_OTP`, `Creative_GooeyLine`, `Cyber_TacHUD`, `SaaS_SpotlightCard`, `Brutalist_KineticPop`, `Modern_TagCombo`, `Luxury_SerifMinimal`, `Retro_Chamber`, `Interactive_PasswordStrength`, `Clay_SoftBubble`).

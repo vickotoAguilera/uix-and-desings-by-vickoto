@@ -367,4 +367,679 @@ export const PricingVariants: Record<string, React.FC> = {
       </button>
     </div>
   ),
+
+  Bento_Tier: () => (
+    <div className="p-8 bg-zinc-905 border border-zinc-800 rounded-3xl text-zinc-100 flex flex-col md:flex-row gap-6 relative overflow-hidden group">
+      <div className="absolute top-0 right-0 w-40 h-40 bg-indigo-500/10 blur-[80px] rounded-full" />
+      <div className="flex-1 space-y-4">
+        <span className="inline-block px-3 py-1 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-full text-xs font-bold font-mono">BENTO_PRO</span>
+        <h3 className="text-2xl font-black text-white">Full Stack Package</h3>
+        <p className="text-zinc-400 text-sm">Perfect for modern web apps & teams.</p>
+        <div className="pt-4">
+          <div className="text-5xl font-black text-white">$149</div>
+          <div className="text-xs text-zinc-500 font-mono mt-1">PER QUARTER / BILLED ANNUALLY</div>
+        </div>
+      </div>
+      <div className="w-px bg-zinc-800 hidden md:block" />
+      <div className="flex-1 flex flex-col justify-between">
+        <ul className="space-y-3 font-sans text-sm text-zinc-300">
+          {['∞ Projects & DBs', 'Global Edge CDN', 'Shared Analytics', 'SSO & Multi-Tenant'].map((item) => (
+            <li key={item} className="flex items-center gap-2">
+              <Check size={16} className="text-indigo-400 shrink-0" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+        <button className="w-full mt-6 py-3 bg-white text-black font-bold rounded-xl hover:bg-zinc-200 transition-colors shadow-lg shadow-white/5 active:scale-[0.98] transition-transform">
+          Claim Tier
+        </button>
+      </div>
+    </div>
+  ),
+
+  Editorial_Luxury: () => (
+    <div className="p-10 bg-[#FAF9F6] border border-amber-900/10 rounded-none text-zinc-900 text-center font-serif relative group hover:border-amber-900/40 transition-colors duration-700">
+      <div className="text-[10px] uppercase tracking-[0.3em] text-amber-800/60 mb-6">Maison Collection</div>
+      <h3 className="text-3xl font-light tracking-wide text-zinc-800 mb-2">L'Atelier</h3>
+      <div className="w-8 h-px bg-amber-900/20 mx-auto mb-6 group-hover:w-20 transition-all duration-700" />
+      <div className="flex items-baseline justify-center gap-1 mb-8">
+        <span className="text-5xl font-light tracking-tighter text-zinc-900">$390</span>
+        <span className="text-zinc-400 font-sans text-xs italic">/season</span>
+      </div>
+      <ul className="space-y-4 mb-10 text-xs tracking-widest text-zinc-600 uppercase font-sans">
+        {['Private Lounge Access', 'Curated Tailoring', 'Bi-annual Atelier Gifts'].map((item) => (
+          <li key={item} className="hover:text-zinc-900 transition-colors cursor-default">
+            {item}
+          </li>
+        ))}
+      </ul>
+      <button className="w-full py-4 bg-zinc-900 hover:bg-zinc-800 text-white font-sans text-xs uppercase tracking-[0.25em] font-medium transition-colors duration-300">
+        Inquire Membership
+      </button>
+    </div>
+  ),
+
+  SaaS_Spotlight: () => {
+    const [coords, setCoords] = React.useState({ x: 0, y: 0 });
+    const [opacity, setOpacity] = React.useState(0);
+    const containerRef = React.useRef<HTMLDivElement>(null);
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      setCoords({
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+      });
+    };
+
+    return (
+      <div
+        ref={containerRef}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={() => setOpacity(0.15)}
+        onMouseLeave={() => setOpacity(0)}
+        className="p-8 bg-zinc-950 border border-zinc-800 rounded-3xl relative overflow-hidden group transition-all"
+      >
+        <div
+          className="pointer-events-none absolute inset-0 transition-opacity duration-500 ease-in-out"
+          style={{
+            opacity,
+            background: `radial-gradient(circle 120px at ${coords.x}px ${coords.y}px, rgba(99, 102, 241, 0.8), transparent 80%)`,
+          }}
+        />
+        <div className="relative z-10 space-y-4">
+          <div className="flex justify-between items-center">
+            <h3 className="text-zinc-300 font-bold text-lg uppercase tracking-wider">Spotlight Pro</h3>
+            <span className="px-2 py-0.5 bg-indigo-500/10 text-indigo-400 border border-indigo-500/25 rounded-md text-[10px] font-bold">POPULAR</span>
+          </div>
+          <div className="flex items-baseline gap-1">
+            <span className="text-5xl font-black text-white">$49</span>
+            <span className="text-zinc-550 text-xs">/month</span>
+          </div>
+          <p className="text-zinc-400 text-xs">Unleash the full potential of coordinate-based styling.</p>
+          <div className="w-full h-px bg-zinc-905" />
+          <ul className="space-y-3 text-xs text-zinc-300">
+            {['100k API Requests', 'Live Support Chat', 'Custom CSS Overrides'].map((item) => (
+              <li key={item} className="flex items-center gap-2">
+                <Check size={14} className="text-indigo-400 shrink-0" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <button className="w-full py-3 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-white rounded-xl font-bold transition-all mt-4 hover:border-zinc-700">
+            Get Spotlight
+          </button>
+        </div>
+      </div>
+    );
+  },
+
+  Brutalist_Kinetic: () => (
+    <div className="p-8 bg-purple-400 border-4 border-black text-black font-sans shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all relative group">
+      <div className="absolute top-2 right-2 bg-yellow-300 border-2 border-black px-2 py-0.5 text-xs font-black uppercase rotate-6">
+        -30% OFF
+      </div>
+      <h3 className="text-3xl font-black uppercase tracking-tight mb-2">KINETIC</h3>
+      <div className="text-5xl font-black tracking-tighter mb-4">$59</div>
+      <p className="text-sm font-bold border-t-2 border-black pt-4 mb-6">Designed for creators who break boundaries.</p>
+      <ul className="space-y-2 font-bold text-xs mb-8">
+        <li>⚡ FULL RAW SOURCE FILES</li>
+        <li>⚡ ACCESS TO KINETIC VIP</li>
+        <li>⚡ WEEKLY ASSET DRAWS</li>
+      </ul>
+      <button className="w-full py-3.5 bg-yellow-300 text-black border-2 border-black font-black uppercase tracking-wider hover:bg-yellow-400 active:translate-y-0.5 transition-all">
+        JOIN CRASH COURSE
+      </button>
+    </div>
+  ),
+
+  Cyber_Console: () => {
+    const [progress, setProgress] = React.useState(23);
+    const [hovered, setHovered] = React.useState(false);
+
+    React.useEffect(() => {
+      if (!hovered) return;
+      const interval = setInterval(() => {
+        setProgress((prev) => (prev >= 100 ? 100 : prev + Math.floor(Math.random() * 8) + 2));
+      }, 100);
+      return () => clearInterval(interval);
+    }, [hovered]);
+
+    const handleMouseEnter = () => {
+      setHovered(true);
+    };
+
+    const handleMouseLeave = () => {
+      setHovered(false);
+      setProgress(23);
+    };
+
+    return (
+      <div 
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className="p-8 bg-zinc-950 border border-cyan-500/20 hover:border-cyan-500/60 rounded-xl relative overflow-hidden font-mono text-cyan-400 group transition-all"
+      >
+        <div className="absolute top-0 left-0 w-full h-1 bg-cyan-500/10 group-hover:bg-cyan-500/20" />
+        <div className="text-[10px] text-cyan-600 mb-2 flex justify-between">
+          <span>CONSOLE://DIAG_V8</span>
+          <span className={hovered ? "animate-pulse" : ""}>{hovered ? "ACTIVE" : "STANDBY"}</span>
+        </div>
+        <h3 className="text-xl font-bold text-white mb-2">CYBER CORE</h3>
+        <div className="text-4xl font-black text-cyan-300 mb-4">$79<span className="text-xs text-cyan-600 font-normal">/epoch</span></div>
+        <div className="space-y-4 mb-6">
+          <div className="space-y-1">
+            <div className="text-[10px] text-cyan-600 flex justify-between">
+              <span>SYNCING PROTOCOLS</span>
+              <span>{progress}%</span>
+            </div>
+            <div className="h-1.5 bg-zinc-900 border border-cyan-500/20 rounded-sm overflow-hidden">
+              <div 
+                className="h-full bg-cyan-500 transition-all duration-100 shadow-[0_0_10px_#06b6d4]"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
+          </div>
+          <ul className="text-xs space-y-2 text-cyan-100/70">
+            <li>{">"} SECURE SHELL BINDING</li>
+            <li>{">"} QUANTUM ENCRYPTION KEY</li>
+            <li>{">"} NEURAL SYNC MODULE</li>
+          </ul>
+        </div>
+        <button className="w-full py-3 bg-cyan-500/10 border border-cyan-500/40 hover:bg-cyan-500 hover:text-black font-black uppercase text-xs tracking-widest transition-all">
+          CONNECT INTERFACE
+        </button>
+      </div>
+    );
+  },
+
+  Electric_Border: () => {
+    const canvasRef = React.useRef<HTMLCanvasElement>(null);
+    const containerRef = React.useRef<HTMLDivElement>(null);
+    const animationRef = React.useRef<number | null>(null);
+    const timeRef = React.useRef(0);
+    const lastFrameTimeRef = React.useRef(0);
+
+    const random = React.useCallback((x: number): number => {
+      return (Math.sin(x * 12.9898) * 43758.5453) % 1;
+    }, []);
+
+    const noise2D = React.useCallback(
+      (x: number, y: number): number => {
+        const i = Math.floor(x);
+        const j = Math.floor(y);
+        const fx = x - i;
+        const fy = y - j;
+
+        const a = random(i + j * 57);
+        const b = random(i + 1 + j * 57);
+        const c = random(i + (j + 1) * 57);
+        const d = random(i + 1 + (j + 1) * 57);
+
+        const ux = fx * fx * (3.0 - 2.0 * fx);
+        const uy = fy * fy * (3.0 - 2.0 * fy);
+
+        return a * (1 - ux) * (1 - uy) + b * ux * (1 - uy) + c * (1 - ux) * uy + d * ux * uy;
+      },
+      [random]
+    );
+
+    const octavedNoise = React.useCallback(
+      (
+        x: number,
+        octaves: number,
+        lacunarity: number,
+        gain: number,
+        amplitude: number,
+        frequency: number,
+        time: number,
+        seed: number
+      ): number => {
+        let y = 0;
+        let amp = amplitude;
+        let freq = frequency;
+
+        for (let i = 0; i < octaves; i++) {
+          y += amp * noise2D(freq * x + seed * 100, time * freq * 0.3);
+          freq *= lacunarity;
+          amp *= gain;
+        }
+
+        return y;
+      },
+      [noise2D]
+    );
+
+    const getCornerPoint = React.useCallback(
+      (
+        centerX: number,
+        centerY: number,
+        radius: number,
+        startAngle: number,
+        arcLength: number,
+        progress: number
+      ): { x: number; y: number } => {
+        const angle = startAngle + progress * arcLength;
+        return {
+          x: centerX + radius * Math.cos(angle),
+          y: centerY + radius * Math.sin(angle)
+        };
+      },
+      []
+    );
+
+    const getRoundedRectPoint = React.useCallback(
+      (t: number, left: number, top: number, width: number, height: number, radius: number): { x: number; y: number } => {
+        const straightWidth = width - 2 * radius;
+        const straightHeight = height - 2 * radius;
+        const cornerArc = (Math.PI * radius) / 2;
+        const totalPerimeter = 2 * straightWidth + 2 * straightHeight + 4 * cornerArc;
+        const distance = t * totalPerimeter;
+
+        let accumulated = 0;
+
+        if (distance <= accumulated + straightWidth) {
+          const progress = (distance - accumulated) / straightWidth;
+          return { x: left + radius + progress * straightWidth, y: top };
+        }
+        accumulated += straightWidth;
+
+        if (distance <= accumulated + cornerArc) {
+          const progress = (distance - accumulated) / cornerArc;
+          return getCornerPoint(left + width - radius, top + radius, radius, -Math.PI / 2, Math.PI / 2, progress);
+        }
+        accumulated += cornerArc;
+
+        if (distance <= accumulated + straightHeight) {
+          const progress = (distance - accumulated) / straightHeight;
+          return { x: left + width, y: top + radius + progress * straightHeight };
+        }
+        accumulated += straightHeight;
+
+        if (distance <= accumulated + cornerArc) {
+          const progress = (distance - accumulated) / cornerArc;
+          return getCornerPoint(left + width - radius, top + height - radius, radius, 0, Math.PI / 2, progress);
+        }
+        accumulated += cornerArc;
+
+        if (distance <= accumulated + straightWidth) {
+          const progress = (distance - accumulated) / straightWidth;
+          return { x: left + width - radius - progress * straightWidth, y: top + height };
+        }
+        accumulated += straightWidth;
+
+        if (distance <= accumulated + cornerArc) {
+          const progress = (distance - accumulated) / cornerArc;
+          return getCornerPoint(left + radius, top + height - radius, radius, Math.PI / 2, Math.PI / 2, progress);
+        }
+        accumulated += cornerArc;
+
+        if (distance <= accumulated + straightHeight) {
+          const progress = (distance - accumulated) / straightHeight;
+          return { x: left, y: top + height - radius - progress * straightHeight };
+        }
+        accumulated += straightHeight;
+
+        const progress = (distance - accumulated) / cornerArc;
+        return getCornerPoint(left + radius, top + radius, radius, Math.PI, Math.PI / 2, progress);
+      },
+      [getCornerPoint]
+    );
+
+    React.useEffect(() => {
+      const canvas = canvasRef.current;
+      const container = containerRef.current;
+      if (!canvas || !container) return;
+
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      const octaves = 6;
+      const lacunarity = 1.6;
+      const gain = 0.7;
+      const amplitude = 0.12;
+      const frequency = 8;
+      const displacement = 40;
+      const borderOffset = 30;
+
+      const updateSize = () => {
+        const rect = container.getBoundingClientRect();
+        const w = rect.width + borderOffset * 2;
+        const h = rect.height + borderOffset * 2;
+        const dpr = 2;
+        canvas.width = w * dpr;
+        canvas.height = h * dpr;
+        canvas.style.width = `${w}px`;
+        canvas.style.height = `${h}px`;
+        ctx.scale(dpr, dpr);
+        return { w, h };
+      };
+
+      let { w, h } = updateSize();
+
+      const drawElectricBorder = (currentTime: number) => {
+        if (!canvas || !ctx) return;
+
+        const deltaTime = (currentTime - lastFrameTimeRef.current) / 1000;
+        timeRef.current += deltaTime * 1.5;
+        lastFrameTimeRef.current = currentTime;
+
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.scale(2, 2);
+
+        ctx.strokeStyle = '#6366f1';
+        ctx.lineWidth = 1.5;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+
+        const scale = displacement;
+        const left = borderOffset;
+        const top = borderOffset;
+        const borderWidth = w - 2 * borderOffset;
+        const borderHeight = h - 2 * borderOffset;
+        const maxRadius = Math.min(borderWidth, borderHeight) / 2;
+        const radius = Math.min(24, maxRadius);
+
+        const approximatePerimeter = 2 * (borderWidth + borderHeight) + 2 * Math.PI * radius;
+        const sampleCount = Math.floor(approximatePerimeter / 2);
+
+        ctx.beginPath();
+
+        for (let i = 0; i <= sampleCount; i++) {
+          const progress = i / sampleCount;
+          const point = getRoundedRectPoint(progress, left, top, borderWidth, borderHeight, radius);
+
+          const xNoise = octavedNoise(
+            progress * 8,
+            octaves,
+            lacunarity,
+            gain,
+            amplitude,
+            frequency,
+            timeRef.current,
+            0
+          );
+          const yNoise = octavedNoise(
+            progress * 8,
+            octaves,
+            lacunarity,
+            gain,
+            amplitude,
+            frequency,
+            timeRef.current,
+            1
+          );
+
+          const displacedX = point.x + xNoise * scale;
+          const displacedY = point.y + yNoise * scale;
+
+          if (i === 0) {
+            ctx.moveTo(displacedX, displacedY);
+          } else {
+            ctx.lineTo(displacedX, displacedY);
+          }
+        }
+
+        ctx.closePath();
+        ctx.stroke();
+
+        animationRef.current = requestAnimationFrame(drawElectricBorder);
+      };
+
+      animationRef.current = requestAnimationFrame(drawElectricBorder);
+
+      return () => {
+        if (animationRef.current) {
+          cancelAnimationFrame(animationRef.current);
+        }
+      };
+    }, [octavedNoise, getRoundedRectPoint]);
+
+    return (
+      <div 
+        ref={containerRef}
+        className="relative overflow-visible isolate p-8 bg-zinc-950 border border-indigo-500/20 rounded-[24px] text-zinc-150"
+      >
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0">
+          <canvas ref={canvasRef} className="block" />
+        </div>
+        <div className="absolute inset-0 rounded-[24px] pointer-events-none z-[1] border-2 border-indigo-500/30 filter blur-[2px]" />
+        <div className="relative z-10 space-y-4">
+          <div className="flex justify-between items-center">
+            <span className="text-[10px] font-mono tracking-widest text-indigo-400">ARC_NODE_CONNECTED</span>
+            <span className="w-2.5 h-2.5 bg-indigo-500 rounded-full animate-ping" />
+          </div>
+          <h3 className="text-xl font-bold text-white">ELECTRIC</h3>
+          <div className="text-4xl font-black text-indigo-400">$180<span className="text-xs text-zinc-550 font-normal">/month</span></div>
+          <p className="text-zinc-400 text-xs">High-performance computational stack wrapped in energy.</p>
+          <button className="w-full mt-4 py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-bold transition-all relative z-10 active:scale-95 shadow-[0_0_15px_rgba(99,102,241,0.5)]">
+            Activate Arc Node
+          </button>
+        </div>
+      </div>
+    );
+  },
+
+  Matrix_Terminal: () => {
+    const canvasRef = React.useRef<HTMLCanvasElement>(null);
+
+    React.useEffect(() => {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      canvas.width = canvas.parentElement?.clientWidth || 300;
+      canvas.height = 300;
+
+      const columns = Math.floor(canvas.width / 14);
+      const yPositions = Array(columns).fill(0);
+
+      const drawMatrix = () => {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = '#22c55e';
+        ctx.font = '10px monospace';
+
+        for (let i = 0; i < yPositions.length; i++) {
+          const char = Math.random() > 0.5 ? '1' : '0';
+          const x = i * 14;
+          const y = yPositions[i];
+          ctx.fillText(char, x, y);
+
+          if (y > canvas.height && Math.random() > 0.975) {
+            yPositions[i] = 0;
+          } else {
+            yPositions[i] += 10;
+          }
+        }
+      };
+
+      const interval = setInterval(drawMatrix, 40);
+      return () => clearInterval(interval);
+    }, []);
+
+    return (
+      <div className="p-8 bg-black border-2 border-emerald-500/30 rounded-3xl relative overflow-hidden group font-mono text-emerald-400">
+        <canvas ref={canvasRef} className="absolute inset-0 w-full h-full opacity-10 group-hover:opacity-20 transition-opacity" />
+        <div className="relative z-10 space-y-4">
+          <div className="text-[10px] text-emerald-600 flex justify-between">
+            <span>KERNEL://PRICING</span>
+            <span>ONLINE</span>
+          </div>
+          <h3 className="text-xl font-bold text-white tracking-widest uppercase">SYS_PRO</h3>
+          <div className="text-4xl font-black text-emerald-400">$64<span className="text-xs text-emerald-600 font-normal">/month</span></div>
+          <p className="text-zinc-550 text-xs leading-relaxed">Raw digital bandwidth with integrated terminal interfaces.</p>
+          <div className="w-full h-px bg-emerald-500/10" />
+          <ul className="text-xs space-y-2 text-emerald-300/80">
+            <li>+ DIRECT SOCKET TUNNEL</li>
+            <li>+ ROOT SHELL PRIVILEGES</li>
+            <li>+ DIGITAL RAIN LOGS</li>
+          </ul>
+          <button className="w-full py-3 bg-emerald-50 text-black font-black uppercase text-xs tracking-wider hover:bg-emerald-400 active:scale-95 transition-all">
+            MOUNT SYSTEM
+          </button>
+        </div>
+      </div>
+    );
+  },
+
+  Pixel_Card: () => {
+    const canvasRef = React.useRef<HTMLCanvasElement>(null);
+    const containerRef = React.useRef<HTMLDivElement>(null);
+    const pixelsRef = React.useRef<{ x: number; y: number; size: number; alpha: number; speed: number }[]>([]);
+    const animationRef = React.useRef<number | null>(null);
+
+    React.useEffect(() => {
+      const canvas = canvasRef.current;
+      const container = containerRef.current;
+      if (!canvas || !container) return;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      const rect = container.getBoundingClientRect();
+      const w = Math.floor(rect.width);
+      const h = 300;
+      canvas.width = w * 2;
+      canvas.height = h * 2;
+      canvas.style.width = `${w}px`;
+      canvas.style.height = `${h}px`;
+      ctx.scale(2, 2);
+
+      const pxs: { x: number; y: number; size: number; alpha: number; speed: number }[] = [];
+      const gap = 12;
+      for (let x = 0; x < w; x += gap) {
+        for (let y = 0; y < h; y += gap) {
+          if (Math.random() > 0.85) {
+            pxs.push({
+              x,
+              y,
+              size: Math.random() * 3 + 1,
+              alpha: Math.random(),
+              speed: Math.random() * 0.05 + 0.01,
+            });
+          }
+        }
+      }
+      pixelsRef.current = pxs;
+
+      const animate = () => {
+        if (!canvas || !ctx) return;
+        ctx.clearRect(0, 0, w, h);
+
+        pixelsRef.current.forEach((p) => {
+          p.alpha += p.speed;
+          if (p.alpha > 1 || p.alpha < 0) {
+            p.speed = -p.speed;
+          }
+          p.alpha = Math.max(0, Math.min(1, p.alpha));
+          ctx.fillStyle = `rgba(244, 63, 94, ${p.alpha * 0.35})`;
+          ctx.fillRect(p.x, p.y, p.size, p.size);
+        });
+
+        animationRef.current = requestAnimationFrame(animate);
+      };
+
+      animationRef.current = requestAnimationFrame(animate);
+
+      return () => {
+        if (animationRef.current) cancelAnimationFrame(animationRef.current);
+      };
+    }, []);
+
+    return (
+      <div 
+        ref={containerRef}
+        className="p-8 bg-zinc-955 border border-pink-500/20 hover:border-pink-500/50 rounded-[28px] relative overflow-hidden group transition-all"
+      >
+        <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none z-0" />
+        <div className="relative z-10 space-y-4">
+          <span className="text-[9px] font-mono tracking-widest bg-pink-500/10 text-pink-400 border border-pink-500/20 px-2.5 py-1 rounded-full uppercase">RETRO_SHIMMER</span>
+          <h3 className="text-xl font-bold text-white">PIXEL CARD</h3>
+          <div className="text-4xl font-black text-pink-400">$32<span className="text-xs text-zinc-550 font-normal">/month</span></div>
+          <p className="text-zinc-400 text-xs">Retro design integrated with custom particle grids that shimmer on hover.</p>
+          <button className="w-full mt-4 py-3 bg-pink-600 hover:bg-pink-500 text-white rounded-xl font-bold transition-all shadow-[0_0_15px_rgba(236,72,153,0.4)]">
+            Initialize Grid
+          </button>
+        </div>
+      </div>
+    );
+  },
+
+  Star_Border: () => (
+    <div className="relative inline-block w-full overflow-hidden rounded-[24px] p-[1.5px] bg-zinc-950 group">
+      <div
+        className="absolute w-[200%] h-[80%] opacity-50 bottom-[-20px] right-[-100%] rounded-full animate-star-movement-bottom z-0"
+        style={{
+          background: `radial-gradient(circle, #a855f7, transparent 20%)`,
+        }}
+      />
+      <div
+        className="absolute w-[200%] h-[80%] opacity-50 top-[-20px] left-[-100%] rounded-full animate-star-movement-top z-0"
+        style={{
+          background: `radial-gradient(circle, #ec4899, transparent 20%)`,
+        }}
+      />
+      <div className="relative z-10 bg-zinc-950 border border-zinc-900 text-white text-left p-8 rounded-[23px] space-y-4">
+        <div className="flex justify-between items-center">
+          <span className="text-xs text-zinc-500 font-semibold tracking-wider">AURA PLAN</span>
+          <Star className="text-purple-400 fill-purple-400/20" size={16} />
+        </div>
+        <h3 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">Mistical</h3>
+        <div className="text-4xl font-black">$45</div>
+        <p className="text-zinc-400 text-xs">Unlock a glowing aura border around your products.</p>
+        <button className="w-full py-3 bg-white text-black font-black rounded-xl hover:bg-zinc-200 transition-colors">
+          Unlock Aura
+        </button>
+      </div>
+    </div>
+  ),
+
+  "3D_FoldCard": () => {
+    const containerRef = React.useRef<HTMLDivElement>(null);
+    const [style, setStyle] = React.useState<React.CSSProperties>({});
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      const rotateX = -y / 10;
+      const rotateY = x / 10;
+      setStyle({
+        transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`,
+      });
+    };
+
+    const handleMouseLeave = () => {
+      setStyle({
+        transform: `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`,
+        transition: 'transform 0.5s ease',
+      });
+    };
+
+    return (
+      <div 
+        ref={containerRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={style}
+        className="p-8 bg-zinc-900 border border-zinc-800 rounded-3xl text-zinc-150 transition-all duration-100 ease-out shadow-2xl relative overflow-hidden group select-none"
+      >
+        <div className="absolute top-0 right-0 w-32 h-32 bg-violet-600/10 blur-[50px] rounded-full" />
+        <h3 className="text-violet-400 text-xl font-bold mb-2 tracking-tight flex items-center gap-2">
+          <Zap className="text-violet-400" size={16} /> DIMENSION_3D
+        </h3>
+        <div className="text-4xl font-black text-white mb-6">$85<span className="text-sm font-normal text-zinc-500">/mo</span></div>
+        <p className="text-zinc-400 text-xs mb-6">Fully realistic 3D perspective fold effect that follows your pointer.</p>
+        <div className="w-full h-px bg-zinc-800 mb-6" />
+        <button className="w-full py-3 bg-violet-600 hover:bg-violet-500 text-white rounded-xl font-bold transition-all shadow-[0_0_15px_rgba(139,92,246,0.3)]">
+          Fold Dimension
+        </button>
+      </div>
+    );
+  },
 };
