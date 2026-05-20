@@ -20,6 +20,16 @@ export const HeroVariants = {
   CorporateSaaS_InteractiveDots: CorporateSaaSHero.InteractiveDots,
   CorporateSaaS_ProductShowcase: CorporateSaaSHero.ProductShowcase,
   CorporateSaaS_EnterpriseSolid: CorporateSaaSHero.EnterpriseSolid,
+  CorporateSaaS_AIChatFocus: CorporateSaaSHero.AIChatFocus,
+  CorporateSaaS_DataVizDashboard: CorporateSaaSHero.DataVizDashboard,
+  CorporateSaaS_MobileAppFirst: CorporateSaaSHero.MobileAppFirst,
+  CorporateSaaS_CinematicVideo: CorporateSaaSHero.CinematicVideo,
+  CorporateSaaS_HighTrustPartners: CorporateSaaSHero.HighTrustPartners,
+  CorporateSaaS_SplitDemo: CorporateSaaSHero.SplitDemo,
+  CorporateSaaS_DarkCommandCenter: CorporateSaaSHero.DarkCommandCenter,
+  CorporateSaaS_SoftClaymorphism: CorporateSaaSHero.SoftClaymorphism,
+  CorporateSaaS_VerticalFeatureList: CorporateSaaSHero.VerticalFeatureList,
+  CorporateSaaS_SaaSShowcaseFinal: CorporateSaaSHero.SaaSShowcaseFinal,
 
   // D01. Maison Luxury Designs (20 Variantes)
   Maison_Classic: MaisonLuxuryHero.Classic,

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { SmartImage } from '../SmartImage';
-import { ArrowRight, CheckCircle2, Play, Layout, Zap, Shield, BarChart3, Globe, Users, User, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Play, Layout, Zap, Shield, BarChart3, Globe, Users, User, ArrowUpRight, MessageSquare, Send, Sparkles, Smartphone, Apple, PlayCircle, Monitor, MousePointer2, Layers, Lock } from 'lucide-react';
 
 export const CorporateSaaSHero = {
   // Variante 01: Classic SaaS (Modern & Clean)
@@ -551,4 +551,655 @@ export const CorporateSaaSHero = {
       </div>
     </div>
   ),
+
+  // Variante 11: AIChatFocus (Intelligent Chat Interaction)
+  AIChatFocus: () => (
+    <div className="w-full min-h-screen bg-slate-900 flex flex-col items-center justify-center px-6 overflow-hidden">
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="space-y-8">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-500/10 border border-indigo-500/20 rounded-2xl text-indigo-400 text-sm font-bold">
+            <Sparkles size={16} />
+            <span>Next-Gen AI Assistant</span>
+          </div>
+          <h1 className="text-6xl md:text-8xl font-bold text-white leading-none tracking-tight">
+            Talk to your <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">Business Data.</span>
+          </h1>
+          <p className="text-slate-400 text-lg md:text-xl max-w-lg leading-relaxed">
+            Stop digging through spreadsheets. Just ask our AI assistant any question and get instant, accurate insights.
+          </p>
+          <div className="flex gap-4">
+            <button className="px-8 py-4 bg-indigo-600 text-white rounded-2xl font-black hover:bg-indigo-700 transition-all">
+              Try AI Assistant
+            </button>
+            <button className="px-8 py-4 bg-white/5 text-white border border-white/10 rounded-2xl font-bold hover:bg-white/10 transition-all">
+              Watch Demo
+            </button>
+          </div>
+        </div>
+
+        <div className="relative">
+          <div className="absolute -inset-4 bg-indigo-500/20 blur-[100px] rounded-full" />
+          <div className="relative bg-slate-950 rounded-[2.5rem] border border-white/10 shadow-2xl overflow-hidden flex flex-col h-[500px]">
+            <div className="p-6 border-b border-white/10 flex items-center justify-between bg-white/5">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center">
+                  <Sparkles size={20} className="text-white" />
+                </div>
+                <div>
+                  <div className="text-white font-bold text-sm">AI Business Analyst</div>
+                  <div className="text-green-500 text-[10px] font-black uppercase tracking-widest">Active Now</div>
+                </div>
+              </div>
+            </div>
+            <div className="flex-1 p-6 space-y-6 overflow-y-auto">
+              <div className="flex justify-end">
+                <div className="bg-indigo-600 text-white p-4 rounded-2xl rounded-tr-none max-w-[80%] text-sm font-medium">
+                  How was our revenue growth in Q3 compared to last year?
+                </div>
+              </div>
+              <div className="flex justify-start">
+                <div className="bg-white/5 border border-white/10 text-slate-300 p-4 rounded-2xl rounded-tl-none max-w-[80%] text-sm leading-relaxed">
+                  Your revenue in Q3 was <span className="text-white font-bold">$1.2M</span>, which is a <span className="text-green-400 font-bold">24% increase</span> compared to Q3 last year. Most growth came from the Enterprise sector.
+                </div>
+              </div>
+            </div>
+            <div className="p-4 bg-white/5 border-t border-white/10 flex gap-4">
+              <div className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-slate-500 text-sm">
+                Ask a question...
+              </div>
+              <button className="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center text-white">
+                <Send size={20} />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  ),
+
+  // Variante 12: DataVizDashboard (Complex Visualization Focus)
+  DataVizDashboard: () => (
+    <div className="w-full min-h-screen bg-slate-50 flex flex-col items-center justify-center pt-20 px-6 overflow-hidden">
+      <div className="max-w-4xl mx-auto text-center space-y-8 mb-16 relative z-10">
+        <h1 className="text-5xl md:text-8xl font-black text-slate-900 tracking-tighter leading-none">
+          Insights that <br/> drive <span className="text-blue-600 italic">action.</span>
+        </h1>
+        <p className="text-slate-500 text-xl max-w-2xl mx-auto leading-relaxed">
+          The most powerful data visualization platform for modern teams. Turn raw data into beautiful, actionable dashboards in minutes.
+        </p>
+        <div className="flex justify-center gap-6">
+          <button className="px-10 py-4 bg-slate-900 text-white rounded-xl font-bold text-lg hover:scale-105 transition-all">
+            Get started
+          </button>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+        <div className="bg-white p-8 rounded-[2rem] shadow-xl border border-slate-100 space-y-8">
+          <div className="flex justify-between items-center">
+            <div className="text-slate-400 font-bold text-xs uppercase tracking-widest">Active Users</div>
+            <BarChart3 className="text-blue-600" size={20} />
+          </div>
+          <div className="text-4xl font-black text-slate-900">12,450</div>
+          <div className="h-32 flex items-end gap-1">
+            {[30, 50, 40, 80, 60, 90, 70, 85, 45, 60].map((h, i) => (
+              <div key={i} className="flex-1 bg-blue-100 rounded-t-sm" style={{ height: `${h}%` }} />
+            ))}
+          </div>
+        </div>
+
+        <div className="md:col-span-2 bg-slate-900 p-8 rounded-[2rem] shadow-2xl border border-white/5 space-y-8 relative overflow-hidden">
+          <div className="absolute top-0 right-0 p-8 opacity-10">
+            <Globe size={200} className="text-white" />
+          </div>
+          <div className="relative z-10 space-y-8">
+            <div className="flex justify-between items-center">
+              <div className="text-slate-500 font-bold text-xs uppercase tracking-widest">Global Performance</div>
+              <div className="flex gap-2">
+                <div className="w-2 h-2 rounded-full bg-blue-500" />
+                <div className="w-2 h-2 rounded-full bg-slate-700" />
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-8">
+              <div>
+                <div className="text-5xl font-black text-white">99.9%</div>
+                <div className="text-slate-500 text-xs font-bold uppercase tracking-widest mt-2">Server Uptime</div>
+              </div>
+              <div>
+                <div className="text-5xl font-black text-white">45ms</div>
+                <div className="text-slate-500 text-xs font-bold uppercase tracking-widest mt-2">Avg. Latency</div>
+              </div>
+            </div>
+            <div className="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+              <div className="w-3/4 h-full bg-blue-600" />
+            </div>
+          </div>
+        </div>
+
+        <div className="md:col-span-3 bg-white p-12 rounded-[2rem] shadow-xl border border-slate-100 flex flex-col md:flex-row items-center gap-12">
+          <div className="flex-1 space-y-6">
+            <h3 className="text-2xl font-black text-slate-900 leading-tight">Predictive Analytics Engine</h3>
+            <p className="text-slate-500">Our machine learning model analyzes historical patterns to predict future trends with 95% accuracy.</p>
+            <div className="flex items-center gap-4 text-blue-600 font-bold text-sm">
+              <span>Learn about our AI</span>
+              <ArrowRight size={16} />
+            </div>
+          </div>
+          <div className="flex-1 w-full grid grid-cols-2 gap-4">
+            {[1, 2, 3, 4].map((i) => (
+              <div key={i} className="h-24 bg-slate-50 rounded-2xl border border-slate-100" />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  ),
+
+  // Variante 13: MobileAppFirst (Mobile App Download Focus)
+  MobileAppFirst: () => (
+    <div className="w-full min-h-screen bg-indigo-600 flex flex-col items-center justify-center pt-20 px-6 overflow-hidden">
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+        <div className="space-y-10 text-center lg:text-left">
+          <h1 className="text-6xl md:text-8xl font-black text-white leading-none tracking-tight">
+            Your finances <br/> in your <span className="text-indigo-300 italic">pocket.</span>
+          </h1>
+          <p className="text-indigo-100 text-xl max-w-xl mx-auto lg:mx-0 leading-relaxed">
+            The modern way to save, spend, and invest. Join 2 million people who manage their money better with our mobile app.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+            <button className="w-full sm:w-auto px-8 py-4 bg-black text-white rounded-2xl font-black flex items-center justify-center gap-3 hover:scale-105 transition-all">
+              <Apple size={24} />
+              <div className="text-left">
+                <div className="text-[10px] uppercase font-bold opacity-60 leading-none">Download on the</div>
+                <div className="text-lg leading-none mt-1">App Store</div>
+              </div>
+            </button>
+            <button className="w-full sm:w-auto px-8 py-4 bg-white text-indigo-600 rounded-2xl font-black flex items-center justify-center gap-3 hover:scale-105 transition-all">
+              <Smartphone size={24} />
+              <div className="text-left">
+                <div className="text-[10px] uppercase font-bold opacity-60 leading-none">Get it on</div>
+                <div className="text-lg leading-none mt-1">Google Play</div>
+              </div>
+            </button>
+          </div>
+          <div className="flex items-center justify-center lg:justify-start gap-8 pt-4">
+            <div>
+              <div className="text-2xl font-black text-white">4.9/5</div>
+              <div className="text-[10px] text-indigo-200 font-bold uppercase tracking-widest mt-1">App Store Rating</div>
+            </div>
+            <div className="w-px h-10 bg-indigo-400/30" />
+            <div>
+              <div className="text-2xl font-black text-white">2M+</div>
+              <div className="text-[10px] text-indigo-200 font-bold uppercase tracking-widest mt-1">Active Users</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="relative flex justify-center">
+          {/* Decorative Circles */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] aspect-square border border-white/10 rounded-full" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] aspect-square border border-white/5 rounded-full" />
+          
+          <div className="relative w-72 h-[580px] bg-slate-900 rounded-[3rem] border-[8px] border-slate-800 shadow-2xl overflow-hidden">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-slate-800 rounded-b-2xl z-20" />
+            <div className="absolute inset-0 bg-white">
+              <div className="p-8 pt-12 space-y-8">
+                <div className="flex justify-between items-center">
+                  <div className="w-10 h-10 bg-indigo-600 rounded-full" />
+                  <div className="w-8 h-8 bg-slate-100 rounded-lg" />
+                </div>
+                <div className="space-y-2">
+                  <div className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Total Balance</div>
+                  <div className="text-3xl font-black text-slate-900">$12,450.00</div>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="p-4 bg-slate-50 rounded-2xl space-y-2">
+                    <div className="w-6 h-6 bg-green-100 rounded-lg flex items-center justify-center text-green-600">
+                      <ArrowUpRight size={14} />
+                    </div>
+                    <div className="text-[8px] font-bold text-slate-400 uppercase">Income</div>
+                    <div className="text-sm font-bold text-slate-900">$2,4k</div>
+                  </div>
+                  <div className="p-4 bg-slate-50 rounded-2xl space-y-2">
+                    <div className="w-6 h-6 bg-red-100 rounded-lg flex items-center justify-center text-red-600 rotate-90">
+                      <ArrowUpRight size={14} />
+                    </div>
+                    <div className="text-[8px] font-bold text-slate-400 uppercase">Outcome</div>
+                    <div className="text-sm font-bold text-slate-900">$1,2k</div>
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  <div className="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Recent Activity</div>
+                  {[1, 2, 3].map((i) => (
+                    <div key={i} className="flex items-center gap-4">
+                      <div className="w-10 h-10 bg-slate-100 rounded-xl" />
+                      <div className="flex-1 space-y-1">
+                        <div className="w-full h-2 bg-slate-100 rounded-full" />
+                        <div className="w-2/3 h-1 bg-slate-50 rounded-full" />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  ),
+
+  // Variante 14: CinematicVideo (Cinematic Style with Simulated Video Background)
+  CinematicVideo: () => (
+    <div className="w-full min-h-screen relative flex flex-col items-center justify-center text-center px-6 overflow-hidden bg-black">
+      {/* Background Simulation */}
+      <div className="absolute inset-0 opacity-40">
+        <SmartImage className="w-full h-full object-cover scale-110 blur-sm" />
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/60" />
+      
+      <div className="relative z-10 max-w-5xl mx-auto space-y-10">
+        <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-bold uppercase tracking-widest">
+          <PlayCircle size={14} className="text-red-500" />
+          Watch the film: Behind the design
+        </div>
+        
+        <h1 className="text-6xl md:text-9xl font-black text-white leading-none tracking-tighter">
+          Crafting the <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-100 to-zinc-500 italic">Future.</span>
+        </h1>
+        
+        <p className="text-zinc-400 text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed">
+          We combine cutting-edge technology with timeless design to build experiences that matter.
+        </p>
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-6">
+          <button className="w-full sm:w-auto px-10 py-5 bg-white text-black rounded-full font-black text-lg hover:bg-zinc-200 transition-all flex items-center justify-center gap-3">
+            Start a project
+            <ArrowRight size={20} />
+          </button>
+          <button className="w-full sm:w-auto px-10 py-5 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full font-bold text-lg hover:bg-white/20 transition-all flex items-center justify-center gap-3">
+            <Play size={20} className="fill-white" />
+            Watch Showreel
+          </button>
+        </div>
+      </div>
+
+      <div className="absolute bottom-12 left-0 right-0 px-12 flex justify-between items-end">
+        <div className="text-left space-y-2">
+          <div className="text-white font-black text-2xl">2024</div>
+          <div className="text-zinc-500 text-[10px] font-bold uppercase tracking-[0.3em]">Annual Collection</div>
+        </div>
+        <div className="flex gap-4">
+          <div className="w-1 h-1 bg-white rounded-full" />
+          <div className="w-1 h-1 bg-white/20 rounded-full" />
+          <div className="w-1 h-1 bg-white/20 rounded-full" />
+        </div>
+        <div className="text-right space-y-2">
+          <div className="text-white font-black text-2xl">London / NYC</div>
+          <div className="text-zinc-500 text-[10px] font-bold uppercase tracking-[0.3em]">Global Studio</div>
+        </div>
+      </div>
+    </div>
+  ),
+
+  // Variante 15: HighTrustPartners (High Trust & Security Focus)
+  HighTrustPartners: () => (
+    <div className="w-full min-h-screen bg-white flex flex-col items-center justify-center py-32 px-6">
+      <div className="max-w-7xl mx-auto w-full flex flex-col items-center text-center space-y-12 relative z-10">
+        <div className="flex items-center gap-3 text-blue-600 font-black uppercase tracking-[0.3em] text-xs">
+          <Shield size={16} />
+          <span>The Gold Standard in Data Security</span>
+        </div>
+        
+        <h1 className="text-5xl md:text-7xl font-black text-slate-900 leading-[0.9] tracking-tight max-w-4xl">
+          Trusted by the world's <br/> most <span className="text-blue-600 italic">ambitious</span> companies.
+        </h1>
+        
+        <p className="text-slate-500 text-lg md:text-xl max-w-2xl leading-relaxed">
+          Over 50,000 teams use our platform to power their mission-critical operations. From startups to Fortune 500 enterprises.
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-4 pt-4">
+          <button className="px-10 py-4 bg-blue-600 text-white rounded-xl font-bold text-lg hover:bg-blue-700 transition-all shadow-xl shadow-blue-200">
+            Join 50,000+ Teams
+          </button>
+          <button className="px-10 py-4 bg-white text-slate-700 border border-slate-200 rounded-xl font-bold text-lg hover:bg-slate-50 transition-all">
+            Talk to Enterprise Sales
+          </button>
+        </div>
+
+        {/* Massive Logo Grid */}
+        <div className="w-full pt-20">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12 items-center justify-center opacity-40 grayscale">
+            {['MICROSOFT', 'GOOGLE', 'AMAZON', 'NETFLIX', 'SPOTIFY', 'STRIPE'].map((logo) => (
+              <div key={logo} className="text-2xl font-black text-slate-900 tracking-tighter">
+                {logo}
+              </div>
+            ))}
+            {['UBER', 'AIRBNB', 'SLACK', 'ADOBE', 'SALESFORCE', 'DISNEY'].map((logo) => (
+              <div key={logo} className="text-2xl font-black text-slate-900 tracking-tighter hidden lg:block">
+                {logo}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl mt-20 pt-20 border-t border-slate-100">
+          <div className="text-left space-y-4">
+            <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600">
+              <Lock size={24} />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900">End-to-end Encryption</h3>
+            <p className="text-slate-500 text-sm">Your data is yours alone. We use the highest level of encryption available.</p>
+          </div>
+          <div className="text-left space-y-4">
+            <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600">
+              <CheckCircle2 size={24} />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900">GDPR & SOC2 Ready</h3>
+            <p className="text-slate-500 text-sm">We maintain the most rigorous compliance standards in the industry.</p>
+          </div>
+          <div className="text-left space-y-4">
+            <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600">
+              <Users size={24} />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900">24/7 Priority Support</h3>
+            <p className="text-slate-500 text-sm">Our team of experts is always available to help you scale.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  ),
+
+  // Variante 16: SplitDemo (Content Left, Interactive Demo Right)
+  SplitDemo: () => (
+    <div className="w-full min-h-screen bg-white flex flex-col lg:flex-row items-stretch">
+      <div className="flex-1 flex flex-col justify-center px-8 md:px-20 py-32 space-y-10 relative overflow-hidden">
+        {/* Decorative Background */}
+        <div className="absolute top-0 left-0 w-64 h-64 bg-blue-50 rounded-full -translate-x-1/2 -translate-y-1/2 blur-[80px]" />
+        
+        <div className="relative z-10 space-y-8">
+          <div className="inline-block px-4 py-1.5 bg-blue-50 border border-blue-100 text-blue-600 rounded-full text-xs font-bold uppercase tracking-wider">
+            Interactive Showcase
+          </div>
+          <h1 className="text-6xl md:text-8xl font-black text-slate-950 leading-[0.9] tracking-tight">
+            Build your <br/> <span className="text-blue-600">Vision.</span>
+          </h1>
+          <p className="text-slate-600 text-lg md:text-xl max-w-lg leading-relaxed">
+            The most intuitive drag-and-drop builder ever made. Experience the power of professional design without writing a single line of code.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            <button className="w-full sm:w-auto px-10 py-5 bg-slate-950 text-white rounded-2xl font-black text-lg hover:bg-blue-600 transition-all shadow-2xl">
+              Start Building
+            </button>
+            <button className="w-full sm:w-auto px-10 py-5 bg-white text-slate-950 border border-slate-200 rounded-2xl font-bold text-lg hover:bg-slate-50 transition-all">
+              See Components
+            </button>
+          </div>
+          <div className="flex items-center gap-6 pt-4">
+            <div className="flex -space-x-3">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="w-12 h-12 rounded-full border-4 border-white bg-slate-100 flex items-center justify-center overflow-hidden">
+                  <User size={24} className="text-slate-400" />
+                </div>
+              ))}
+            </div>
+            <div className="text-sm font-bold text-slate-400">
+              <span className="text-slate-900">10k+</span> creators already joined
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex-1 bg-slate-50 flex items-center justify-center p-8 md:p-20 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(#3b82f6 2px, transparent 2px)', backgroundSize: '40px 40px' }} />
+        
+        <div className="relative w-full max-w-2xl bg-white rounded-[2.5rem] shadow-[0_64px_128px_-32px_rgba(0,0,0,0.1)] border border-slate-200 p-10 space-y-10 group">
+          <div className="flex justify-between items-center">
+            <div className="flex gap-2">
+              <div className="w-3 h-3 rounded-full bg-slate-100" />
+              <div className="w-3 h-3 rounded-full bg-slate-100" />
+              <div className="w-3 h-3 rounded-full bg-slate-100" />
+            </div>
+            <div className="px-3 py-1 bg-blue-50 rounded-lg text-blue-600 text-[10px] font-black uppercase tracking-widest">Canvas v4.0</div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-6">
+            <div className="p-8 bg-slate-50 rounded-3xl border border-dashed border-slate-200 flex flex-col items-center justify-center text-center space-y-4 group-hover:border-blue-400 group-hover:bg-blue-50/50 transition-all duration-500">
+              <div className="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center text-slate-400 group-hover:text-blue-500 group-hover:scale-110 transition-all">
+                <Layout size={32} />
+              </div>
+              <div className="text-xs font-bold text-slate-400">Drag Layout</div>
+            </div>
+            <div className="p-8 bg-slate-50 rounded-3xl border border-dashed border-slate-200 flex flex-col items-center justify-center text-center space-y-4 group-hover:border-indigo-400 group-hover:bg-indigo-50/50 transition-all duration-500 delay-100">
+              <div className="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center text-slate-400 group-hover:text-indigo-500 group-hover:scale-110 transition-all">
+                <Layers size={32} />
+              </div>
+              <div className="text-xs font-bold text-slate-400">Add Layers</div>
+            </div>
+          </div>
+
+          <div className="relative h-48 bg-slate-900 rounded-[2rem] overflow-hidden">
+            <SmartImage className="w-full h-full object-cover opacity-40 group-hover:scale-110 transition-transform duration-1000" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="px-6 py-3 bg-white text-slate-950 rounded-xl font-black text-sm shadow-2xl flex items-center gap-2 group-hover:translate-y-[-10px] transition-transform">
+                <MousePointer2 size={16} className="text-blue-600" />
+                Drop here to build
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  ),
+
+  // Variante 17: DarkCommandCenter (Dark Control Center Style)
+  DarkCommandCenter: () => (
+    <div className="w-full min-h-screen bg-black flex flex-col items-center justify-center px-6 py-20 overflow-hidden relative">
+      {/* HUD Elements Background */}
+      <div className="absolute inset-0 z-0 overflow-hidden opacity-20">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] border border-blue-500/20 rounded-full" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-blue-500/10 rounded-full" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-blue-500/5 rounded-full" />
+      </div>
+
+      <div className="max-w-7xl mx-auto w-full space-y-16 relative z-10 text-center">
+        <div className="space-y-6">
+          <div className="inline-flex items-center gap-3 px-4 py-1 rounded-full bg-blue-600/10 border border-blue-600/20 text-blue-500 text-xs font-black uppercase tracking-[0.3em]">
+            <Monitor size={14} />
+            Command Center v2.0
+          </div>
+          <h1 className="text-6xl md:text-9xl font-black text-white leading-[0.85] tracking-tighter">
+            Total control. <br/> <span className="text-blue-600 italic underline decoration-blue-600/30 decoration-8 underline-offset-8">No compromises.</span>
+          </h1>
+          <p className="text-zinc-500 text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed">
+            The most advanced operations platform for modern engineering teams. Monitor, deploy, and scale with real-time HUD analytics.
+          </p>
+        </div>
+
+        <div className="flex flex-wrap items-center justify-center gap-6">
+          <button className="px-12 py-6 bg-blue-600 text-white rounded-full font-black text-xl hover:bg-blue-700 transition-all shadow-[0_0_50px_-10px_rgba(37,99,235,0.5)]">
+            Deploy Mainframe
+          </button>
+          <button className="px-12 py-6 bg-zinc-900 text-white border border-white/10 rounded-full font-bold text-xl hover:bg-zinc-800 transition-all">
+            Read API Docs
+          </button>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto pt-10">
+          {[
+            { label: 'Uptime', val: '99.99%', color: 'text-green-500' },
+            { label: 'Nodes', val: '1,452', color: 'text-blue-500' },
+            { label: 'Latency', val: '12ms', color: 'text-yellow-500' },
+            { label: 'Throughput', val: '450k/s', color: 'text-purple-500' }
+          ].map((stat, i) => (
+            <div key={i} className="p-6 bg-zinc-900/50 backdrop-blur-xl border border-white/5 rounded-3xl space-y-2">
+              <div className="text-[10px] text-zinc-600 font-bold uppercase tracking-widest">{stat.label}</div>
+              <div className={`text-2xl font-black ${stat.color}`}>{stat.val}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  ),
+
+  // Variante 18: SoftClaymorphism (Modern Soft Shadows Style)
+  SoftClaymorphism: () => (
+    <div className="w-full min-h-screen bg-indigo-50 flex items-center justify-center px-6 py-20 overflow-hidden">
+      <div className="max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center gap-20">
+        <div className="flex-1 space-y-10 text-center lg:text-left">
+          <h1 className="text-6xl md:text-8xl font-black text-indigo-950 leading-[0.9] tracking-tight">
+            Soft, simple <br/> and <span className="text-indigo-600">Powerful.</span>
+          </h1>
+          <p className="text-indigo-950/60 text-xl md:text-2xl max-w-xl leading-relaxed mx-auto lg:mx-0 font-medium">
+            We've reimagined the way you interact with software. A tactile, friendly experience that makes work feel like play.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6">
+            <button className="w-full sm:w-auto px-12 py-5 bg-indigo-600 text-white rounded-[2rem] font-black text-xl shadow-[0_20px_40px_-10px_rgba(79,70,229,0.3)] hover:scale-105 transition-all">
+              Try for free
+            </button>
+            <button className="w-full sm:w-auto px-12 py-5 bg-white text-indigo-950 rounded-[2rem] font-bold text-xl shadow-[0_10px_20px_-5px_rgba(0,0,0,0.05)] hover:scale-105 transition-all">
+              Learn more
+            </button>
+          </div>
+        </div>
+
+        <div className="flex-1 w-full max-w-xl">
+          <div className="relative aspect-square bg-white rounded-[4rem] shadow-[inset_0_-20px_40px_-10px_rgba(0,0,0,0.05),0_40px_80px_-20px_rgba(0,0,0,0.1)] p-12 flex flex-col justify-between">
+            <div className="flex justify-between items-center">
+              <div className="w-16 h-16 bg-indigo-50 rounded-3xl flex items-center justify-center text-indigo-600 shadow-[0_10px_20px_-5px_rgba(79,70,229,0.1)]">
+                <Layout size={32} />
+              </div>
+              <div className="flex -space-x-4">
+                {[1, 2, 3].map((i) => (
+                  <div key={i} className="w-12 h-12 rounded-full bg-indigo-100 border-4 border-white shadow-md" />
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              <div className="w-full h-8 bg-indigo-50 rounded-2xl shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]" />
+              <div className="w-2/3 h-8 bg-indigo-50 rounded-2xl shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]" />
+              <div className="w-3/4 h-24 bg-indigo-600 rounded-[2.5rem] shadow-[0_15px_30px_-10px_rgba(79,70,229,0.4)] flex items-center justify-center">
+                <div className="w-12 h-2 bg-white/30 rounded-full" />
+              </div>
+            </div>
+
+            <div className="flex gap-4">
+              <div className="flex-1 h-20 bg-indigo-50 rounded-3xl shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]" />
+              <div className="flex-1 h-20 bg-indigo-50 rounded-3xl shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  ),
+
+  // Variante 19: VerticalFeatureList (Benefit List Focus)
+  VerticalFeatureList: () => (
+    <div className="w-full min-h-screen bg-white flex flex-col items-center justify-center py-32 px-6">
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-20">
+        <div className="space-y-12">
+          <h1 className="text-6xl md:text-8xl font-black text-slate-950 leading-[0.9] tracking-tight">
+            The platform <br/> that <span className="text-blue-600">Grows</span> <br/> with you.
+          </h1>
+          <p className="text-slate-500 text-xl max-w-lg leading-relaxed">
+            From your first customer to your first million. Our infrastructure scales automatically so you can focus on building.
+          </p>
+          <div className="space-y-8">
+            {[
+              { icon: <Zap />, title: 'Instant Deployment', desc: 'Go from code to production in seconds.' },
+              { icon: <Shield />, title: 'Enterprise Security', desc: 'Bank-grade protection for your users.' },
+              { icon: <BarChart3 />, title: 'Real-time Analytics', desc: 'Understand your growth with precision.' }
+            ].map((f, i) => (
+              <div key={i} className="flex gap-6 group">
+                <div className="w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-400 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-sm group-hover:shadow-blue-200">
+                  {f.icon}
+                </div>
+                <div className="space-y-1">
+                  <h3 className="text-xl font-bold text-slate-900">{f.title}</h3>
+                  <p className="text-slate-500 text-sm">{f.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="relative">
+          <div className="sticky top-32 space-y-8">
+            <div className="relative aspect-[4/5] bg-slate-900 rounded-[3rem] overflow-hidden shadow-2xl">
+              <SmartImage className="w-full h-full object-cover opacity-60" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
+              <div className="absolute bottom-12 left-12 right-12 space-y-4">
+                <div className="text-white font-black text-4xl leading-tight">Trusted by the next generation of founders.</div>
+                <button className="px-8 py-4 bg-white text-slate-950 rounded-xl font-black text-sm flex items-center gap-2">
+                  Read Case Study
+                  <ArrowRight size={16} />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  ),
+
+  // Variante 20: SaaSShowcaseFinal (Ultimate Mix)
+  SaaSShowcaseFinal: () => (
+    <div className="w-full min-h-screen bg-slate-50 flex flex-col items-center pt-32 pb-24 px-6 overflow-hidden relative">
+      {/* Decorative Gradients */}
+      <div className="absolute top-0 left-0 w-full h-[800px] bg-gradient-to-b from-blue-100 to-transparent opacity-50" />
+      
+      <div className="max-w-5xl mx-auto w-full text-center space-y-10 relative z-10 mb-20">
+        <div className="inline-flex items-center gap-3 px-4 py-2 bg-white rounded-2xl shadow-sm border border-slate-100 text-slate-900 text-sm font-bold">
+          <span className="w-2 h-2 rounded-full bg-blue-600 animate-ping" />
+          v4.0 is now live — See what's new
+        </div>
+        <h1 className="text-7xl md:text-[10rem] font-black text-slate-950 leading-[0.8] tracking-tighter">
+          THE ULTIMATE <br/> <span className="text-blue-600 italic">SHOWCASE.</span>
+        </h1>
+        <p className="text-slate-500 text-xl md:text-3xl max-w-3xl mx-auto leading-relaxed font-medium">
+          A masterclass in modern SaaS design. 20 variations of perfection, built for the next era of the web.
+        </p>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-6">
+          <button className="w-full sm:w-auto px-12 py-6 bg-slate-950 text-white rounded-3xl font-black text-xl hover:bg-blue-600 transition-all shadow-2xl">
+            Get Started Now
+          </button>
+          <button className="w-full sm:w-auto px-12 py-6 bg-white text-slate-950 border-2 border-slate-200 rounded-3xl font-black text-xl hover:border-blue-600 transition-all">
+            Talk to Sales
+          </button>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
+        {[
+          { icon: <Zap size={32} />, title: 'Lightning Fast', desc: 'Built on the latest tech stack for zero-latency performance.', color: 'bg-blue-600' },
+          { icon: <Shield size={32} />, title: 'Secure by Default', desc: 'Enterprise-grade security standards for every user.', color: 'bg-indigo-600' },
+          { icon: <Sparkles size={32} />, title: 'AI Optimized', desc: 'Integrated intelligence to automate your entire workflow.', color: 'bg-purple-600' }
+        ].map((item, i) => (
+          <div key={i} className="bg-white p-10 rounded-[3rem] shadow-xl border border-slate-100 space-y-6 hover:translate-y-[-10px] transition-all duration-500 group">
+            <div className={`w-20 h-20 ${item.color} rounded-[2rem] flex items-center justify-center text-white shadow-2xl group-hover:scale-110 transition-transform`}>
+              {item.icon}
+            </div>
+            <h3 className="text-3xl font-black text-slate-900">{item.title}</h3>
+            <p className="text-slate-500 text-lg leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Final Bottom Call to Action */}
+      <div className="mt-32 w-full max-w-7xl mx-auto bg-slate-900 rounded-[4rem] p-12 md:p-24 relative overflow-hidden text-center space-y-10">
+        <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+        <h2 className="text-5xl md:text-7xl font-black text-white leading-tight relative z-10">Ready to transform <br/> your business?</h2>
+        <button className="relative z-10 px-12 py-6 bg-blue-600 text-white rounded-full font-black text-2xl hover:bg-blue-500 hover:scale-105 transition-all shadow-2xl">
+          Start Your Free Trial
+        </button>
+        <div className="pt-10 flex flex-wrap justify-center gap-10 grayscale opacity-40 relative z-10">
+          <div className="text-xl font-black text-white">FORBES</div>
+          <div className="text-xl font-black text-white">TECHCRUNCH</div>
+          <div className="text-xl font-black text-white">WIRED</div>
+        </div>
+      </div>
+    </div>
+  ),
+};
 };

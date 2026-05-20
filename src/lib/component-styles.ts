@@ -20,7 +20,10 @@ export const HERO_STYLES = {
     'CorporateSaaS_Classic', 'CorporateSaaS_ModernGrid', 'CorporateSaaS_BentoHighlight',
     'CorporateSaaS_Glassmorphism', 'CorporateSaaS_Minimalist', 'CorporateSaaS_GradientFlow',
     'CorporateSaaS_TechDashboard', 'CorporateSaaS_InteractiveDots', 'CorporateSaaS_ProductShowcase',
-    'CorporateSaaS_EnterpriseSolid'
+    'CorporateSaaS_EnterpriseSolid', 'CorporateSaaS_AIChatFocus', 'CorporateSaaS_DataVizDashboard',
+    'CorporateSaaS_MobileAppFirst', 'CorporateSaaS_CinematicVideo', 'CorporateSaaS_HighTrustPartners',
+    'CorporateSaaS_SplitDemo', 'CorporateSaaS_DarkCommandCenter', 'CorporateSaaS_SoftClaymorphism',
+    'CorporateSaaS_VerticalFeatureList', 'CorporateSaaS_SaaSShowcaseFinal'
   ],
   Cyberpunk: ['Cyberpunk', 'CyberTerminal', 'CyberHUD', 'CyberLogin', 'NeonCity', 'Matrix'],
   Glassmorphism: ['GlassDeep', 'GlassLight', 'GlassStack', 'GlassBentoV2', 'GlassTilt'],
