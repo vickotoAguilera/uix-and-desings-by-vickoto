@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { Menu, X, Search, ShoppingBag, User, Bell, Github as GitHub, Twitter, Layers, Zap, Cpu, Shield, Globe, ArrowRight, Terminal } from 'lucide-react';
+import { Menu, X, Search, ShoppingBag, User, Bell, Github as GitHub, Twitter, Layers, Zap, Cpu, Shield, Globe, ArrowRight, Terminal, Home, Folder, Settings, Sparkles } from 'lucide-react';
+
 
 export const NavbarVariants = {
   // 1. Cyberpunk Neon
@@ -1567,6 +1568,515 @@ export const NavbarVariants = {
             {active ? '×' : '⊙'}
           </button>
         </div>
+      </div>
+    );
+  },
+
+  // 71. Creative Neumorphic Morph (Creative)
+  Creative_NeumorphicMorph: () => {
+    const [active, setActive] = React.useState('home');
+    return (
+      <div className="w-full bg-[#e0e0e0] p-6 flex justify-center border-b border-zinc-300">
+        <nav className="bg-[#e0e0e0] rounded-3xl p-4 shadow-[12px_12px_24px_#bebebe,-12px_-12px_24px_#ffffff] flex items-center gap-6 px-8">
+          <div className="text-zinc-700 font-extrabold text-lg tracking-wider mr-4">NEUMORPH</div>
+          {['home', 'gallery', 'blog', 'contact'].map((tab) => {
+            const isActive = active === tab;
+            return (
+              <button
+                key={tab}
+                onClick={() => setActive(tab)}
+                className={cn(
+                  "px-5 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider transition-all duration-300 text-zinc-600",
+                  isActive 
+                    ? "bg-[#e0e0e0] shadow-[inset_6px_6px_12px_#bebebe,inset_-6px_-6px_12px_#ffffff] text-blue-600" 
+                    : "bg-[#e0e0e0] shadow-[6px_6px_12px_#bebebe,-6px_-6px_12px_#ffffff] hover:shadow-[inset_3px_3px_6px_#bebebe,inset_-3px_-3px_6px_#ffffff] hover:text-zinc-900"
+                )}
+              >
+                {tab}
+              </button>
+            );
+          })}
+        </nav>
+      </div>
+    );
+  },
+
+  // 72. Creative Staggered Menu (Creative)
+  Creative_StaggeredMenu: () => {
+    const [isOpen, setIsOpen] = React.useState(false);
+    return (
+      <div className="w-full bg-zinc-950 p-6 flex flex-col items-center justify-center border-b border-zinc-900 min-h-[160px]">
+        <div className="w-full max-w-3xl flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <Sparkles className="text-purple-400 w-5 h-5" />
+            <span className="text-white font-extrabold text-sm tracking-widest uppercase">STAGGER_OS</span>
+          </div>
+          <button 
+            onClick={() => setIsOpen(!isOpen)}
+            className="w-10 h-10 bg-zinc-900 border border-zinc-800 hover:border-purple-500 rounded-xl flex items-center justify-center text-white transition-colors"
+          >
+            {isOpen ? <X size={18} /> : <Menu size={18} />}
+          </button>
+        </div>
+        
+        {isOpen && (
+          <div className="w-full max-w-3xl mt-4 grid grid-cols-4 gap-3">
+            {[
+              { label: 'Cloud Space', delay: 'delay-[75ms]', color: 'hover:border-blue-500/50' },
+              { label: 'Neural Mesh', delay: 'delay-[150ms]', color: 'hover:border-purple-500/50' },
+              { label: 'Sync Console', delay: 'delay-[225ms]', color: 'hover:border-pink-500/50' },
+              { label: 'System Lock', delay: 'delay-[300ms]', color: 'hover:border-emerald-500/50' }
+            ].map((item, idx) => (
+              <a
+                key={idx}
+                href="#"
+                className={cn(
+                  "bg-zinc-900 border border-zinc-800 text-zinc-300 rounded-2xl p-4 text-center text-xs font-bold transition-all duration-300 transform translate-y-0 opacity-100 hover:-translate-y-1 hover:text-white shadow-lg cursor-pointer",
+                  "animate-[stagger-fade-in_0.3s_ease-out_forwards]",
+                  item.delay,
+                  item.color
+                )}
+              >
+                <style>{`
+                  @keyframes stagger-fade-in {
+                    from { opacity: 0; transform: translateY(10px); }
+                    to { opacity: 1; transform: translateY(0); }
+                  }
+                `}</style>
+                {item.label}
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  },
+
+  // 73. Motion Pill Bubble (Motion)
+  Motion_PillBubble: () => {
+    const tabs = ['Platform', 'Analytics', 'Automations', 'Security', 'Settings'];
+    const [hoveredIdx, setHoveredIdx] = React.useState<number | null>(null);
+    const [activeIdx, setActiveIdx] = React.useState(0);
+    return (
+      <div className="w-full bg-zinc-950 p-6 flex justify-center border-b border-zinc-900">
+        <nav className="relative bg-zinc-900 border border-zinc-800 rounded-full p-1.5 flex items-center">
+          <div 
+            className="absolute h-[calc(100%-12px)] top-1.5 rounded-full bg-white/10 transition-all duration-300 ease-[cubic-bezier(0.25,1,0.5,1)]"
+            style={{
+              width: `${100 / tabs.length}%`,
+              left: `${((hoveredIdx !== null ? hoveredIdx : activeIdx) * 100) / tabs.length}%`,
+              transform: hoveredIdx !== null ? 'scale(1.05)' : 'scale(1)',
+              backgroundColor: hoveredIdx !== null ? 'rgba(255,255,255,0.06)' : 'rgba(255,255,255,0.1)'
+            }}
+          />
+          {tabs.map((tab, idx) => (
+            <button
+              key={tab}
+              onClick={() => setActiveIdx(idx)}
+              onMouseEnter={() => setHoveredIdx(idx)}
+              onMouseLeave={() => setHoveredIdx(null)}
+              className={cn(
+                "relative z-10 px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-colors duration-200 w-32 text-center",
+                (hoveredIdx !== null ? hoveredIdx === idx : activeIdx === idx) 
+                  ? "text-white" 
+                  : "text-zinc-500 hover:text-zinc-300"
+              )}
+            >
+              {tab}
+            </button>
+          ))}
+        </nav>
+      </div>
+    );
+  },
+
+  // 74. Motion Slide Card (Motion)
+  Motion_SlideCard: () => {
+    const [activeMenu, setActiveMenu] = React.useState<string | null>(null);
+    return (
+      <div className="w-full bg-zinc-950 p-6 flex flex-col items-center justify-center border-b border-zinc-900 min-h-[140px] relative">
+        <nav className="w-full max-w-3xl flex items-center justify-between relative z-20">
+          <div className="flex items-center gap-2">
+            <Layers className="text-emerald-400 w-5 h-5" />
+            <span className="text-white font-extrabold text-sm tracking-wider">SLIDE_CARD</span>
+          </div>
+          <div className="flex gap-8 text-xs font-bold uppercase tracking-widest text-zinc-400">
+            <button 
+              onMouseEnter={() => setActiveMenu('products')}
+              className={cn("hover:text-white transition-colors py-2", activeMenu === 'products' && "text-emerald-400")}
+            >
+              Products
+            </button>
+            <button 
+              onMouseEnter={() => setActiveMenu('developers')}
+              className={cn("hover:text-white transition-colors py-2", activeMenu === 'developers' && "text-emerald-400")}
+            >
+              Developers
+            </button>
+            <button 
+              onMouseEnter={() => setActiveMenu(null)}
+              className="hover:text-white transition-colors py-2"
+            >
+              Pricing
+            </button>
+          </div>
+          <button className="bg-emerald-500 text-black px-4 py-2 rounded-xl text-xs font-bold hover:bg-emerald-400 transition-colors">
+            Contact
+          </button>
+        </nav>
+
+        {activeMenu && (
+          <div 
+            className="absolute top-[70px] left-1/2 -translate-x-1/2 w-full max-w-2xl bg-zinc-900/90 border border-zinc-800 rounded-3xl p-6 shadow-2xl z-10 grid grid-cols-2 gap-4 animate-[slide-card-down_0.3s_cubic-bezier(0.16,1,0.3,1)_forwards]"
+            onMouseLeave={() => setActiveMenu(null)}
+          >
+            <style>{`
+              @keyframes slide-card-down {
+                from { opacity: 0; transform: translate(-50%, -10px); }
+                to { opacity: 1; transform: translate(-50%, 0); }
+              }
+            `}</style>
+            {activeMenu === 'products' ? (
+              <>
+                <div className="p-4 bg-zinc-800/40 hover:bg-zinc-800 rounded-2xl border border-zinc-800 hover:border-emerald-500/30 transition-all cursor-pointer">
+                  <h4 className="text-white font-bold text-xs uppercase tracking-wider">⚡ Core Processor</h4>
+                  <p className="text-zinc-500 text-[10px] mt-1">High-performance edge compute networks.</p>
+                </div>
+                <div className="p-4 bg-zinc-800/40 hover:bg-zinc-800 rounded-2xl border border-zinc-800 hover:border-emerald-500/30 transition-all cursor-pointer">
+                  <h4 className="text-white font-bold text-xs uppercase tracking-wider">🔒 Neural Encryption</h4>
+                  <p className="text-zinc-500 text-[10px] mt-1">Quantum-safe secure data tunnels.</p>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="p-4 bg-zinc-800/40 hover:bg-zinc-800 rounded-2xl border border-zinc-800 hover:border-emerald-500/30 transition-all cursor-pointer">
+                  <h4 className="text-white font-bold text-xs uppercase tracking-wider">📚 System Docs</h4>
+                  <p className="text-zinc-500 text-[10px] mt-1">Comprehensive platform API blueprints.</p>
+                </div>
+                <div className="p-4 bg-zinc-800/40 hover:bg-zinc-800 rounded-2xl border border-zinc-800 hover:border-emerald-500/30 transition-all cursor-pointer">
+                  <h4 className="text-white font-bold text-xs uppercase tracking-wider">🧩 SDK Packages</h4>
+                  <p className="text-zinc-500 text-[10px] mt-1">Pre-built client wrappers and tools.</p>
+                </div>
+              </>
+            )}
+          </div>
+        )}
+      </div>
+    );
+  },
+
+  // 75. Motion Gooey Cursor (Motion)
+  Motion_GooeyCursor: () => {
+    const tabs = ['Home', 'Vault', 'Assets', 'Metrics'];
+    const [activeIdx, setActiveIdx] = React.useState(0);
+    return (
+      <div className="w-full bg-zinc-950 p-6 flex justify-center border-b border-zinc-900">
+        <svg className="hidden">
+          <defs>
+            <filter id="gooey-nav-effect">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
+              <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -10" result="goo" />
+              <feBlend in="SourceGraphic" in2="goo" />
+            </filter>
+          </defs>
+        </svg>
+
+        <nav 
+          className="relative bg-zinc-900 rounded-full px-4 py-2.5 flex items-center gap-1"
+          style={{ filter: 'url(#gooey-nav-effect)' }}
+        >
+          <div 
+            className="absolute h-10 w-24 rounded-full bg-[#0fa] transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] shadow-[0_0_15px_rgba(0,255,170,0.5)]"
+            style={{
+              left: `${16 + activeIdx * 100}px`,
+              width: '96px'
+            }}
+          />
+          {tabs.map((tab, idx) => (
+            <button
+              key={tab}
+              onClick={() => setActiveIdx(idx)}
+              className="relative z-10 w-24 h-10 text-xs font-black uppercase tracking-wider text-center transition-colors duration-300"
+              style={{
+                color: activeIdx === idx ? '#000' : '#888'
+              }}
+            >
+              {tab}
+            </button>
+          ))}
+        </nav>
+      </div>
+    );
+  },
+
+  // 76. Motion Radial Pointer (Motion)
+  Motion_RadialPointer: () => {
+    const tabs = ['North', 'East', 'South', 'West'];
+    const [hoveredIdx, setHoveredIdx] = React.useState<number | null>(null);
+    const [activeIdx, setActiveIdx] = React.useState(0);
+    
+    const angles = [0, 90, 180, 270];
+    const currentAngle = hoveredIdx !== null ? angles[hoveredIdx] : angles[activeIdx];
+
+    return (
+      <div className="w-full bg-zinc-950 p-6 flex items-center justify-between border-b border-zinc-900 max-w-4xl mx-auto rounded-3xl">
+        <div className="flex flex-col">
+          <span className="text-white font-extrabold text-sm tracking-wider uppercase">COMPASS_NAV</span>
+          <span className="text-[10px] text-zinc-500 font-mono mt-1">Inter-dimensional Heading Sensor</span>
+        </div>
+
+        <div className="flex gap-8 items-center">
+          <div className="flex gap-4 text-xs font-mono text-zinc-500">
+            {tabs.map((tab, idx) => (
+              <button
+                key={tab}
+                onClick={() => setActiveIdx(idx)}
+                onMouseEnter={() => setHoveredIdx(idx)}
+                onMouseLeave={() => setHoveredIdx(null)}
+                className={cn(
+                  "px-3 py-1.5 border border-zinc-800 rounded-lg transition-all",
+                  (hoveredIdx !== null ? hoveredIdx === idx : activeIdx === idx)
+                    ? "border-cyan-500 text-cyan-400 bg-cyan-950/20"
+                    : "hover:border-zinc-700 hover:text-zinc-300"
+                )}
+              >
+                [{tab.toUpperCase()}]
+              </button>
+            ))}
+          </div>
+
+          <div className="w-14 h-14 bg-zinc-900 border-2 border-zinc-800 rounded-full flex items-center justify-center relative shadow-[inset_0_2px_8px_rgba(0,0,0,0.8)]">
+            <div 
+              className="w-1 h-8 bg-cyan-400 rounded-full transition-transform duration-500 ease-out origin-center relative"
+              style={{ transform: `rotate(${currentAngle}deg)` }}
+            >
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2.5 h-2.5 bg-cyan-400 rounded-full shadow-[0_0_8px_#22d3ee] animate-pulse" />
+            </div>
+            <div className="absolute w-3 h-3 bg-zinc-950 border border-zinc-800 rounded-full" />
+          </div>
+        </div>
+      </div>
+    );
+  },
+
+  // 77. Motion Elastic Dock (Motion)
+  Motion_ElasticDock: () => {
+    const [hoveredIdx, setHoveredIdx] = React.useState<number | null>(null);
+    const dockItems = [
+      { icon: <Home size={22} />, label: 'Home' },
+      { icon: <Folder size={22} />, label: 'Files' },
+      { icon: <Cpu size={22} />, label: 'System' },
+      { icon: <Globe size={22} />, label: 'Network' },
+      { icon: <Settings size={22} />, label: 'Settings' }
+    ];
+
+    return (
+      <div className="w-full bg-zinc-950 p-6 flex flex-col items-center justify-center border-b border-zinc-900 font-sans">
+        <div className="bg-zinc-900/60 border border-zinc-800/80 backdrop-blur-md rounded-[28px] p-3 flex items-end gap-4 shadow-2xl relative">
+          {dockItems.map((item, idx) => {
+            let scaleClass = "scale-100";
+            let translateClass = "translate-y-0";
+            if (hoveredIdx !== null) {
+              const distance = Math.abs(idx - hoveredIdx);
+              if (distance === 0) {
+                scaleClass = "scale-150";
+                translateClass = "-translate-y-3";
+              } else if (distance === 1) {
+                scaleClass = "scale-125";
+                translateClass = "-translate-y-1.5";
+              }
+            }
+
+            return (
+              <div
+                key={idx}
+                onMouseEnter={() => setHoveredIdx(idx)}
+                onMouseLeave={() => setHoveredIdx(null)}
+                className={cn(
+                  "relative w-12 h-12 rounded-2xl bg-zinc-800 hover:bg-indigo-600 border border-zinc-700/60 flex items-center justify-center text-zinc-300 hover:text-white cursor-pointer transition-all duration-200 ease-out origin-bottom",
+                  scaleClass,
+                  translateClass
+                )}
+                title={item.label}
+              >
+                {item.icon}
+                {hoveredIdx === idx && (
+                  <div className="absolute -top-10 bg-zinc-800 text-white text-[9px] font-bold px-2 py-0.5 rounded-md border border-zinc-700 whitespace-nowrap shadow-lg animate-fade-in pointer-events-none">
+                    {item.label}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  },
+
+  // 78. Motion Reveal Drawer (Motion)
+  Motion_RevealDrawer: () => {
+    const [isOpen, setIsOpen] = React.useState(false);
+    return (
+      <div className="w-full bg-zinc-950 p-6 flex items-center justify-between border-b border-zinc-900 relative overflow-hidden min-h-[140px]">
+        <div className="flex items-center gap-3">
+          <button 
+            onClick={() => setIsOpen(!isOpen)}
+            className="w-10 h-10 bg-zinc-900 border border-zinc-800 hover:border-purple-500 rounded-xl flex items-center justify-center text-white transition-all z-30"
+          >
+            {isOpen ? <X size={18} /> : <Menu size={18} />}
+          </button>
+          <span className="text-white font-extrabold text-sm tracking-wider">3D_REVEAL</span>
+        </div>
+
+        <div 
+          className={cn(
+            "fixed top-0 left-0 h-full w-64 bg-zinc-900/95 border-r border-zinc-800 p-6 flex flex-col justify-between shadow-2xl z-20 transition-all duration-500 ease-out transform origin-left"
+          )}
+          style={{ 
+            transformStyle: 'preserve-3d',
+            transform: isOpen ? 'perspective(1000px) translateX(0) rotateY(0deg)' : 'perspective(1000px) translateX(-100%) rotateY(-60deg)',
+            opacity: isOpen ? 1 : 0,
+            pointerEvents: isOpen ? 'auto' : 'none'
+          }}
+        >
+          <div className="space-y-8 mt-16" style={{ transform: 'translateZ(30px)' }}>
+            <h3 className="text-zinc-500 font-mono text-[10px] tracking-widest uppercase">Navigation Drawer</h3>
+            <div className="flex flex-col gap-4 text-sm font-bold text-zinc-300">
+              <a href="#" className="hover:text-purple-400 transition-colors flex items-center gap-2"><span>📂</span> Project Assets</a>
+              <a href="#" className="hover:text-purple-400 transition-colors flex items-center gap-2"><span>⚙️</span> Control Core</a>
+              <a href="#" className="hover:text-purple-400 transition-colors flex items-center gap-2"><span>📈</span> Data Streams</a>
+            </div>
+          </div>
+          <div className="text-zinc-600 font-mono text-[9px]" style={{ transform: 'translateZ(10px)' }}>
+            SECURE PORTAL v3.2
+          </div>
+        </div>
+
+        {isOpen && (
+          <div 
+            onClick={() => setIsOpen(false)}
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-10 animate-fade-in" 
+          />
+        )}
+        
+        <div className="text-zinc-500 text-xs font-mono">
+          Click button to reveal 3D side drawer
+        </div>
+      </div>
+    );
+  },
+
+  // 79. Motion Glitch Flicker (Motion)
+  Motion_GlitchFlicker: () => {
+    return (
+      <nav className="w-full bg-black border-y-2 border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.3)] px-6 py-4 flex items-center justify-between font-mono relative overflow-hidden">
+        <style>{`
+          @keyframes glitch-anim {
+            0% { clip-path: inset(40% 0 61% 0); }
+            20% { clip-path: inset(92% 0 1% 0); }
+            40% { clip-path: inset(25% 0 58% 0); }
+            60% { clip-path: inset(80% 0 5% 0); }
+            80% { clip-path: inset(11% 0 75% 0); }
+            100% { clip-path: inset(50% 0 30% 0); }
+          }
+          .glitch-text:hover::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 2px;
+            text-shadow: -1px 0 #0fa;
+            top: 0;
+            color: #fff;
+            background: #000;
+            overflow: hidden;
+            clip: rect(0,900px,0,0);
+            animation: glitch-anim 0.4s infinite linear alternate-reverse;
+          }
+          .glitch-text:hover::before {
+            content: attr(data-text);
+            position: absolute;
+            left: -2px;
+            text-shadow: -2px 0 #f09;
+            top: 0;
+            color: #fff;
+            background: #000;
+            overflow: hidden;
+            clip: rect(0,900px,0,0);
+            animation: glitch-anim 0.4s infinite linear alternate;
+          }
+        `}</style>
+
+        <div className="flex items-center gap-2">
+          <Terminal className="text-red-500 w-5 h-5 animate-pulse" />
+          <span className="text-white font-black italic tracking-tighter text-lg">CYBER_SYS</span>
+        </div>
+
+        <div className="flex gap-8 text-xs font-black text-red-500">
+          {['Access', 'Decrypt', 'Override'].map((tab) => (
+            <button
+              key={tab}
+              data-text={tab.toUpperCase()}
+              className="relative glitch-text hover:text-white transition-colors duration-100 tracking-widest px-2 py-1 border border-transparent hover:border-red-500/50"
+            >
+              {tab.toUpperCase()}
+            </button>
+          ))}
+        </div>
+
+        <button className="px-4 py-1.5 border border-red-500 text-red-500 hover:bg-red-500 hover:text-black transition-all font-bold text-xs shadow-[0_0_10px_rgba(239,68,68,0.2)]">
+          INITIATE_HACK
+        </button>
+      </nav>
+    );
+  },
+
+  // 80. Motion Magnet Tabs (Motion)
+  Motion_MagnetTabs: () => {
+    const tabs = ['Security', 'Core', 'Clusters', 'Deploy'];
+    const [magnetOffset, setMagnetOffset] = React.useState<{ [key: string]: { x: number; y: number } }>({});
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>, key: string) => {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      
+      setMagnetOffset(prev => ({
+        ...prev,
+        [key]: { x: x * 0.35, y: y * 0.35 }
+      }));
+    };
+
+    const handleMouseLeave = (key: string) => {
+      setMagnetOffset(prev => ({
+        ...prev,
+        [key]: { x: 0, y: 0 }
+      }));
+    };
+
+    return (
+      <div className="w-full bg-zinc-950 p-6 flex justify-center border-b border-zinc-900">
+        <nav className="bg-zinc-900 border border-zinc-800 rounded-full p-2 flex gap-4 px-6 items-center">
+          {tabs.map((tab) => {
+            const offset = magnetOffset[tab] || { x: 0, y: 0 };
+            return (
+              <button
+                key={tab}
+                onMouseMove={(e) => handleMouseMove(e, tab)}
+                onMouseLeave={(e) => handleMouseLeave(tab)}
+                className="w-24 h-12 relative flex items-center justify-center text-xs font-black uppercase tracking-wider text-zinc-500 hover:text-[#0fa] transition-colors cursor-pointer group"
+              >
+                <span 
+                  className="inline-block transition-transform duration-100 ease-out pointer-events-none"
+                  style={{
+                    transform: `translate(${offset.x}px, ${offset.y}px)`
+                  }}
+                >
+                  {tab}
+                </span>
+                <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-[#0fa] rounded-full opacity-0 group-hover:opacity-100 transition-opacity shadow-[0_0_8px_#0fa]" />
+              </button>
+            );
+          })}
+        </nav>
       </div>
     );
   }

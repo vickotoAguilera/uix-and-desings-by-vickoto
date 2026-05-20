@@ -512,5 +512,368 @@ export const InputVariants = {
         </div>
       </div>
     </div>
-  )
+  ),
+
+  // 61. Interactive OTP verification input blocks
+  Interactive_OTP: () => {
+    const [otp, setOtp] = React.useState(['', '', '', '']);
+    const refs = [
+      React.useRef<HTMLInputElement>(null),
+      React.useRef<HTMLInputElement>(null),
+      React.useRef<HTMLInputElement>(null),
+      React.useRef<HTMLInputElement>(null)
+    ];
+
+    const handleChange = (index: number, val: string) => {
+      if (!/^[0-9]?$/.test(val)) return;
+      const newOtp = [...otp];
+      newOtp[index] = val;
+      setOtp(newOtp);
+
+      if (val && index < 3) {
+        refs[index + 1].current?.focus();
+      }
+    };
+
+    const handleKeyDown = (index: number, e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === 'Backspace' && !otp[index] && index > 0) {
+        refs[index - 1].current?.focus();
+      }
+    };
+
+    return (
+      <div className="flex flex-col gap-2 items-center w-full max-w-sm">
+        <label className="text-[10px] text-zinc-500 uppercase tracking-[0.2em] font-bold">Verification Code</label>
+        <div className="flex gap-3 justify-center">
+          {otp.map((digit, idx) => (
+            <input
+              key={idx}
+              ref={refs[idx]}
+              type="text"
+              maxLength={1}
+              value={digit}
+              onChange={(e) => handleChange(idx, e.target.value)}
+              onKeyDown={(e) => handleKeyDown(idx, e)}
+              className="w-12 h-14 bg-zinc-950/60 border border-zinc-800 text-center font-bold text-xl text-white rounded-xl focus:border-rose-500 focus:ring-4 focus:ring-rose-500/10 outline-none transition-all shadow-[0_0_15px_rgba(244,63,94,0.02)] focus:shadow-[0_0_20px_rgba(244,63,94,0.1)]"
+            />
+          ))}
+        </div>
+      </div>
+    );
+  },
+
+  // 62. Creative GooeyLine fluid input
+  Creative_GooeyLine: () => {
+    return (
+      <div className="relative w-full max-w-sm group">
+        <svg className="hidden">
+          <defs>
+            <filter id="gooey-input-line">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
+              <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8" result="goo" />
+              <feBlend in="SourceGraphic" in2="goo" />
+            </filter>
+          </defs>
+        </svg>
+        <input
+          type="text"
+          className="w-full bg-transparent py-3 outline-none text-white border-b-2 border-zinc-800 placeholder-zinc-600 transition-colors focus:border-emerald-500/10"
+          placeholder="Focus to activate gooey line..."
+        />
+        <div className="absolute -bottom-[2px] left-0 w-full h-[6px] pointer-events-none overflow-hidden [filter:url(#gooey-input-line)]">
+          <div className="absolute top-0 left-0 w-full h-[2px] bg-zinc-800 group-focus-within:bg-emerald-500 transition-colors duration-300" />
+          <div className="absolute -top-[2px] left-1/2 -translate-x-1/2 w-4 h-4 bg-emerald-500 rounded-full scale-0 group-focus-within:scale-100 transition-transform duration-500 cubic-bezier(0.175, 0.885, 0.32, 1.275)" />
+          <div className="absolute -top-[1px] left-1/4 w-2.5 h-2.5 bg-emerald-500 rounded-full scale-0 group-focus-within:scale-100 transition-transform duration-700 cubic-bezier(0.175, 0.885, 0.32, 1.275)" />
+          <div className="absolute -top-[1px] right-1/4 w-2.5 h-2.5 bg-emerald-500 rounded-full scale-0 group-focus-within:scale-100 transition-transform duration-700 cubic-bezier(0.175, 0.885, 0.32, 1.275)" />
+        </div>
+      </div>
+    );
+  },
+
+  // 63. Cyber TacHUD sci-fi telemetry field
+  Cyber_TacHUD: () => {
+    const [focused, setFocused] = React.useState(false);
+    return (
+      <div className="relative w-full max-w-sm font-mono text-xs">
+        <div className="absolute -top-1 -left-1 w-2 h-2 border-t-2 border-l-2 border-cyan-500/40 group-focus-within:border-cyan-500 transition-all duration-300" />
+        <div className="absolute -top-1 -right-1 w-2 h-2 border-t-2 border-r-2 border-cyan-500/40 group-focus-within:border-cyan-500 transition-all duration-300" />
+        <div className="absolute -bottom-1 -left-1 w-2 h-2 border-b-2 border-l-2 border-cyan-500/40 group-focus-within:border-cyan-500 transition-all duration-300" />
+        <div className="absolute -bottom-1 -right-1 w-2 h-2 border-b-2 border-r-2 border-cyan-500/40 group-focus-within:border-cyan-500 transition-all duration-300" />
+        
+        <div className="bg-zinc-950/80 border border-cyan-500/20 rounded-sm p-4 focus-within:border-cyan-500/60 focus-within:shadow-[0_0_15px_rgba(6,182,212,0.15)] transition-all duration-300">
+          <div className="flex justify-between text-[8px] text-cyan-500/50 uppercase tracking-widest mb-1.5">
+            <span>SYS.ACCESS_FIELD</span>
+            <span className={cn("animate-pulse", focused ? "text-cyan-400" : "")}>{focused ? "ONLINE" : "STANDBY"}</span>
+          </div>
+          <div className="flex gap-2 items-center">
+            <span className="text-cyan-400 font-bold">{">"}</span>
+            <input
+              type="text"
+              onFocus={() => setFocused(true)}
+              onBlur={() => setFocused(false)}
+              className="w-full bg-transparent outline-none text-cyan-400 placeholder-cyan-500/30 tracking-wide text-xs"
+              placeholder="ENTER SECURE PROTOCOL..."
+            />
+          </div>
+          {focused && (
+            <div className="mt-2 text-[8px] text-cyan-500/40 border-t border-cyan-500/10 pt-1.5 flex justify-between animate-[fadeIn_0.3s_ease-out]">
+              <span>[SECURE_SHELL_V3]</span>
+              <span>LOG: IDLE</span>
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  },
+
+  // 64. SaaS SpotlightCard search box
+  SaaS_SpotlightCard: () => {
+    const cardRef = React.useRef<HTMLDivElement>(null);
+    const [coords, setCoords] = React.useState({ x: 0, y: 0 });
+    const [hovering, setHovering] = React.useState(false);
+
+    const handleMouseMove = (e: React.MouseEvent) => {
+      if (!cardRef.current) return;
+      const rect = cardRef.current.getBoundingClientRect();
+      setCoords({
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top
+      });
+    };
+
+    return (
+      <div
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={() => setHovering(true)}
+        onMouseLeave={() => setHovering(false)}
+        className="relative w-full max-w-sm p-[1px] rounded-2xl overflow-hidden bg-zinc-800/40 focus-within:bg-zinc-800 transition-colors duration-300"
+      >
+        <div
+          className="absolute inset-0 pointer-events-none transition-opacity duration-500 rounded-2xl"
+          style={{
+            opacity: hovering ? 1 : 0,
+            background: `radial-gradient(120px circle at ${coords.x}px ${coords.y}px, rgba(99, 102, 241, 0.15), transparent)`
+          }}
+        />
+        <div
+          className="absolute inset-0 pointer-events-none transition-opacity duration-500 rounded-2xl"
+          style={{
+            opacity: hovering ? 1 : 0,
+            background: `radial-gradient(80px circle at ${coords.x}px ${coords.y}px, rgba(99, 102, 241, 0.4), transparent)`
+          }}
+        />
+        
+        <div className="relative bg-zinc-950/90 rounded-2xl p-3 flex items-center gap-3">
+          <Search className="text-zinc-500 group-focus-within:text-white" size={16} />
+          <input
+            type="text"
+            className="w-full bg-transparent outline-none text-white text-sm placeholder-zinc-500"
+            placeholder="AI Search platform..."
+          />
+          <div className="px-1.5 py-0.5 bg-zinc-900 border border-zinc-800 rounded text-[9px] font-mono text-zinc-500 select-none">⌘K</div>
+        </div>
+      </div>
+    );
+  },
+
+  // 65. Brutalist KineticPop elastic label field
+  Brutalist_KineticPop: () => {
+    const [value, setValue] = React.useState('');
+    const [focused, setFocused] = React.useState(false);
+    const active = focused || value.length > 0;
+    return (
+      <div className="relative w-full max-w-sm pt-5">
+        <label
+          className={cn(
+            "absolute left-4 font-black uppercase text-[10px] tracking-tight border-2 border-black bg-yellow-400 text-black px-2 py-0.5 shadow-[2px_2px_0_#000] pointer-events-none transition-all duration-300 z-20",
+            active 
+              ? "-top-2 scale-100 rotate-2 shadow-[2px_2px_0_#000]" 
+              : "top-8 -translate-y-1/2 scale-110 rotate-0 shadow-[0px_0px_0_#000]"
+          )}
+        >
+          Username
+        </label>
+        <input
+          type="text"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
+          className="w-full bg-white border-4 border-black text-black font-bold px-4 py-3 shadow-[6px_6px_0_#000] outline-none focus:translate-x-[2px] focus:translate-y-[2px] focus:shadow-[4px_4px_0_#000] transition-all text-sm"
+        />
+      </div>
+    );
+  },
+
+  // 66. Modern TagCombo selector and text box
+  Modern_TagCombo: () => {
+    const [tags, setTags] = React.useState(['AI', 'NextJS']);
+    const [input, setInput] = React.useState('');
+
+    const handleAdd = (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === 'Enter' && input.trim()) {
+        e.preventDefault();
+        if (!tags.includes(input.trim())) {
+          setTags([...tags, input.trim()]);
+        }
+        setInput('');
+      }
+    };
+
+    const handleRemove = (tagToRemove: string) => {
+      setTags(tags.filter(t => t !== tagToRemove));
+    };
+
+    return (
+      <div className="w-full max-w-sm p-3 bg-zinc-900/60 border border-zinc-800 rounded-2xl focus-within:border-zinc-700 focus-within:ring-4 focus-within:ring-zinc-800/20 transition-all">
+        <div className="flex flex-wrap gap-2 items-center">
+          {tags.map(t => (
+            <span
+              key={t}
+              className="flex items-center gap-1.5 px-2 py-0.5 bg-zinc-800 text-zinc-300 text-xs rounded-lg border border-zinc-700/50"
+            >
+              {t}
+              <button
+                type="button"
+                onClick={() => handleRemove(t)}
+                className="text-zinc-500 hover:text-zinc-200 transition-colors ml-1"
+              >
+                ✕
+              </button>
+            </span>
+          ))}
+          <input
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={handleAdd}
+            className="flex-1 min-w-[100px] bg-transparent outline-none text-white text-xs py-1"
+            placeholder="Add categories..."
+          />
+        </div>
+      </div>
+    );
+  },
+
+  // 67. Luxury SerifMinimal editorial search bar
+  Luxury_SerifMinimal: () => {
+    const [focused, setFocused] = React.useState(false);
+    return (
+      <div className="relative w-full max-w-sm flex flex-col pt-4">
+        <label
+          className={cn(
+            "text-[10px] text-amber-500/70 tracking-[0.2em] font-serif uppercase transition-all duration-500 ease-in-out pointer-events-none mb-1.5",
+            focused ? "opacity-100 pl-1" : "opacity-60 pl-0"
+          )}
+        >
+          Maison Luxury Search
+        </label>
+        <div className="relative w-full">
+          <input
+            type="text"
+            onFocus={() => setFocused(true)}
+            onBlur={() => setFocused(false)}
+            className="w-full bg-transparent py-2 text-white font-serif text-base outline-none placeholder:text-zinc-700"
+            placeholder="Exquisite collection..."
+          />
+          <div className="absolute bottom-0 left-0 w-full h-[1px] bg-zinc-800" />
+          <div className={cn(
+            "absolute bottom-0 left-0 h-[1px] bg-gradient-to-r from-amber-400 via-amber-200 to-amber-500 transition-all duration-700 origin-left",
+            focused ? "w-full" : "w-0"
+          )} />
+        </div>
+      </div>
+    );
+  },
+
+  // 68. Retro Chamber glowing mainframe CRT prompt
+  Retro_Chamber: () => {
+    return (
+      <div className="relative w-full max-w-sm overflow-hidden bg-black border border-green-500/40 rounded p-4 font-mono text-green-500 shadow-[0_0_15px_rgba(34,197,94,0.1)]">
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[size:100%_4px,6px_100%] pointer-events-none" />
+        <div className="absolute inset-0 bg-green-500/5 opacity-5 pointer-events-none" />
+        
+        <div className="flex flex-col gap-1">
+          <span className="text-[8px] text-green-500/60 uppercase tracking-widest font-black flex items-center gap-1.5">
+            <span className="w-1 h-1 rounded-full bg-green-500 animate-ping" />
+            mainframe_system_terminal
+          </span>
+          <div className="flex items-center gap-2 mt-1">
+            <span className="text-green-400">{">"}</span>
+            <input
+              type="text"
+              className="w-full bg-transparent outline-none text-green-500 font-mono text-xs caret-green-400"
+              placeholder="sys.mount_storage(_)"
+            />
+          </div>
+        </div>
+      </div>
+    );
+  },
+
+  // 69. Interactive PasswordStrength visual gauge field
+  Interactive_PasswordStrength: () => {
+    const [password, setPassword] = React.useState('');
+    
+    const getStrength = () => {
+      const len = password.length;
+      if (len === 0) return { pct: 0, color: 'bg-zinc-800', label: 'Empty' };
+      if (len < 6) return { pct: 25, color: 'bg-rose-500', label: 'Weak' };
+      
+      const hasNumber = /\d/.test(password);
+      const hasUpper = /[A-Z]/.test(password);
+      const hasSpecial = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+      
+      let score = 50;
+      if (hasNumber) score += 15;
+      if (hasUpper) score += 15;
+      if (hasSpecial) score += 20;
+      
+      if (score < 65) return { pct: 50, color: 'bg-amber-500', label: 'Medium' };
+      return { pct: 100, color: 'bg-emerald-500', label: 'Strong' };
+    };
+
+    const strength = getStrength();
+
+    return (
+      <div className="relative w-full max-w-sm flex flex-col gap-2">
+        <div className="relative flex items-center">
+          <Lock className="absolute left-4 text-zinc-500" size={16} />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full pl-12 pr-4 py-3 bg-zinc-950 border border-zinc-800 rounded-xl focus:border-purple-500 focus:ring-4 focus:ring-purple-500/5 outline-none transition-all text-white text-sm"
+            placeholder="Secure password"
+          />
+        </div>
+        {password.length > 0 && (
+          <div className="px-1 flex flex-col gap-1">
+            <div className="w-full h-1 bg-zinc-900 rounded-full overflow-hidden">
+              <div
+                className={cn("h-full transition-all duration-500 ease-out", strength.color)}
+                style={{ width: `${strength.pct}%` }}
+              />
+            </div>
+            <div className="flex justify-between text-[9px] text-zinc-500">
+              <span>Security Gauge</span>
+              <span className="font-bold text-zinc-400">{strength.label}</span>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  },
+
+  // 70. Clay SoftBubble tactile squishy 3D input
+  Clay_SoftBubble: () => {
+    return (
+      <input
+        type="text"
+        className="w-full max-w-sm px-6 py-3.5 bg-blue-100 rounded-[2rem] border border-blue-200/40 text-blue-900 font-bold outline-none placeholder:text-blue-300 shadow-[inset_-6px_-6px_10px_#ffffff,inset_6px_6px_10px_#a3b8cc,0_8px_16px_rgba(163,184,204,0.3)] hover:scale-[1.02] focus:scale-95 active:scale-95 transition-all duration-300 text-center text-sm"
+        placeholder="Squish me bubble input..."
+      />
+    );
+  }
 };

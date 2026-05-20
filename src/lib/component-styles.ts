@@ -150,7 +150,11 @@ export const NAVBAR_STYLES = {
   ],
   Creative: [
     'GradientTop', 'Blueprint', 'BlueprintV2', 'NeonPath', 'BlueprintV3', 
-    'SpotlightV3', 'MeshSoftV2', 'GradientWave', 'Creative_LiquidMorph', 'Interactive_CircularOrb'
+    'SpotlightV3', 'MeshSoftV2', 'GradientWave', 'Creative_NeumorphicMorph', 'Creative_StaggeredMenu'
+  ],
+  Motion: [
+    'Creative_LiquidMorph', 'Interactive_CircularOrb', 'Motion_PillBubble', 'Motion_SlideCard', 'Motion_GooeyCursor',
+    'Motion_RadialPointer', 'Motion_ElasticDock', 'Motion_RevealDrawer', 'Motion_GlitchFlicker', 'Motion_MagnetTabs'
   ]
 };
 
@@ -212,11 +216,34 @@ export const GALLERY_STYLES = {
 };
 
 export const INPUT_STYLES = {
-  Neon: ['GlowingNeon', 'Cyberpunk', 'NeonBorder', 'NeonUnderline', 'NeonDashYellow', 'CyberLabel', 'CyberGlitchV2'],
-  Modern: ['Glass', 'GlassGlow', 'GlassSearchLight', 'DarkGlass2XL', 'FloatingLabel', 'IconFocus', 'SearchKbd', 'SearchShimmer', 'IconRight', 'TagInput', 'RoundedPill', 'ModernCalendar', 'PasswordToggle', 'BentoField', 'BentoFormV2', 'VoiceSearch'],
-  Minimalist: ['MinimalUnderline', 'MinimalFrame', 'LineCenter', 'UnderlineWave', 'DoubleUnderline', 'DotPlaceholder', 'DotPattern'],
-  Retro: ['Retro8Bit', 'RetroCmd', 'RetroArcade', 'RetroTypewriter', 'HybridTerminal', 'StencilV2'],
-  Creative: ['Brutalist', 'BrutalistV2', 'Neumorphic', 'NeumorphicDark', 'SoftClay', 'PlasticInput', 'Inset3DSoft', 'LiquidBottom', 'LiquidFillGreen', 'GradientBorder', 'SoftGradient', 'DashBorder', 'PerspectiveTiltInput', 'ShakeError']
+  Neon: [
+    'GlowingNeon', 'Cyberpunk', 'NeonBorder', 'NeonUnderline', 'NeonDashYellow', 
+    'CyberLabel', 'CyberGlitchV2', 'GlitchInput', 'DataField', 'Cyber_TacHUD'
+  ],
+  Modern: [
+    'Glass', 'GlassGlow', 'GlassSearchLight', 'DarkGlass2XL', 'FloatingLabel', 
+    'IconFocus', 'SearchKbd', 'SearchShimmer', 'IconRight', 'SaaS_SpotlightCard'
+  ],
+  Minimalist: [
+    'MinimalUnderline', 'MinimalFrame', 'LineCenter', 'UnderlineWave', 'DoubleUnderline', 
+    'DotPlaceholder', 'DotPattern', 'GhostInset', 'DoubleLineTech', 'Luxury_SerifMinimal'
+  ],
+  Retro: [
+    'Retro8Bit', 'RetroCmd', 'RetroArcade', 'RetroTypewriter', 'HybridTerminal', 
+    'StencilV2', 'Typewriter', 'Retro_Chamber', 'PillBadge', 'RoundedPill'
+  ],
+  Creative: [
+    'Brutalist', 'BrutalistV2', 'Neumorphic', 'NeumorphicDark', 'SoftClay', 
+    'PlasticInput', 'Inset3DSoft', 'LiquidBottom', 'LiquidFillGreen', 'GradientBorder'
+  ],
+  Interactive: [
+    'ShakeError', 'SoftGradient', 'DashBorder', 'PerspectiveTiltInput', 'PasswordToggle', 
+    'PurpleGlowFocus', 'UserFloat', 'Interactive_OTP', 'Interactive_PasswordStrength', 'Clay_SoftBubble'
+  ],
+  BentoSaaS: [
+    'BentoField', 'BentoFormV2', 'VoiceSearch', 'TagInput', 'ModernCalendar', 
+    'VerticalLabel', 'CreditCard', 'Creative_GooeyLine', 'Brutalist_KineticPop', 'Modern_TagCombo'
+  ]
 };
 
 export const TRANSITION_STYLES = {
