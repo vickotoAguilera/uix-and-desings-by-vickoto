@@ -1,0 +1,15 @@
+{
+  "ignore_dirs": [
+    "node_modules",
+    ".next",
+    ".git",
+    "uix_and_designs",
+    "build",
+    "dist",
+    "coverage",
+    ".turbo"
+  ],
+  "watchman": {
+    "enforce_root_files": [".watchmanconfig"]
+  }
+}

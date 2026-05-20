@@ -28,6 +28,20 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Node.js profiling files (CPU and Heap profiles)
+*.cpuprofile
+*.heapprofile
+
+# Excluir completamente la carpeta uix_and_designs del desarrollo
+/uix_and_designs/
+uix_and_designs/
+
+# Excluir archivos de caché y compilación innecesarios
+.turbo/
+.turbopack/
+.eslintcache
+*.tsbuildinfo
 .pnpm-debug.log*
 
 # env files (can opt-in for committing if needed)
