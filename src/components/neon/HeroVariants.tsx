@@ -6,8 +6,21 @@ import { ChevronRight, Zap, Shield, Cpu, Globe, ArrowRight, Terminal } from 'luc
 
 import { MaisonLuxuryHero } from './designs/MaisonLuxuryHero';
 import { CyberpunkTerminalHero } from './designs/CyberpunkTerminalHero';
+import { CorporateSaaSHero } from './designs/CorporateSaaSHero';
 
 export const HeroVariants = {
+  // D03. Corporate Clean SaaS (10/20 Variantes)
+  CorporateSaaS_Classic: CorporateSaaSHero.Classic,
+  CorporateSaaS_ModernGrid: CorporateSaaSHero.ModernGrid,
+  CorporateSaaS_BentoHighlight: CorporateSaaSHero.BentoHighlight,
+  CorporateSaaS_Glassmorphism: CorporateSaaSHero.Glassmorphism,
+  CorporateSaaS_Minimalist: CorporateSaaSHero.Minimalist,
+  CorporateSaaS_GradientFlow: CorporateSaaSHero.GradientFlow,
+  CorporateSaaS_TechDashboard: CorporateSaaSHero.TechDashboard,
+  CorporateSaaS_InteractiveDots: CorporateSaaSHero.InteractiveDots,
+  CorporateSaaS_ProductShowcase: CorporateSaaSHero.ProductShowcase,
+  CorporateSaaS_EnterpriseSolid: CorporateSaaSHero.EnterpriseSolid,
+
   // D01. Maison Luxury Designs (20 Variantes)
   Maison_Classic: MaisonLuxuryHero.Classic,
   Maison_Dark: MaisonLuxuryHero.Dark,

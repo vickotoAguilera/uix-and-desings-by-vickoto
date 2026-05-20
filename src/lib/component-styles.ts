@@ -16,6 +16,12 @@ export const HERO_STYLES = {
     'CyberTerminal_NeuralInterface', 'CyberTerminal_SatelliteUplink', 'CyberTerminal_NeonAlley',
     'CyberTerminal_BunkerAccess', 'CyberTerminal_SystemArchitecture'
   ],
+  CorporateSaaS: [
+    'CorporateSaaS_Classic', 'CorporateSaaS_ModernGrid', 'CorporateSaaS_BentoHighlight',
+    'CorporateSaaS_Glassmorphism', 'CorporateSaaS_Minimalist', 'CorporateSaaS_GradientFlow',
+    'CorporateSaaS_TechDashboard', 'CorporateSaaS_InteractiveDots', 'CorporateSaaS_ProductShowcase',
+    'CorporateSaaS_EnterpriseSolid'
+  ],
   Cyberpunk: ['Cyberpunk', 'CyberTerminal', 'CyberHUD', 'CyberLogin', 'NeonCity', 'Matrix'],
   Glassmorphism: ['GlassDeep', 'GlassLight', 'GlassStack', 'GlassBentoV2', 'GlassTilt'],
   Minimalist: ['MinimalDark', 'MinimalArch', 'PortfolioHero', 'Zen', 'ModernArch', 'TypeFocus', 'TypoFocus'],
