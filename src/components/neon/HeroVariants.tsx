@@ -4,7 +4,14 @@ import React from 'react';
 import { cn } from '@/lib/utils';
 import { ChevronRight, Zap, Shield, Cpu, Globe, ArrowRight, Terminal } from 'lucide-react';
 
+import { MaisonLuxuryHero } from './designs/MaisonLuxuryHero';
+
 export const HeroVariants = {
+  // D01. Maison Luxury Designs
+  Maison_Classic: MaisonLuxuryHero.Classic,
+  Maison_Dark: MaisonLuxuryHero.Dark,
+  Maison_Split: MaisonLuxuryHero.Split,
+
   // 1. Cyberpunk Neon
   Cyberpunk: () => (
     <div className="w-full py-20 px-8 bg-black border-2 border-[#0fa] shadow-[0_0_20px_#0fa] relative overflow-hidden">

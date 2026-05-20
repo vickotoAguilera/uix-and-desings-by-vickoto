@@ -75,10 +75,13 @@
   - **Mantenimiento de Configuración:**
     - Se respeta la estructura de `LazyComponent` para asegurar rendimiento.
     - Se mantiene `next.config.ts` optimizado para Turbopack.
+- **Gestión de Imágenes Inteligente:** Se creó el componente `SmartImage` y un `ImageProvider` global. Esto permite usar una imagen por defecto centralizada y habilitar/deshabilitar fotos en todo el catálogo.
+  - **Misión 50x20 - Fase 1:** Implementadas las primeras 3 variantes del Diseño 01 (Maison Luxury) usando el nuevo sistema de imágenes.
+  - **Corrección de Build:** Se envolvieron todas las páginas del catálogo en límites de `Suspense` para evitar errores de hidratación y fallos en el build de Next.js por el uso de `useSearchParams`.
 - **Resultado:**
-  - ✓ Código respaldado en GitHub.
-  - ✓ Banco de diseños ampliado con 5 nuevos repositorios.
-  - ✓ Sistema estable y listo para la fase de implementación de componentes minimalistas/ecommerce.
+  - ✓ Build 100% exitoso.
+  - ✓ Switch global "Photos Enabled/Disabled" funcional en el Sidebar.
+  - ✓ Primer diseño de la misión (Maison Luxury) iniciado con éxito.
 - **Ubicación:** Casa
 - **Objetivo:** Resolver error de hidratación causado por `<Link>` con `<a>` anidado.
 - **Error Identificado:**

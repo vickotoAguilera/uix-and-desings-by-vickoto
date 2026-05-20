@@ -1,4 +1,5 @@
 export const HERO_STYLES = {
+  MaisonLuxury: ['Maison_Classic', 'Maison_Dark', 'Maison_Split'],
   Cyberpunk: ['Cyberpunk', 'CyberTerminal', 'CyberHUD', 'CyberLogin', 'NeonCity', 'Matrix'],
   Glassmorphism: ['GlassDeep', 'GlassLight', 'GlassStack', 'GlassBentoV2', 'GlassTilt'],
   Minimalist: ['MinimalDark', 'MinimalArch', 'PortfolioHero', 'Zen', 'ModernArch', 'TypeFocus', 'TypoFocus'],

@@ -1,27 +1,19 @@
 # Estado y Traspaso - Proyecto Botones Neón
 
-## Última Actualización: 2026-05-20 | 10:50
-- **Agente Anterior:** Arquitecto de Software (Trae - Sesión Trabajo)
-- **Entorno:** Trabajo (Traspaso hacia Casa - 100% Sincronizado)
-- **Estado Global:** REESTRUCTURACIÓN COMPLETADA. El catálogo es ahora una herramienta profesional organizada por Estilos > Variantes. Repositorio actualizado en GitHub.
+## Última Actualización: 2026-05-19 | 21:15
+- **Agente Anterior:** Arquitecto de Software (Trae - Sesión Casa)
+- **Entorno:** Casa
+- **Estado Global:** Sistema potenciado con SmartImages, Build reparado y Misión 50x20 iniciada.
 
-## PRÓXIMOS PASOS (PARA EL AGENTE EN CASA)
-1.  **Expansión de Componentes (Fase 2 - Navbars/Footers)**:
-    - [ ] **Navbars**: El lote actual tiene ~20 variantes clasificadas. Llegar a 30+ con diseños de navegación "Sticky" y "Glass Floating".
-    - [ ] **Footers**: El lote actual tiene 14 variantes. Expandir a 25+ con enfoques para e-commerce (SEO focused).
-2.  **Sistema de Búsqueda Global**:
-    - [ ] Implementar un buscador (tipo CMD+K) para encontrar variantes por nombre en todo el catálogo.
-3.  **Refinamiento de UI**:
-    - [ ] Añadir una pequeña etiqueta que indique la "Complejidad" o "Tecnologías" (ej. "Framer Motion", "CSS Pure") en cada variante.
+## PRÓXIMOS PASOS
+1.  **Continuar Maison Luxury (D01)**: Faltan 17 variantes para completar las 20 del primer diseño.
+2.  **Migrar Imágenes Antiguas**: Actualizar componentes viejos para que usen `<SmartImage />` en lugar de `<img>` directo.
+3.  **Diseño D02 (Cyber Industrial)**: Iniciar el segundo diseño base de la misión.
 
-## Tareas Realizadas (Sesión Trabajo)
-- [x] Implementación de 20 variantes de Pricing.
-- [x] Implementación de 20 variantes de Testimonials.
-- [x] Implementación de 40 variantes de Galleries.
-- [x] Rediseño de Sidebar con sub-menús colapsables.
-- [x] Clasificación y sincronización de los +260 componentes por estéticas.
-- [x] Actualización de la página de Inicio con guía técnica.
-- [x] Push a GitHub con token de acceso personal.
+## Tareas Realizadas
+- [x] Implementar `SmartImage` y switch global de fotos en el Sidebar.
+- [x] Corregir error de `useSearchParams` con límites de `Suspense`.
+- [x] Crear las primeras 3 variantes de `MaisonLuxuryHero`.
 
 ## Credenciales y Entorno
 - **GitHub Token**: [REGISTRADO EN MEMORIA DE PROYECTO] (Usar para sincronización).

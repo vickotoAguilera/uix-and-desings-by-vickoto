@@ -18,6 +18,7 @@ import {
   ChevronRight
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useImageMode } from '@/context/ImageContext';
 import { 
   HERO_STYLES, 
   NAVBAR_STYLES, 
@@ -118,6 +119,7 @@ const menuItems = [
 export const Sidebar = () => {
   const pathname = usePathname();
   const [expandedItems, setExpandedItems] = useState<string[]>(['Hero Sections']);
+  const { showPhotos, togglePhotos } = useImageMode();
 
   const toggleExpand = (name: string) => {
     setExpandedItems(prev => 
@@ -194,7 +196,33 @@ export const Sidebar = () => {
         })}
       </nav>
 
-      <div className="p-4 border-t border-zinc-900 bg-black/50 backdrop-blur-md">
+      <div className="p-4 border-t border-zinc-900 bg-black/50 backdrop-blur-md space-y-2">
+        <button 
+          onClick={togglePhotos}
+          className={cn(
+            "w-full flex items-center justify-between p-3 rounded-xl transition-all border",
+            showPhotos 
+              ? "bg-emerald-500/10 border-emerald-500/20 text-emerald-400 hover:bg-emerald-500/20" 
+              : "bg-zinc-900/50 border-zinc-800/50 text-zinc-500 hover:bg-zinc-900"
+          )}
+        >
+          <div className="flex items-center gap-3">
+            <Images size={16} className={showPhotos ? "text-emerald-500" : "text-zinc-600"} />
+            <span className="text-xs font-bold uppercase tracking-wider">
+              {showPhotos ? "Photos Enabled" : "Photos Disabled"}
+            </span>
+          </div>
+          <div className={cn(
+            "w-8 h-4 rounded-full relative transition-colors duration-300",
+            showPhotos ? "bg-emerald-500" : "bg-zinc-700"
+          )}>
+            <div className={cn(
+              "absolute top-0.5 w-3 h-3 bg-white rounded-full transition-all duration-300",
+              showPhotos ? "left-4.5" : "left-0.5"
+            )} />
+          </div>
+        </button>
+
         <div className="p-4 bg-zinc-900/50 rounded-2xl border border-zinc-800/50">
           <p className="text-[10px] font-black text-zinc-700 uppercase tracking-widest mb-1">Workspace</p>
           <p className="text-[11px] text-zinc-500 truncate italic">S: Pro_v1.0 / Build_2026</p>
