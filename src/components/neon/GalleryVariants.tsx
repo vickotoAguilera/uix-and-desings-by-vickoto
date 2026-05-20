@@ -1194,16 +1194,666 @@ export const GalleryVariants: Record<string, React.FC> = {
       </div>
     );
   },
+
+  Carousel_InfiniteSlider: () => {
+    const items = [
+      { title: "NEON_WAVE", tag: "MOTION", color: "from-blue-600 to-indigo-600" },
+      { title: "GLASS_CORE", tag: "REFRACT", color: "from-pink-600 to-rose-600" },
+      { title: "CYBER_LOG", tag: "SECURITY", color: "from-emerald-600 to-teal-600" },
+      { title: "SOLAR_DECK", tag: "ECO", color: "from-amber-600 to-orange-600" },
+      { title: "DEEP_GLOW", tag: "CREATIVE", color: "from-purple-600 to-fuchsia-600" }
+    ];
+    return (
+      <div className="w-full py-8 bg-zinc-950 border border-zinc-900 rounded-[2.5rem] overflow-hidden relative group">
+        <div className="flex justify-between items-center px-8 mb-6">
+          <span className="text-[9px] font-mono text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-0.5 rounded-md uppercase tracking-widest">
+            INFINITE_MARQUEE_TRACK
+          </span>
+          <span className="text-[9px] font-mono text-zinc-650 animate-pulse">PAUSES ON HOVER</span>
+        </div>
+        
+        <style dangerouslySetInnerHTML={{__html: `
+          @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+          }
+          .animate-marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marquee 20s linear infinite;
+          }
+          .animate-marquee-track:hover {
+            animation-play-state: paused;
+          }
+        `}} />
+
+        <div className="relative overflow-hidden w-full mask-gradient-x">
+          <div className="animate-marquee-track flex gap-4">
+            {[...items, ...items].map((item, idx) => (
+              <div 
+                key={idx} 
+                className="w-56 h-36 rounded-2xl bg-zinc-900 border border-white/5 shadow-2xl relative overflow-hidden group/item cursor-pointer flex flex-col justify-between p-5"
+              >
+                <div className={cn("absolute inset-0 bg-gradient-to-tr opacity-10 group-hover/item:opacity-20 transition-opacity", item.color)} />
+                <div className="flex justify-between items-start z-10">
+                  <span className="text-[8px] font-mono text-zinc-550 bg-zinc-950 px-2 py-0.5 rounded border border-white/5">{item.tag}</span>
+                  <ExternalLink size={10} className="text-zinc-600 group-hover/item:text-white transition-colors" />
+                </div>
+                <div className="z-10">
+                  <span className="text-[7px] font-mono text-zinc-600 uppercase tracking-wider block mb-1">LOOP_NODE_0{idx%5+1}</span>
+                  <span className="text-xs font-black text-white uppercase tracking-widest">{item.title}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  },
+
+  Carousel_GlowNav: () => {
+    const [activeIndex, setActiveIndex] = React.useState(0);
+    const items = [
+      { label: "MAISON_LUXURY", desc: "Fine arts and boutique layout", color: "from-amber-500/10 to-stone-500/10" },
+      { label: "CYBER_TERMINAL", desc: "Decentralized console protocol", color: "from-cyan-500/10 to-indigo-500/10" },
+      { label: "BENTO_ANALYTICS", desc: "Modular dashboard analytics surface", color: "from-purple-500/10 to-pink-500/10" },
+      { label: "SOLAR_SYSTEM", desc: "Eco-tech energy control panel", color: "from-emerald-500/10 to-teal-500/10" }
+    ];
+    return (
+      <div className="w-full p-8 bg-zinc-955 border border-zinc-900 rounded-[2.5rem] overflow-hidden min-h-[380px] flex flex-col justify-between relative group">
+        <div className="flex justify-between items-start">
+          <span className="text-[9px] font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 rounded-md uppercase tracking-widest">
+            GLOW_NAV_CAROUSEL
+          </span>
+          <span className="text-[9px] font-mono text-zinc-600">DOCK_INTERACTION</span>
+        </div>
+        
+        <div className="flex-1 flex items-center justify-center my-6 relative min-h-[140px]">
+          {items.map((item, idx) => (
+            <div 
+              key={idx}
+              style={{
+                opacity: idx === activeIndex ? 1 : 0,
+                transform: idx === activeIndex ? "scale(1)" : "scale(0.95)",
+                transition: "all 0.6s cubic-bezier(0.23, 1, 0.32, 1)",
+                zIndex: idx === activeIndex ? 10 : 0
+              }}
+              className="absolute inset-0 flex flex-col items-center justify-center text-center p-6 bg-zinc-900 border border-white/5 rounded-2xl overflow-hidden animate-fade-in"
+            >
+              <div className={cn("absolute inset-0 bg-gradient-to-br opacity-20 pointer-events-none", item.color)} />
+              <h3 className="text-white text-lg font-black tracking-widest uppercase mb-2">{item.label}</h3>
+              <p className="text-zinc-400 text-xs italic">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+        
+        <div className="flex justify-center gap-3 bg-zinc-900/60 border border-zinc-850 p-2 rounded-2xl backdrop-blur-xl relative z-10 self-center">
+          {items.map((item, idx) => (
+            <button
+              key={idx}
+              onClick={() => setActiveIndex(idx)}
+              className={cn(
+                "relative px-4 py-2 rounded-xl text-[9px] font-mono font-bold tracking-wider uppercase transition-all duration-300",
+                idx === activeIndex 
+                  ? "bg-zinc-800 text-white shadow-[0_0_15px_rgba(255,255,255,0.05)] border border-white/10" 
+                  : "text-zinc-500 hover:text-zinc-300 border border-transparent"
+              )}
+            >
+              0{idx + 1}
+              {idx === activeIndex && (
+                <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_5px_#10b981]" />
+              )}
+            </button>
+          ))}
+        </div>
+      </div>
+    );
+  },
+
+  Mosaic_GlowEffectGrid: () => {
+    const containerRef = React.useRef<HTMLDivElement>(null);
+    const [coords, setCoords] = React.useState({ x: 0, y: 0 });
+    const [hoverIndex, setHoverIndex] = React.useState<number | null>(null);
+    
+    const handleMouseMove = (e: React.MouseEvent) => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      setCoords({
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top
+      });
+    };
+    
+    const cells = [
+      { label: "BENTO_ALPHA", span: "col-span-2 row-span-2", color: "from-pink-500/10 to-indigo-500/10" },
+      { label: "BENTO_BETA", span: "col-span-1 row-span-1", color: "from-amber-500/10 to-red-500/10" },
+      { label: "BENTO_GAMMA", span: "col-span-1 row-span-1", color: "from-blue-500/10 to-teal-500/10" },
+      { label: "BENTO_DELTA", span: "col-span-2 row-span-1", color: "from-purple-500/10 to-pink-500/10" }
+    ];
+    
+    return (
+      <div 
+        ref={containerRef}
+        onMouseMove={handleMouseMove}
+        className="w-full p-6 bg-zinc-950 border border-zinc-900 rounded-[2.5rem] relative overflow-hidden"
+      >
+        <div className="flex justify-between items-center mb-6">
+          <span className="text-[9px] font-mono text-pink-400 bg-pink-500/10 border border-pink-500/20 px-2.5 py-0.5 rounded-md uppercase tracking-widest">
+            MOSAIC_GLOW_SPOTLIGHT
+          </span>
+          <span className="text-[9px] font-mono text-zinc-650 font-bold">X: {Math.round(coords.x)} Y: {Math.round(coords.y)}</span>
+        </div>
+        
+        <div className="grid grid-cols-3 gap-3 aspect-video md:aspect-[16/8] w-full">
+          {cells.map((cell, idx) => (
+            <div
+              key={idx}
+              onMouseEnter={() => setHoverIndex(idx)}
+              onMouseLeave={() => setHoverIndex(null)}
+              className={cn(
+                "rounded-3xl border border-white/5 relative overflow-hidden bg-zinc-900/40 backdrop-blur-md p-6 flex flex-col justify-between transition-all duration-300",
+                cell.span
+              )}
+            >
+              {hoverIndex === idx && (
+                <div 
+                  style={{
+                    left: `${coords.x - (idx % 2 === 0 ? 40 : 180)}px`,
+                    top: `${coords.y - (idx > 1 ? 160 : 20)}px`,
+                    transform: 'translate(-50%, -50%)',
+                    background: 'radial-gradient(circle, rgba(244,63,94,0.12) 0%, transparent 60%)',
+                  }}
+                  className="absolute w-80 h-80 pointer-events-none transition-opacity duration-300"
+                />
+              )}
+              <div className="flex justify-between items-start z-10">
+                <span className="text-[8px] font-mono text-zinc-550">CELL_0{idx + 1}</span>
+                <div className="w-1.5 h-1.5 rounded-full bg-zinc-800 transition-colors" />
+              </div>
+              <div className="z-10">
+                <h4 className="text-[10px] font-black text-white tracking-widest uppercase mb-1">{cell.label}</h4>
+                <p className="text-[8px] font-mono text-zinc-600">FRACTAL GRID ALIGNMENT</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  },
+
+  Mosaic_MorphingDialog: () => {
+    const [selectedItem, setSelectedItem] = React.useState<null | { label: string, desc: string, color: string }>(null);
+    const items = [
+      { label: "CYBER_VESSEL", desc: "Tactical flight HUD and diagnostic interface nodes.", color: "from-emerald-500 to-teal-500" },
+      { label: "MAISON_STUDIO", desc: "Elegance minimal boutique architecture and negative space grids.", color: "from-pink-500 to-indigo-500" },
+      { label: "DEEP_HORIZON", desc: "Generative fluid soundwaves and procedural physics modeling.", color: "from-amber-500 to-orange-500" }
+    ];
+    return (
+      <div className="w-full p-6 bg-zinc-950 border border-zinc-900 rounded-[2.5rem] overflow-hidden min-h-[350px] flex flex-col justify-between relative">
+        <div>
+          <span className="text-[9px] font-mono text-purple-400 bg-purple-500/10 border border-purple-500/20 px-2.5 py-0.5 rounded-md uppercase tracking-widest">
+            MORPHING_POPUP_DIALOG
+          </span>
+          <p className="text-[9px] font-mono text-zinc-550 mt-2 uppercase">CLICK CARDS TO POPUP DETAILS</p>
+        </div>
+        
+        <div className="grid grid-cols-3 gap-4 my-6">
+          {items.map((item, idx) => (
+            <div
+              key={idx}
+              onClick={() => setSelectedItem(item)}
+              className="aspect-[4/5] bg-zinc-900 border border-white/5 rounded-2xl relative overflow-hidden group cursor-pointer flex flex-col justify-end p-4 transition-all duration-300 hover:scale-[1.02] hover:border-zinc-800 animate-fade-in"
+            >
+              <div className={cn("absolute inset-0 bg-gradient-to-tr opacity-5 group-hover:opacity-15 transition-opacity", item.color)} />
+              <div className="z-10">
+                <span className="text-[7px] font-mono text-zinc-550 block mb-1">TAP_ZOOM_0{idx+1}</span>
+                <h4 className="text-[10px] font-bold text-white tracking-widest uppercase">{item.label}</h4>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        {selectedItem && (
+          <div 
+            className="absolute inset-0 bg-black/85 backdrop-blur-xl flex items-center justify-center p-8 z-30 transition-all duration-500"
+            onClick={() => setSelectedItem(null)}
+          >
+            <div 
+              className="w-full max-w-sm bg-zinc-900 border border-white/10 p-6 rounded-3xl relative overflow-hidden shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className={cn("absolute top-0 right-0 w-32 h-32 blur-[50px] opacity-15 rounded-full pointer-events-none", selectedItem.color)} />
+              <div className="flex justify-between items-start mb-4">
+                <span className="text-[9px] font-mono text-indigo-400 bg-indigo-500/10 px-2 py-0.5 rounded uppercase">{selectedItem.label}</span>
+                <button 
+                  onClick={() => setSelectedItem(null)}
+                  className="w-6 h-6 rounded-full bg-zinc-800 hover:bg-zinc-700 text-white flex items-center justify-center text-xs cursor-pointer"
+                >
+                  ✕
+                </button>
+              </div>
+              <h3 className="text-white text-base font-bold uppercase tracking-widest mb-3">{selectedItem.label}</h3>
+              <p className="text-zinc-400 text-xs leading-relaxed mb-4">{selectedItem.desc}</p>
+              <button 
+                onClick={() => setSelectedItem(null)}
+                className="w-full py-2.5 bg-white text-black font-black text-[10px] tracking-widest uppercase rounded-xl hover:bg-zinc-200 transition-colors"
+              >
+                CLOSE DOCUMENT
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  },
+
+  Interactive_TiltCardHover: () => {
+    const cards = [
+      { title: "PERSPECTIVE_01", color: "from-blue-500 to-indigo-600" },
+      { title: "PERSPECTIVE_02", color: "from-pink-500 to-rose-600" },
+      { title: "PERSPECTIVE_03", color: "from-amber-500 to-orange-600" }
+    ];
+    return (
+      <div className="w-full p-8 bg-zinc-950 border border-zinc-900 rounded-[2.5rem] overflow-hidden min-h-[350px] flex flex-col justify-between [perspective:1000px]">
+        <div>
+          <span className="text-[9px] font-mono text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-0.5 rounded-md uppercase tracking-widest">
+            3D_PERSPECTIVE_TILT
+          </span>
+          <p className="text-[9px] font-mono text-zinc-550 mt-2 uppercase">MOVE MOUSE OVER CARDS TO TILT</p>
+        </div>
+        
+        <div className="grid grid-cols-3 gap-4 my-6 select-none">
+          {cards.map((card, idx) => {
+            const [rotation, setRotation] = React.useState({ x: 0, y: 0 });
+            const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+              const rect = e.currentTarget.getBoundingClientRect();
+              const x = (e.clientX - rect.left) / rect.width - 0.5;
+              const y = (e.clientY - rect.top) / rect.height - 0.5;
+              setRotation({ x: x * 20, y: y * -20 });
+            };
+            const handleMouseLeave = () => {
+              setRotation({ x: 0, y: 0 });
+            };
+            return (
+              <div
+                key={idx}
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+                style={{
+                  transform: `rotateY(${rotation.x}deg) rotateX(${rotation.y}deg) scale(1.03)`,
+                  transition: "transform 0.1s ease-out",
+                  transformStyle: "preserve-3d"
+                }}
+                className="aspect-[4/5] bg-zinc-900 border border-white/5 rounded-2xl relative overflow-hidden group cursor-pointer flex flex-col justify-between p-5 shadow-2xl animate-fade-in"
+              >
+                <div className={cn("absolute inset-0 bg-gradient-to-tr opacity-10 group-hover:opacity-20 transition-opacity", card.color)} />
+                <div className="flex justify-between items-start" style={{ transform: "translateZ(20px)" }}>
+                  <span className="text-[7px] font-mono text-zinc-550">TILT_NODE_0{idx + 1}</span>
+                  <div className="w-1.5 h-1.5 rounded-full bg-zinc-800" />
+                </div>
+                <div style={{ transform: "translateZ(30px)" }}>
+                  <h4 className="text-[10px] font-black text-white tracking-widest uppercase">{card.title}</h4>
+                  <p className="text-[6px] font-mono text-zinc-650 mt-1 uppercase">3D SPECULAR RATIO</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  },
+
+  Interactive_ProgressiveBlurGrid: () => {
+    const [hoveredIdx, setHoveredIdx] = React.useState<number | null>(null);
+    const items = [
+      { title: "CYBER_VESSEL", theme: "TACTICAL", color: "from-emerald-500 to-teal-500" },
+      { title: "MAISON_LUXURY", theme: "EDITORIAL", color: "from-pink-500 to-indigo-500" },
+      { title: "DEEP_HORIZON", theme: "GENERATIVE", color: "from-amber-500 to-orange-500" }
+    ];
+    return (
+      <div className="w-full p-8 bg-zinc-950 border border-zinc-900 rounded-[2.5rem] overflow-hidden min-h-[350px] flex flex-col justify-between">
+        <div className="flex justify-between items-start">
+          <span className="text-[9px] font-mono text-pink-400 bg-pink-500/10 border border-pink-500/20 px-2.5 py-0.5 rounded-md uppercase tracking-widest">
+            PROGRESSIVE_BLUR_GRID
+          </span>
+          <span className="text-[9px] font-mono text-zinc-650 font-bold">FOCUS_DYNAMICS</span>
+        </div>
+        
+        <div className="grid grid-cols-3 gap-4 my-6">
+          {items.map((item, idx) => {
+            const isHovered = hoveredIdx === idx;
+            const isAnyHovered = hoveredIdx !== null;
+            const isOtherHovered = isAnyHovered && !isHovered;
+            return (
+              <div
+                key={idx}
+                onMouseEnter={() => setHoveredIdx(idx)}
+                onMouseLeave={() => setHoveredIdx(null)}
+                style={{
+                  filter: isOtherHovered ? "blur(4px)" : "blur(0px)",
+                  opacity: isOtherHovered ? 0.35 : 1,
+                  transform: isHovered ? "scale(1.05)" : "scale(1)",
+                  transition: "all 0.5s cubic-bezier(0.23, 1, 0.32, 1)"
+                }}
+                className="aspect-[4/5] bg-zinc-900 border border-white/5 rounded-2xl relative overflow-hidden group cursor-pointer flex flex-col justify-between p-5 animate-fade-in"
+              >
+                <div className={cn("absolute inset-0 bg-gradient-to-tr opacity-10 group-hover:opacity-20 transition-opacity", item.color)} />
+                <div className="flex justify-between items-start">
+                  <span className="text-[7px] font-mono text-zinc-550">{item.theme}</span>
+                  <Heart size={10} className={cn("text-zinc-600 transition-colors", isHovered && "text-pink-500")} />
+                </div>
+                <div>
+                  <span className="text-[6px] font-mono text-zinc-600 block mb-1">FOCUS_NODE_0{idx+1}</span>
+                  <h4 className="text-[10px] font-black text-white tracking-widest uppercase">{item.title}</h4>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  },
+
+  Interactive_BorderTrailCard: () => {
+    const [activeIndex, setActiveIndex] = React.useState(0);
+    const items = [
+      { title: "TRAIL_NODE_01", color: "from-blue-500 to-indigo-500" },
+      { title: "TRAIL_NODE_02", color: "from-pink-500 to-rose-500" }
+    ];
+    return (
+      <div className="w-full p-8 bg-zinc-955 border border-zinc-900 rounded-[2.5rem] overflow-hidden min-h-[350px] flex flex-col justify-between">
+        <div>
+          <span className="text-[9px] font-mono text-teal-400 bg-teal-500/10 border border-teal-500/20 px-2.5 py-0.5 rounded-md uppercase tracking-widest">
+            PERIMETER_BORDER_TRAIL
+          </span>
+          <p className="text-[9px] font-mono text-zinc-550 mt-2 uppercase">CLICK CARD TO ORBIT TRAIL</p>
+        </div>
+        
+        <style dangerouslySetInnerHTML={{__html: `
+          @keyframes border-orbit {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+          .animate-border-trail {
+            position: absolute;
+            inset: -50%;
+            background: conic-gradient(from 0deg, transparent 70%, #10b981 100%);
+            animation: border-orbit 4s linear infinite;
+          }
+        `}} />
+        
+        <div className="grid grid-cols-2 gap-6 my-6">
+          {items.map((item, idx) => {
+            const isActive = idx === activeIndex;
+            return (
+              <div
+                key={idx}
+                onClick={() => setActiveIndex(idx)}
+                className="aspect-video bg-zinc-950 rounded-2xl relative p-0.5 overflow-hidden group cursor-pointer shadow-2xl animate-fade-in"
+              >
+                {isActive && (
+                  <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none">
+                    <div className="animate-border-trail" />
+                  </div>
+                )}
+                
+                <div className="w-full h-full bg-zinc-900 rounded-[14px] p-5 flex flex-col justify-between relative z-10 border border-white/5 group-hover:border-zinc-800 transition-colors">
+                  <div className="flex justify-between items-start">
+                    <span className="text-[7px] font-mono text-zinc-550">0x00{idx + 1}</span>
+                    <span className="text-[7px] font-mono text-emerald-400 uppercase tracking-widest">{isActive ? "TRAIL_ACTIVE" : "STANDBY"}</span>
+                  </div>
+                  <div>
+                    <h4 className="text-[10px] font-black text-white tracking-widest uppercase">{item.title}</h4>
+                    <p className="text-[6px] font-mono text-zinc-650 mt-1 uppercase">ORBITING PATH PATTERN</p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  },
+
+  Dynamic_ChromaGrid: () => {
+    const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null);
+    const cells = Array.from({ length: 16 });
+    
+    const getChromaColor = (idx: number) => {
+      if (hoveredIndex === null) return "bg-zinc-900/40 border-white/5";
+      const distance = Math.abs(idx - hoveredIndex);
+      if (distance === 0) return "bg-pink-500 border-pink-400 text-white scale-[1.05] shadow-[0_0_15px_rgba(236,72,153,0.4)]";
+      if (distance === 1 || distance === 4) return "bg-indigo-600/60 border-indigo-500 scale-[1.02] shadow-[0_0_10px_rgba(79,70,229,0.2)]";
+      if (distance === 2 || distance === 5) return "bg-blue-900/30 border-blue-800";
+      return "bg-zinc-900/40 border-white/5 opacity-50";
+    };
+    
+    return (
+      <div className="w-full p-8 bg-zinc-950 border border-zinc-900 rounded-[2.5rem] overflow-hidden min-h-[350px] flex flex-col justify-between">
+        <div className="flex justify-between items-start">
+          <span className="text-[9px] font-mono text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2.5 py-0.5 rounded-md uppercase tracking-widest">
+            DYNAMIC_CHROMA_WAVE
+          </span>
+          <span className="text-[9px] font-mono text-zinc-600 uppercase">MATRIX_REACTION</span>
+        </div>
+        
+        <div className="grid grid-cols-4 gap-2.5 max-w-[280px] w-full aspect-square self-center my-4 select-none animate-fade-in">
+          {cells.map((_, idx) => (
+            <div
+              key={idx}
+              onMouseEnter={() => setHoveredIndex(idx)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              className={cn(
+                "rounded-xl border flex items-center justify-center font-mono text-[8px] text-zinc-500 transition-all duration-350 cursor-crosshair aspect-square",
+                getChromaColor(idx)
+              )}
+            >
+              {idx.toString().padStart(2, '0')}
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  },
+
+  Dynamic_DecayCardStack: () => {
+    const [dragOffset, setDragOffset] = React.useState(0);
+    const [isDragging, setIsDragging] = React.useState(false);
+    const [cardIndex, setCardIndex] = React.useState(0);
+    const containerRef = React.useRef<HTMLDivElement>(null);
+    
+    const items = [
+      { label: "DECAY_STACK_A", tag: "Procedural HUD", color: "from-blue-600 to-indigo-600" },
+      { label: "DECAY_STACK_B", tag: "Liquid Shadows", color: "from-pink-600 to-rose-600" },
+      { label: "DECAY_STACK_C", tag: "Organic Zen", color: "from-emerald-600 to-teal-600" }
+    ];
+    
+    const activeItem = items[cardIndex % items.length];
+    const nextItem = items[(cardIndex + 1) % items.length];
+    
+    const handlePointerDown = () => {
+      setIsDragging(true);
+    };
+    
+    const handlePointerMove = (e: React.PointerEvent) => {
+      if (!isDragging || !containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const offset = (e.clientX - rect.left - rect.width / 2) * 1.5;
+      setDragOffset(offset);
+    };
+    
+    const handlePointerUp = () => {
+      if (!isDragging) return;
+      setIsDragging(false);
+      
+      if (Math.abs(dragOffset) > 100) {
+        setCardIndex(prev => prev + 1);
+      }
+      setDragOffset(0);
+    };
+    
+    return (
+      <div 
+        ref={containerRef}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerLeave={handlePointerUp}
+        className="w-full p-8 bg-zinc-955 border border-zinc-900 rounded-[2.5rem] overflow-hidden min-h-[350px] flex flex-col justify-between relative select-none cursor-grab active:cursor-grabbing"
+      >
+        <div className="flex justify-between items-start">
+          <span className="text-[9px] font-mono text-purple-400 bg-purple-500/10 border border-purple-500/20 px-2.5 py-0.5 rounded-md uppercase tracking-widest">
+            DECAY_SWIPE_STACK
+          </span>
+          <span className="text-[9px] font-mono text-zinc-650">SWIPE TO ROTATE</span>
+        </div>
+        
+        <div className="relative h-44 w-full flex items-center justify-center my-4 overflow-visible animate-fade-in">
+          <div 
+            style={{
+              transform: `scale(0.92) translateY(8px) rotate(${-4 + dragOffset * 0.01}deg)`,
+              transition: isDragging ? "none" : "all 0.4s cubic-bezier(0.23, 1, 0.32, 1)",
+              opacity: 0.4,
+              zIndex: 5
+            }}
+            className="absolute w-64 h-36 rounded-2xl bg-zinc-900 border border-white/5 p-6 flex flex-col justify-between overflow-hidden shadow-xl"
+          >
+            <div className="flex justify-between">
+              <span className="text-[8px] font-mono text-zinc-555">{nextItem.tag}</span>
+            </div>
+            <h4 className="text-white text-base font-black tracking-widest uppercase">{nextItem.label}</h4>
+          </div>
+          
+          <div 
+            onPointerDown={handlePointerDown}
+            style={{
+              transform: `translateX(${dragOffset}px) translateY(${Math.abs(dragOffset) * 0.08}deg) rotate(${dragOffset * 0.08}deg) scale(1.02)`,
+              transition: isDragging ? "none" : "all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+              zIndex: 10
+            }}
+            className="absolute w-64 h-36 rounded-2xl bg-zinc-900 border border-white/10 p-6 flex flex-col justify-between overflow-hidden shadow-2xl"
+          >
+            <div className={cn("absolute inset-0 bg-gradient-to-tr opacity-15", activeItem.color)} />
+            <div className="flex justify-between items-start relative z-10">
+              <span className="px-2 py-0.5 bg-zinc-950 border border-zinc-800 text-[8px] font-mono text-zinc-400 rounded">
+                {activeItem.tag}
+              </span>
+              <span className="text-[9px] font-mono text-zinc-650">0{cardIndex%3+1}</span>
+            </div>
+            <h4 className="text-white text-base font-black tracking-widest uppercase relative z-10">{activeItem.label}</h4>
+          </div>
+        </div>
+      </div>
+    );
+  },
+
+  Dynamic_PixelCardHover: () => {
+    const canvasRef = React.useRef<HTMLCanvasElement>(null);
+    const [isHovered, setIsHovered] = React.useState(false);
+    const [mousePos, setMousePos] = React.useState({ x: 0, y: 0 });
+    
+    React.useEffect(() => {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+      
+      let animationFrameId: number;
+      let particles: Array<{ x: number, y: number, size: number, speedX: number, speedY: number, color: string, alpha: number }> = [];
+      
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+      
+      const render = () => {
+        ctx.fillStyle = 'rgba(9, 9, 11, 0.2)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        if (isHovered && Math.random() < 0.4) {
+          particles.push({
+            x: mousePos.x,
+            y: mousePos.y,
+            size: Math.random() * 3 + 1,
+            speedX: (Math.random() - 0.5) * 1.5,
+            speedY: (Math.random() - 0.5) * 1.5,
+            color: Math.random() > 0.5 ? '#ec4899' : '#3b82f6',
+            alpha: 1
+          });
+        }
+        
+        particles.forEach((p, idx) => {
+          p.x += p.speedX;
+          p.y += p.speedY;
+          p.alpha -= 0.015;
+          ctx.save();
+          ctx.globalAlpha = p.alpha;
+          ctx.fillStyle = p.color;
+          ctx.fillRect(p.x, p.y, p.size, p.size);
+          ctx.restore();
+          if (p.alpha <= 0) particles.splice(idx, 1);
+        });
+        
+        animationFrameId = requestAnimationFrame(render);
+      };
+      
+      render();
+      return () => {
+        cancelAnimationFrame(animationFrameId);
+      };
+    }, [isHovered, mousePos]);
+    
+    const handleMouseMove = (e: React.MouseEvent) => {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+      const rect = canvas.getBoundingClientRect();
+      setMousePos({
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top
+      });
+    };
+    
+    return (
+      <div 
+        onMouseMove={handleMouseMove}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        className="w-full p-8 bg-zinc-950 border border-zinc-900 rounded-[2.5rem] overflow-hidden min-h-[320px] flex flex-col justify-between relative group cursor-crosshair"
+      >
+        <canvas 
+          ref={canvasRef} 
+          className="absolute inset-0 w-full h-full pointer-events-none"
+        />
+        
+        <div className="flex justify-between items-start relative z-10">
+          <span className="text-[9px] font-mono text-pink-400 bg-pink-500/10 border border-pink-500/20 px-2.5 py-0.5 rounded-md uppercase tracking-widest">
+            DYNAMIC_PIXEL_TRAIL
+          </span>
+          <span className="text-[9px] font-mono text-zinc-650">CANVAS_RENDER</span>
+        </div>
+        
+        <div className="relative z-10 space-y-3">
+          <h3 className="text-white text-2xl font-black tracking-tighter uppercase leading-tight">
+            SHINING PIXEL FIELD.
+          </h3>
+          <p className="text-zinc-400 text-xs leading-relaxed max-w-sm">
+            Pass the pointer over the component to trace and light up floating digital energy particles rendered directly on canvas.
+          </p>
+        </div>
+        
+        <p className="relative z-10 text-zinc-600 text-[8px] font-mono uppercase tracking-widest">
+          SYSTEM_OK [STABLE]
+        </p>
+      </div>
+    );
+  },
 };
 
 const Gallery_Placeholder = ({ label }: { label: string }) => (
-  <div className="w-full h-80 rounded-3xl bg-zinc-950/60 border border-zinc-900 flex flex-col items-center justify-center relative overflow-hidden group select-none">
+  <div className="w-full h-80 rounded-3xl bg-zinc-955 border border-zinc-900 flex flex-col items-center justify-center relative overflow-hidden group select-none">
     <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-transparent opacity-40" />
     <div className="absolute -inset-[10px] bg-gradient-to-tr from-pink-500/5 via-transparent to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-    <span className="text-[10px] font-mono text-zinc-600 bg-zinc-900/50 border border-zinc-850 px-3 py-1 rounded-lg mb-3 tracking-widest uppercase">
+    <span className="text-[10px] font-mono text-zinc-650 bg-zinc-900/50 border border-zinc-850 px-3 py-1 rounded-lg mb-3 tracking-widest uppercase">
       PREMIUM LAYOUT VARIANT
     </span>
-    <h4 className="text-zinc-550 text-sm font-bold tracking-widest uppercase group-hover:text-zinc-350 transition-colors">
+    <h4 className="text-zinc-550 text-sm font-bold tracking-widest uppercase group-hover:text-zinc-355 transition-colors">
       {label.replace(/_/g, ' ')}
     </h4>
     <p className="text-[9px] font-mono text-zinc-650 mt-2 uppercase tracking-wider">
@@ -1219,16 +1869,14 @@ const Gallery_Placeholder = ({ label }: { label: string }) => (
 
 const placeholderKeys = [
   'Gallery_Placeholder_A1',
-  'Carousel_Placeholder_3', 'Carousel_Placeholder_4', 'Carousel_Placeholder_5',
+  'Carousel_Placeholder_5',
   'Carousel_Placeholder_6', 'Carousel_Placeholder_7', 'Carousel_Placeholder_8',
   'Carousel_Placeholder_9', 'Carousel_Placeholder_10',
-  'Mosaic_Placeholder_1', 'Mosaic_Placeholder_2', 'Mosaic_Placeholder_3',
+  'Mosaic_Placeholder_3', 
   'Mosaic_Placeholder_4', 'Mosaic_Placeholder_5', 'Mosaic_Placeholder_6',
   'Mosaic_Placeholder_7', 'Mosaic_Placeholder_8', 'Mosaic_Placeholder_9',
   'Mosaic_Placeholder_10',
-  'Interactive_Placeholder_5', 'Interactive_Placeholder_6', 'Interactive_Placeholder_7',
   'Interactive_Placeholder_8', 'Interactive_Placeholder_9', 'Interactive_Placeholder_10',
-  'Dynamic_Placeholder_4', 'Dynamic_Placeholder_5', 'Dynamic_Placeholder_6',
   'Dynamic_Placeholder_7', 'Dynamic_Placeholder_8', 'Dynamic_Placeholder_9',
   'Dynamic_Placeholder_10'
 ];

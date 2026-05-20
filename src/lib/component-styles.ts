@@ -258,25 +258,25 @@ export const GALLERY_STYLES = {
   ],
   Carousel: [
     'Carousel_CircularGallery', 'Carousel_DomeGallery', 
-    'Carousel_Placeholder_3', 'Carousel_Placeholder_4', 'Carousel_Placeholder_5',
+    'Carousel_InfiniteSlider', 'Carousel_GlowNav', 'Carousel_Placeholder_5',
     'Carousel_Placeholder_6', 'Carousel_Placeholder_7', 'Carousel_Placeholder_8',
     'Carousel_Placeholder_9', 'Carousel_Placeholder_10'
   ],
   Mosaic: [
-    'Mosaic_Placeholder_1', 'Mosaic_Placeholder_2', 'Mosaic_Placeholder_3', 
+    'Mosaic_GlowEffectGrid', 'Mosaic_MorphingDialog', 'Mosaic_Placeholder_3', 
     'Mosaic_Placeholder_4', 'Mosaic_Placeholder_5', 'Mosaic_Placeholder_6',
     'Mosaic_Placeholder_7', 'Mosaic_Placeholder_8', 'Mosaic_Placeholder_9',
     'Mosaic_Placeholder_10'
   ],
   Interactive: [
     'Interactive_ImageComparison', 'Interactive_MagicBento', 'Interactive_SpotlightGridCard', 
-    'Interactive_ReflectiveMetallic', 'Interactive_Placeholder_5', 'Interactive_Placeholder_6',
-    'Interactive_Placeholder_7', 'Interactive_Placeholder_8', 'Interactive_Placeholder_9',
+    'Interactive_ReflectiveMetallic', 'Interactive_TiltCardHover', 'Interactive_ProgressiveBlurGrid',
+    'Interactive_BorderTrailCard', 'Interactive_Placeholder_8', 'Interactive_Placeholder_9',
     'Interactive_Placeholder_10'
   ],
   Dynamic: [
     'Dynamic_FlyingPosters', 'Dynamic_ScrollStack', 'Dynamic_BounceCards', 
-    'Dynamic_Placeholder_4', 'Dynamic_Placeholder_5', 'Dynamic_Placeholder_6',
+    'Dynamic_ChromaGrid', 'Dynamic_DecayCardStack', 'Dynamic_PixelCardHover',
     'Dynamic_Placeholder_7', 'Dynamic_Placeholder_8', 'Dynamic_Placeholder_9',
     'Dynamic_Placeholder_10'
   ]
