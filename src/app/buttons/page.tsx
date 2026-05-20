@@ -4,24 +4,36 @@ import { ButtonVariants } from "@/components/neon/ButtonVariants";
 import { CopyWrapper } from "@/components/neon/CopyWrapper";
 import { SafeHydration } from "@/components/neon/SafeHydration";
 import { LazyComponent } from "@/components/neon/LazyComponent";
-import { NeonButtons } from '@/components/neon/NeonButtons';
+import { BUTTON_STYLES } from "@/lib/component-styles";
+import { useSearchParams } from "next/navigation";
 
 export default function ButtonsPage() {
+  const searchParams = useSearchParams();
+  const selectedStyle = searchParams.get("style");
+
+  const filteredVariants = selectedStyle && BUTTON_STYLES[selectedStyle as keyof typeof BUTTON_STYLES]
+    ? BUTTON_STYLES[selectedStyle as keyof typeof BUTTON_STYLES]
+    : Object.keys(ButtonVariants);
+
   return (
     <SafeHydration>
       <div className="p-10 space-y-16 max-w-7xl mx-auto">
         <header className="mb-20">
-          <h1 className="text-5xl font-black mb-4 bg-gradient-to-r from-[#0fa] to-blue-500 bg-clip-text text-transparent tracking-tighter">
-            BUTTONS CATALOG
+          <h1 className="text-5xl font-black mb-4 bg-gradient-to-r from-[#0fa] to-blue-500 bg-clip-text text-transparent tracking-tighter uppercase">
+            {selectedStyle ? `${selectedStyle} Buttons` : "Buttons Catalog"}
           </h1>
           <p className="text-zinc-500 text-xl max-w-3xl">
-            Nuestra colección de botones optimizada para rendimiento. Carga bajo demanda para reducir el uso de CPU.
+            {selectedStyle 
+              ? `Explora variantes del estilo ${selectedStyle}.`
+              : "Nuestra colección de botones optimizada para rendimiento. Carga bajo demanda."}
           </p>
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {Object.keys(ButtonVariants).map((name, index) => {
+          {filteredVariants.map((name, index) => {
             const Component = ButtonVariants[name as keyof typeof ButtonVariants];
+            if (!Component) return null;
+
             return (
               <div key={name} className="flex flex-col gap-4">
                 <div className="flex items-center gap-2 px-2">
@@ -32,7 +44,7 @@ export default function ButtonsPage() {
                 <CopyWrapper 
                   label="" 
                   className="h-48 flex items-center justify-center bg-zinc-900/20 border-zinc-800/40 hover:bg-zinc-900/40"
-                  code={`// Estilo de Botón: ${name}\n// Requiere Tailwind CSS\n\n<button className="...">...</button>`}
+                  code={`// Estilo de Botón: ${name}\n// Requiere Tailwind CSS\n\n<Component />`}
                 >
                   <LazyComponent fallback={<div className="h-10 w-32 bg-zinc-800 animate-pulse rounded-lg" />}>
                     <Component />
