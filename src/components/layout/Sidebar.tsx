@@ -15,7 +15,11 @@ import {
   MessageSquare,
   Images,
   ChevronDown,
-  ChevronRight
+  ChevronRight,
+  Paintbrush,
+  Pointer,
+  Box,
+  Sliders
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useImageMode } from '@/context/ImageContext';
@@ -28,7 +32,12 @@ import {
   GALLERY_STYLES,
   INPUT_STYLES,
   TRANSITION_STYLES,
-  FOOTER_STYLES
+  FOOTER_STYLES,
+  BACKGROUND_STYLES,
+  TEXT_EFFECT_STYLES,
+  CURSOR_STYLES,
+  THREED_STYLES,
+  PRIMITIVE_STYLES
 } from '@/lib/component-styles';
 
 const menuItems = [
@@ -112,6 +121,51 @@ const menuItems = [
     subItems: Object.keys(FOOTER_STYLES).map(style => ({
       name: style,
       href: `/footers?style=${style}`
+    }))
+  },
+  { 
+    name: 'Backgrounds', 
+    href: '/backgrounds', 
+    icon: Paintbrush,
+    subItems: Object.keys(BACKGROUND_STYLES).map(style => ({
+      name: style,
+      href: `/backgrounds?style=${style}`
+    }))
+  },
+  { 
+    name: 'Text Effects', 
+    href: '/text-effects', 
+    icon: Type,
+    subItems: Object.keys(TEXT_EFFECT_STYLES).map(style => ({
+      name: style,
+      href: `/text-effects?style=${style}`
+    }))
+  },
+  { 
+    name: 'Cursors', 
+    href: '/cursors', 
+    icon: Pointer,
+    subItems: Object.keys(CURSOR_STYLES).map(style => ({
+      name: style,
+      href: `/cursors?style=${style}`
+    }))
+  },
+  { 
+    name: '3D Elements', 
+    href: '/threed', 
+    icon: Box,
+    subItems: Object.keys(THREED_STYLES).map(style => ({
+      name: style,
+      href: `/threed?style=${style}`
+    }))
+  },
+  { 
+    name: 'Primitives', 
+    href: '/primitives', 
+    icon: Sliders,
+    subItems: Object.keys(PRIMITIVE_STYLES).map(style => ({
+      name: style,
+      href: `/primitives?style=${style}`
     }))
   },
 ];

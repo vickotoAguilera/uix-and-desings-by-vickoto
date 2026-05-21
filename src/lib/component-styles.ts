@@ -239,7 +239,7 @@ export const GALLERY_STYLES = {
   AppleStyle: [
     'BentoInteractiveHover', 'GlassmorphismCards', 'MinimalistWhite', 'ModernPortfolioSlider', 
     'StandardGrid', 'ExpandingAccordionClassic', 'OverlayContent', 'ProductShowcase', 
-    'SplitScreenGallery', 'Gallery_Placeholder_A1'
+    'SplitScreenGallery', 'Gallery_LuxuryBento'
   ],
   Masonry: [
     'MasonryStyle', 'PolaroidStyle', 'MinimalistPolaroidGrid', 'ParallaxStack', 
@@ -259,13 +259,13 @@ export const GALLERY_STYLES = {
   Carousel: [
     'Carousel_CircularGallery', 'Carousel_DomeGallery', 
     'Carousel_InfiniteSlider', 'Carousel_GlowNav', 'Carousel_CardFlow',
-    'Carousel_Thumbnails', 'Carousel_ElasticSlider', 'Carousel_Placeholder_8',
-    'Carousel_Placeholder_9', 'Carousel_Placeholder_10'
+    'Carousel_Thumbnails', 'Carousel_ElasticSlider', 'Carousel_Parallax3D',
+    'Carousel_VideoPeek', 'Carousel_StackReveal'
   ],
   Mosaic: [
-    'Mosaic_GlowEffectGrid', 'Mosaic_MorphingDialog', 'Mosaic_Placeholder_3', 
-    'Mosaic_Placeholder_4', 'Mosaic_Placeholder_5', 'Mosaic_Placeholder_6',
-    'Mosaic_Placeholder_7', 'Mosaic_Placeholder_8', 'Mosaic_Placeholder_9',
+    'Mosaic_GlowEffectGrid', 'Mosaic_MorphingDialog', 'Mosaic_BentoInteractive', 
+    'Mosaic_GlassHover', 'Mosaic_NeonGrid', 'Mosaic_CyberHUD',
+    'Mosaic_RetroPixel', 'Mosaic_LuxuryMinimal', 'Mosaic_Placeholder_9',
     'Mosaic_Placeholder_10'
   ],
   Interactive: [
@@ -349,10 +349,77 @@ export const TRANSITION_STYLES = {
 };
 
 export const FOOTER_STYLES = {
-  Modern: ['SaaS', 'GlassModern', 'PillFooter', 'Bento'],
-  Cyberpunk: ['Cyberpunk', 'Holographic', 'DeepSpace', 'RetroArcade'],
-  Minimalist: ['Minimalist', 'SidebarStyle', 'Architecture'],
-  Creative: ['Brutalist', 'Neumorphic', 'MeshDrift']
+  SEO: [
+    'SEO_Sitemap', 'SEO_KeywordCloud', 'SEO_DeepLinkMap', 'SEO_SemanticGrid',
+    'SEO_MultiRegionSitemap', 'SEO_IndexExplorer', 'SEO_BacklinkAudit',
+    'SEO_AuthorityMetrics', 'SEO_CrawlBudget', 'SEO_TechnicalAudit'
+  ],
+  Minimalist: [
+    'Minimalist', 'SidebarStyle', 'Architecture', 'PillFooter', 'Minimalist_GlassPill',
+    'Minimalist_ThinLine', 'Minimalist_CenterNav', 'Minimalist_FloatingContact',
+    'Minimalist_SerifEditorial', 'Minimalist_VerticalNav'
+  ],
+  Social: [
+    'Social_InstagramFeed', 'Social_NewsletterWide', 'Social_IconShowcase',
+    'Social_TwitchLiveStatus', 'Social_DiscordCommunity', 'Social_StreamingGrid',
+    'Social_YouTubeFeed', 'Social_TikTokVibe', 'Social_LinkedInProfessional',
+    'Social_GlobalConnect'
+  ],
+  SaaS: [
+    'SaaS', 'GlassModern', 'SaaS_AppStore', 'SaaS_PlatformSupport',
+    'SaaS_PricingMini', 'SaaS_StatusDashboard', 'SaaS_CloudInfrastructure',
+    'SaaS_SecurityFirst', 'SaaS_IntegrationHub', 'SaaS_EnterpriseGrade'
+  ],
+  Creative: [
+    'Brutalist', 'MeshDrift', 'RetroArcade', 'Creative_FloatingIcons',
+    'Creative_GlitchBrutalist', 'Creative_BackgroundVideo', 'Creative_RetroGrid',
+    'Creative_InteractiveCanvas', 'Creative_AudioSpectrum', 'Creative_FutureLaboratory'
+  ],
+  Bento: [
+    'Bento', 'Bento_Complex', 'Bento_MetricFooter', 'Bento_ContactGrid',
+    'Bento_ResourceHub', 'Bento_TeamShowcase', 'Bento_AnalyticsGrid',
+    'Bento_GlobalClock', 'Bento_TestimonialModule', 'Bento_ProductShowcase'
+  ],
+  Dark: [
+    'Cyberpunk', 'Holographic', 'DeepSpace', 'Dark_NeonPulse', 'Dark_CyberOverlay',
+    'Dark_HolographicInterface', 'Dark_NebulaGlow', 'Dark_StarfieldMotion',
+    'Dark_CyberPunkTerminal', 'Dark_AbstractGlow'
+  ],
+  Corporate: [
+    'Neumorphic', 'Corporate_Locations', 'Corporate_Trust', 'Corporate_Enterprise',
+    'Corporate_LeadershipTrust', 'Corporate_GlobalNetwork', 'Corporate_InvestorRelations',
+    'Corporate_CertificationBadge', 'Corporate_ComplianceHub', 'Corporate_SustainabilityReport'
+  ]
+};
+
+export const BACKGROUND_STYLES = {
+  Interactive: [
+    'Aurora', 'Balatro', 'Particles', 'LiquidChrome', 'GridMotion',
+    'CyberGrid', 'GlassPills', 'ClayBlobs', 'NeoMemphis', 'StarField',
+    'RetroGrid', 'AbstractWaves', 'DotPattern', 'MatrixRain', 'NoiseGrain',
+    'ScanlineHUD', 'SoftAura', 'Blueprint', 'PixelStars', 'GradientMesh'
+  ]
+};
+
+export const TEXT_EFFECT_STYLES = {
+  Motion: [
+    'DecryptedText', 'TextPressure', 'TrueFocus', 'TextMorph', 'TextScramble',
+    'KineticScale', 'BrutalistStroke', 'ASCIIWave', 'GlassRefract', 'TerminalGlitch',
+    'NeonSign', 'TypewriterPro', 'VoxelText', 'ClaymorphicText', 'SolarpunkLeaf',
+    'MetallicChrome', 'BentoTitle', 'MinimalOutline', 'ElasticBounce', 'RetroPC'
+  ]
+};
+
+export const CURSOR_STYLES = {
+  Interactions: ['BlobCursor', 'ClickSpark', 'ImageTrail', 'TargetCursor', 'MagneticElement']
+};
+
+export const THREED_STYLES = {
+  Canvas3D: ['InteractiveLanyard', 'InteractiveGlobe', 'IconCloud', 'GlassThreeDCard']
+};
+
+export const PRIMITIVE_STYLES = {
+  Components: ['BorderTrail', 'ImageComparison', 'MorphingDialog', 'DynamicToolbar', 'ProgressiveBlur']
 };
 
 export const COMPONENT_STYLES_MAP = {
@@ -364,5 +431,10 @@ export const COMPONENT_STYLES_MAP = {
   galleries: GALLERY_STYLES,
   inputs: INPUT_STYLES,
   transitions: TRANSITION_STYLES,
-  footers: FOOTER_STYLES
+  footers: FOOTER_STYLES,
+  backgrounds: BACKGROUND_STYLES,
+  'text-effects': TEXT_EFFECT_STYLES,
+  cursors: CURSOR_STYLES,
+  threed: THREED_STYLES,
+  primitives: PRIMITIVE_STYLES
 };

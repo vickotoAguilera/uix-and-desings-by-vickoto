@@ -2796,7 +2796,262 @@ export const GalleryVariants: Record<string, React.FC> = {
         </div>
       </div>
     );
-  }
+  },
+
+  Carousel_Parallax3D: () => {
+    const [rotate, setRotate] = React.useState({ x: 0, y: 0 });
+    return (
+      <div 
+        onMouseMove={(e) => {
+          const rect = e.currentTarget.getBoundingClientRect();
+          setRotate({
+            x: (e.clientY - rect.top - rect.height/2) / 15,
+            y: (e.clientX - rect.left - rect.width/2) / -15
+          });
+        }}
+        onMouseLeave={() => setRotate({ x: 0, y: 0 })}
+        className="w-full h-80 bg-zinc-950 border border-zinc-900 rounded-[2.5rem] overflow-hidden flex items-center justify-center [perspective:1200px] group cursor-none"
+      >
+        <div className="absolute top-4 left-4 z-10">
+          <span className="text-[9px] font-mono text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-0.5 rounded-md uppercase tracking-widest">
+            PARALLAX_3D_DEPTH
+          </span>
+        </div>
+        <div 
+          style={{ 
+            transform: `rotateX(${rotate.x}deg) rotateY(${rotate.y}deg)`,
+            transition: 'transform 0.1s ease-out'
+          }}
+          className="relative w-72 h-44 rounded-2xl shadow-2xl overflow-hidden group/card"
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-indigo-600/20 via-transparent to-purple-600/20" />
+          <div className="absolute inset-0 border border-white/10 rounded-2xl" />
+          <div 
+            style={{ transform: `translateX(${rotate.y * 2}px) translateY(${rotate.x * -2}px)` }}
+            className="absolute inset-4 border border-white/5 rounded-xl bg-zinc-900/40 backdrop-blur-sm flex items-center justify-center transition-transform duration-100"
+          >
+            <h4 className="text-white font-black tracking-tighter text-2xl italic group-hover/card:scale-110 transition-transform">DEPTH_CORE</h4>
+          </div>
+        </div>
+      </div>
+    );
+  },
+
+  Carousel_VideoPeek: () => {
+    const [isHovered, setIsHovered] = React.useState(false);
+    return (
+      <div 
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        className="w-full h-80 bg-zinc-955 border border-zinc-900 rounded-[2.5rem] overflow-hidden relative group cursor-pointer"
+      >
+        <div className="absolute top-4 left-4 z-20">
+          <span className="text-[9px] font-mono text-rose-400 bg-rose-500/10 border border-rose-500/20 px-2.5 py-0.5 rounded-md uppercase tracking-widest">
+            VIDEO_PEEK_REVEAL
+          </span>
+        </div>
+        <div className="absolute inset-0 transition-all duration-700">
+          <ImagePlaceholder label="POSTER_FRAME" className={cn("transition-opacity duration-700", isHovered ? "opacity-20 scale-110" : "opacity-100")} />
+        </div>
+        <div className={cn(
+          "absolute inset-0 flex items-center justify-center transition-all duration-500",
+          isHovered ? "opacity-100 scale-100" : "opacity-0 scale-150"
+        )}>
+          <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center text-white shadow-2xl">
+            <Play size={32} fill="currentColor" className="ml-1" />
+          </div>
+        </div>
+        <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end z-20">
+          <div className={cn("transition-all duration-500", isHovered ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0")}>
+            <h4 className="text-white font-bold uppercase tracking-widest text-sm">Cinematic Motion</h4>
+            <p className="text-rose-400 font-mono text-[9px]">4K_UHD_STREAM_ACTIVE</p>
+          </div>
+          <span className="text-white/30 font-mono text-[9px] uppercase tracking-widest">00:42</span>
+        </div>
+      </div>
+    );
+  },
+
+  Carousel_StackReveal: () => {
+    const [isHovered, setIsHovered] = React.useState(false);
+    return (
+      <div 
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        className="w-full h-80 bg-zinc-950 border border-zinc-900 rounded-[2.5rem] overflow-hidden relative flex items-center justify-center"
+      >
+        <div className="absolute top-4 left-4 z-10">
+          <span className="text-[9px] font-mono text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2.5 py-0.5 rounded-md uppercase tracking-widest">
+            FAN_STACK_REVEAL
+          </span>
+        </div>
+        <div className="relative w-48 h-64 flex items-center justify-center">
+          {[
+            { rot: -15, x: -60, color: "bg-amber-500/10" },
+            { rot: 15, x: 60, color: "bg-orange-500/10" },
+            { rot: 0, x: 0, color: "bg-zinc-900" }
+          ].map((card, idx) => (
+            <div 
+              key={idx}
+              style={{
+                transform: isHovered 
+                  ? `translateX(${card.x}px) rotate(${card.rot}deg) scale(1.05)` 
+                  : `translateX(0px) rotate(${idx * 2 - 2}deg) scale(1)`,
+                zIndex: idx === 2 ? 10 : 5,
+                transition: 'all 0.6s cubic-bezier(0.23, 1, 0.32, 1)'
+              }}
+              className={cn(
+                "absolute inset-0 rounded-2xl border border-white/10 shadow-2xl flex flex-col justify-between p-5 overflow-hidden",
+                card.color
+              )}
+            >
+              <div className="flex justify-between items-start">
+                <span className="text-[8px] font-mono text-zinc-600">CARD_0{idx+1}</span>
+                <Sparkles size={12} className="text-amber-500/40" />
+              </div>
+              <div className="w-8 h-1 bg-white/5 rounded-full" />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  },
+
+  Mosaic_BentoInteractive: () => (
+    <div className="grid grid-cols-4 grid-rows-2 gap-3 h-80 w-full p-2 bg-zinc-955 border border-zinc-900 rounded-[2.5rem]">
+      <div className="col-span-2 row-span-2 group relative rounded-2xl overflow-hidden cursor-pointer">
+        <ImagePlaceholder label="MAIN_GRID" className="group-hover:scale-105 transition-transform duration-700" />
+        <div className="absolute inset-0 bg-indigo-500/10 group-hover:bg-transparent transition-colors" />
+      </div>
+      <div className="col-span-1 row-span-1 group relative rounded-2xl overflow-hidden cursor-pointer bg-zinc-900 border border-white/5 flex items-center justify-center">
+        <Plus className="text-zinc-700 group-hover:text-indigo-400 group-hover:rotate-90 transition-all" />
+      </div>
+      <div className="col-span-1 row-span-1 rounded-2xl overflow-hidden">
+        <ImagePlaceholder label="S1" className="grayscale" />
+      </div>
+      <div className="col-span-2 row-span-1 group relative rounded-2xl overflow-hidden cursor-pointer bg-zinc-900 border border-white/5 p-4 flex flex-col justify-end">
+        <h4 className="text-white text-[10px] font-bold tracking-widest uppercase mb-1">Interactive Bento</h4>
+        <div className="w-full h-1 bg-indigo-500/30 rounded-full overflow-hidden">
+          <div className="w-1/2 h-full bg-indigo-500 group-hover:w-full transition-all duration-1000" />
+        </div>
+      </div>
+    </div>
+  ),
+
+  Mosaic_GlassHover: () => (
+    <div className="grid grid-cols-2 gap-4 h-80 w-full p-4">
+      {[1, 2, 3, 4].map((i) => (
+        <div key={i} className="relative group rounded-3xl overflow-hidden bg-white/5 backdrop-blur-xl border border-white/10 p-1 cursor-pointer">
+          <div className="absolute inset-0 bg-radial-gradient from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+          <div className="h-full w-full rounded-[1.4rem] overflow-hidden">
+            <ImagePlaceholder label={`GLASS_${i}`} className="opacity-40 group-hover:opacity-80 transition-all group-hover:scale-110" />
+          </div>
+        </div>
+      ))}
+    </div>
+  ),
+
+  Mosaic_NeonGrid: () => (
+    <div className="grid grid-cols-3 gap-2 h-80 w-full p-2 bg-black rounded-[2.5rem] border border-zinc-900">
+      {[1, 2, 3, 4, 5, 6].map((i) => (
+        <div key={i} className={cn(
+          "relative rounded-xl overflow-hidden border transition-all duration-500 group cursor-crosshair",
+          i % 2 === 0 ? "border-emerald-500/20 shadow-[0_0_10px_rgba(16,185,129,0.1)]" : "border-pink-500/20 shadow-[0_0_10px_rgba(236,72,153,0.1)]",
+          "hover:border-white/40 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)]"
+        )}>
+          <div className="absolute inset-0 bg-zinc-950" />
+          <div className="absolute top-2 right-2 w-1 h-1 rounded-full bg-white/20 animate-pulse" />
+          <div className="absolute inset-0 flex items-center justify-center font-mono text-[8px] text-zinc-700 group-hover:text-white transition-colors">
+            NODE_0{i}
+          </div>
+        </div>
+      ))}
+    </div>
+  ),
+
+  Mosaic_CyberHUD: () => (
+    <div className="grid grid-cols-3 grid-rows-2 gap-3 h-80 w-full p-4 bg-zinc-955 border border-zinc-900 rounded-[2.5rem] relative overflow-hidden group">
+      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] pointer-events-none" />
+      <div className="col-span-2 row-span-1 rounded-2xl border border-indigo-500/20 bg-zinc-900/50 p-4 relative overflow-hidden group/hud">
+        <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-indigo-500" />
+        <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-indigo-500" />
+        <div className="flex justify-between items-center h-full">
+          <div className="space-y-1">
+            <span className="text-[7px] font-mono text-indigo-400 block">SYSTEM_SCAN</span>
+            <h4 className="text-white text-xs font-black tracking-widest">TACTICAL_OVERLAY</h4>
+          </div>
+          <div className="w-12 h-12 rounded-full border border-indigo-500/30 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-full border-t-2 border-indigo-500 animate-spin" />
+          </div>
+        </div>
+      </div>
+      <div className="col-span-1 row-span-2 rounded-2xl border border-zinc-800 bg-zinc-950 overflow-hidden">
+        <ImagePlaceholder label="SCAN_FEED" className="opacity-20 grayscale group-hover:opacity-40 transition-opacity" />
+      </div>
+      <div className="col-span-1 row-span-1 rounded-2xl border border-zinc-800 flex flex-col items-center justify-center gap-2">
+        <div className="w-8 h-8 rounded bg-indigo-500/10 flex items-center justify-center">
+          <Maximize2 size={14} className="text-indigo-400" />
+        </div>
+        <span className="text-[7px] font-mono text-zinc-600">ZOOM_OPTIC</span>
+      </div>
+      <div className="col-span-1 row-span-1 rounded-2xl border border-indigo-500/40 bg-indigo-500/5 flex items-center justify-center font-mono text-[10px] text-indigo-400 font-bold animate-pulse">
+        LOCKED
+      </div>
+    </div>
+  ),
+
+  Mosaic_RetroPixel: () => (
+    <div className="grid grid-cols-4 gap-1 h-80 w-full p-1 bg-zinc-900 rounded-3xl border-4 border-zinc-800 shadow-2xl overflow-hidden">
+      {Array.from({ length: 16 }).map((_, i) => (
+        <div key={i} className="bg-zinc-950 border border-zinc-800 group cursor-pointer hover:bg-zinc-800 transition-colors flex items-center justify-center">
+          <div className={cn(
+            "w-2 h-2 rounded-sm transition-all duration-300",
+            i % 5 === 0 ? "bg-emerald-500/20 group-hover:bg-emerald-500" : "bg-white/5 group-hover:bg-white/40"
+          )} />
+        </div>
+      ))}
+    </div>
+  ),
+
+  Mosaic_LuxuryMinimal: () => (
+    <div className="grid grid-cols-2 gap-8 h-80 w-full p-8 bg-white rounded-[2.5rem] border border-zinc-100 shadow-xl">
+      <div className="flex flex-col justify-center space-y-4">
+        <span className="text-[10px] font-serif italic text-zinc-400 tracking-[0.3em] uppercase">Autumn / Winter '26</span>
+        <h3 className="text-zinc-900 text-3xl font-serif leading-tight">Refined <br /> Aesthetics.</h3>
+        <div className="w-12 h-px bg-zinc-900" />
+      </div>
+      <div className="relative group overflow-hidden rounded-2xl">
+        <ImagePlaceholder label="EDITORIAL" className="bg-zinc-50 grayscale group-hover:grayscale-0 transition-all duration-1000" />
+      </div>
+    </div>
+  ),
+
+  Gallery_LuxuryBento: () => (
+    <div className="grid grid-cols-6 grid-rows-2 gap-4 h-80 w-full p-4 bg-zinc-950 rounded-[3rem] border border-zinc-900">
+      <div className="col-span-3 row-span-2 rounded-[2rem] overflow-hidden border border-white/5 relative group cursor-pointer">
+        <ImagePlaceholder label="PREMIUM_COLLECTION" className="group-hover:scale-105 transition-transform duration-1000" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-8">
+          <span className="text-amber-500 text-[10px] font-bold tracking-[0.2em] uppercase mb-2">Signature</span>
+          <h4 className="text-white text-2xl font-black tracking-tighter">THE ARCHIVE.</h4>
+        </div>
+      </div>
+      <div className="col-span-3 row-span-1 rounded-[2rem] overflow-hidden border border-white/5 bg-zinc-900 flex items-center justify-between p-8 group cursor-pointer hover:bg-zinc-800 transition-colors">
+        <div className="space-y-1">
+          <h5 className="text-white font-bold text-lg">Curated Pieces</h5>
+          <p className="text-zinc-500 text-xs">Handpicked by our design lead.</p>
+        </div>
+        <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all">
+          <ArrowRight size={20} />
+        </div>
+      </div>
+      <div className="col-span-1 row-span-1 rounded-[2rem] overflow-hidden border border-white/5 bg-zinc-900 flex items-center justify-center group cursor-pointer">
+        <Search className="text-zinc-700 group-hover:text-white transition-colors" />
+      </div>
+      <div className="col-span-2 row-span-1 rounded-[2rem] overflow-hidden border border-white/5">
+        <ImagePlaceholder label="DETAIL_X" className="grayscale opacity-50" />
+      </div>
+    </div>
+  )
 };
 
 const Gallery_Placeholder = ({ label }: { label: string }) => (
@@ -2821,12 +3076,7 @@ const Gallery_Placeholder = ({ label }: { label: string }) => (
 );
 
 const placeholderKeys = [
-  'Gallery_Placeholder_A1',
-  'Carousel_Placeholder_8',
-  'Carousel_Placeholder_9', 'Carousel_Placeholder_10',
-  'Mosaic_Placeholder_3', 
-  'Mosaic_Placeholder_4', 'Mosaic_Placeholder_5', 'Mosaic_Placeholder_6',
-  'Mosaic_Placeholder_7', 'Mosaic_Placeholder_8', 'Mosaic_Placeholder_9',
+  'Mosaic_Placeholder_9',
   'Mosaic_Placeholder_10'
 ];
 
