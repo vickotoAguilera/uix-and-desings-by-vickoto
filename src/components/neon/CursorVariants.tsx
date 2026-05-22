@@ -465,6 +465,659 @@ export function MagneticElement({
   );
 }
 
+// 6. HUDScanner implementation
+export function HUDScanner() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const [coords, setCoords] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = container.getBoundingClientRect();
+      const x = Math.round(e.clientX - rect.left);
+      const y = Math.round(e.clientY - rect.top);
+      setCoords({ x, y });
+
+      if (cursorRef.current) {
+        gsap.to(cursorRef.current, {
+          x,
+          y,
+          duration: 0.1,
+          ease: "none"
+        });
+      }
+    };
+
+    container.addEventListener('mousemove', handleMouseMove);
+    return () => container.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  return (
+    <div ref={containerRef} className="relative w-full h-full min-h-[300px] overflow-hidden bg-zinc-950/80 rounded-xl border border-cyan-500/30 cursor-none select-none">
+      <div className="absolute inset-0 pointer-events-none opacity-20" style={{ backgroundImage: 'radial-gradient(circle, #06b6d4 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
+      <div ref={cursorRef} className="absolute top-0 left-0 pointer-events-none z-10 flex items-center justify-center">
+        <div className="w-12 h-12 border border-cyan-400 -translate-x-1/2 -translate-y-1/2 relative">
+          <div className="absolute -top-1 -left-1 w-2 h-2 border-t-2 border-l-2 border-cyan-400" />
+          <div className="absolute -top-1 -right-1 w-2 h-2 border-t-2 border-r-2 border-cyan-400" />
+          <div className="absolute -bottom-1 -left-1 w-2 h-2 border-b-2 border-l-2 border-cyan-400" />
+          <div className="absolute -bottom-1 -right-1 w-2 h-2 border-b-2 border-r-2 border-cyan-400" />
+          <div className="absolute top-1/2 left-0 w-full h-[1px] bg-cyan-400/30" />
+          <div className="absolute top-0 left-1/2 w-[1px] h-full bg-cyan-400/30" />
+        </div>
+        <div className="ml-8 mt-8 bg-black/80 border border-cyan-500/50 px-2 py-1 rounded text-[10px] font-mono text-cyan-400 whitespace-nowrap">
+          X: {coords.x} <br /> Y: {coords.y} <br /> SCAN_ACTIVE
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// 7. ColorInvert implementation
+export function ColorInvert() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const cursorRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = container.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      if (cursorRef.current) {
+        gsap.to(cursorRef.current, {
+          x,
+          y,
+          duration: 0.15,
+          ease: "power2.out"
+        });
+      }
+    };
+
+    container.addEventListener('mousemove', handleMouseMove);
+    return () => container.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  return (
+    <div ref={containerRef} className="relative w-full h-full min-h-[300px] overflow-hidden bg-white rounded-xl border border-zinc-200 cursor-none select-none flex items-center justify-center">
+      <div className="text-zinc-900 font-black text-4xl tracking-tighter uppercase italic">
+        Invert <span className="text-zinc-400">Effect</span>
+      </div>
+      <div ref={cursorRef} className="absolute top-0 left-0 w-24 h-24 bg-white rounded-full pointer-events-none mix-blend-difference -translate-x-1/2 -translate-y-1/2 z-20" />
+    </div>
+  );
+}
+
+// 8. SquishyFollower implementation
+export function SquishyFollower() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const lastPos = useRef({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = container.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const dx = x - lastPos.current.x;
+      const dy = y - lastPos.current.y;
+      const velocity = Math.sqrt(dx * dx + dy * dy);
+      const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+
+      const scaleX = 1 + velocity / 150;
+      const scaleY = 1 - velocity / 200;
+
+      if (cursorRef.current) {
+        gsap.to(cursorRef.current, {
+          x,
+          y,
+          rotation: angle,
+          scaleX,
+          scaleY,
+          duration: 0.2,
+          ease: "power2.out"
+        });
+      }
+      lastPos.current = { x, y };
+    };
+
+    container.addEventListener('mousemove', handleMouseMove);
+    return () => container.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  return (
+    <div ref={containerRef} className="relative w-full h-full min-h-[300px] overflow-hidden bg-indigo-950/20 rounded-xl border border-indigo-500/20 cursor-none select-none">
+      <div ref={cursorRef} className="absolute top-0 left-0 w-12 h-12 bg-indigo-500 rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2 shadow-lg shadow-indigo-500/40 border-4 border-indigo-400/50" />
+    </div>
+  );
+}
+
+// 9. PixelCursor implementation
+export function PixelCursor() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const cursorRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = container.getBoundingClientRect();
+      const x = Math.floor((e.clientX - rect.left) / 8) * 8;
+      const y = Math.floor((e.clientY - rect.top) / 8) * 8;
+
+      if (cursorRef.current) {
+        gsap.to(cursorRef.current, {
+          x,
+          y,
+          duration: 0.05,
+          ease: "none"
+        });
+      }
+    };
+
+    container.addEventListener('mousemove', handleMouseMove);
+    return () => container.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  return (
+    <div ref={containerRef} className="relative w-full h-full min-h-[300px] overflow-hidden bg-zinc-900 rounded-xl border border-zinc-800 cursor-none select-none">
+      <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '8px 8px' }} />
+      <div ref={cursorRef} className="absolute top-0 left-0 pointer-events-none z-10">
+        <div className="w-6 h-6 bg-red-500 border-b-4 border-r-4 border-red-800" />
+      </div>
+    </div>
+  );
+}
+
+// 10. GlitchPointer implementation
+export function GlitchPointer() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const [glitch, setGlitch] = useState({ x: 0, y: 0, opacity: 0 });
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = container.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      if (cursorRef.current) {
+        gsap.to(cursorRef.current, {
+          x,
+          y,
+          duration: 0.1,
+          ease: "power1.out"
+        });
+      }
+
+      if (Math.random() > 0.8) {
+        setGlitch({ x: x + (Math.random() - 0.5) * 40, y: y + (Math.random() - 0.5) * 40, opacity: 1 });
+        setTimeout(() => setGlitch(prev => ({ ...prev, opacity: 0 })), 50);
+      }
+    };
+
+    container.addEventListener('mousemove', handleMouseMove);
+    return () => container.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  return (
+    <div ref={containerRef} className="relative w-full h-full min-h-[300px] overflow-hidden bg-black rounded-xl border border-purple-500/20 cursor-none select-none">
+      <div ref={cursorRef} className="absolute top-0 left-0 w-4 h-4 bg-purple-500 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20 shadow-[0_0_15px_rgba(168,85,247,0.8)]" />
+      <div 
+        className="absolute w-8 h-[2px] bg-cyan-400 pointer-events-none z-10 transition-opacity"
+        style={{ left: glitch.x, top: glitch.y, opacity: glitch.opacity }}
+      />
+      <div 
+        className="absolute w-[2px] h-8 bg-pink-500 pointer-events-none z-10 transition-opacity"
+        style={{ left: glitch.x + 10, top: glitch.y - 10, opacity: glitch.opacity }}
+      />
+    </div>
+  );
+}
+
+// 11. FluidTrail implementation
+export function FluidTrail() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [particles, setParticles] = useState<{ id: number; x: number; y: number }[]>([]);
+  const nextId = useRef(0);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const id = nextId.current++;
+    setParticles(prev => [...prev.slice(-15), { id, x, y }]);
+  };
+
+  return (
+    <div 
+      onMouseMove={handleMouseMove}
+      className="relative w-full h-full min-h-[300px] overflow-hidden bg-zinc-950 rounded-xl border border-white/5 cursor-none select-none"
+    >
+      <svg className="absolute inset-0 w-full h-full pointer-events-none">
+        <filter id="fluid-goo">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+        </filter>
+        <g filter="url(#fluid-goo)">
+          {particles.map((p, i) => (
+            <circle 
+              key={p.id} 
+              cx={p.x} 
+              cy={p.y} 
+              r={20 - (particles.length - i)} 
+              fill="#10b981" 
+              className="transition-all duration-300"
+            />
+          ))}
+        </g>
+      </svg>
+    </div>
+  );
+}
+
+// 12. MagnetLink implementation
+export function MagnetLink() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const [isLocked, setIsLocked] = useState(false);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (isLocked) return;
+      const rect = container.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      if (cursorRef.current) {
+        gsap.to(cursorRef.current, {
+          x,
+          y,
+          duration: 0.1,
+          ease: "power2.out"
+        });
+      }
+    };
+
+    container.addEventListener('mousemove', handleMouseMove);
+    return () => container.removeEventListener('mousemove', handleMouseMove);
+  }, [isLocked]);
+
+  const handleMouseEnter = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setIsLocked(true);
+    const btn = e.currentTarget;
+    const rect = btn.getBoundingClientRect();
+    const containerRect = containerRef.current!.getBoundingClientRect();
+    
+    gsap.to(cursorRef.current, {
+      x: rect.left - containerRect.left + rect.width / 2,
+      y: rect.top - containerRect.top + rect.height / 2,
+      width: rect.width + 10,
+      height: rect.height + 10,
+      borderRadius: 8,
+      duration: 0.3,
+      ease: "back.out(1.7)"
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setIsLocked(false);
+    gsap.to(cursorRef.current, {
+      width: 20,
+      height: 20,
+      borderRadius: "50%",
+      duration: 0.3,
+      ease: "power2.inOut"
+    });
+  };
+
+  return (
+    <div ref={containerRef} className="relative w-full h-full min-h-[300px] overflow-hidden bg-zinc-950 rounded-xl border border-white/5 flex items-center justify-center gap-4 cursor-none select-none">
+      <div ref={cursorRef} className="absolute top-0 left-0 w-5 h-5 border-2 border-white pointer-events-none -translate-x-1/2 -translate-y-1/2 z-10" />
+      <button 
+        onMouseEnter={handleMouseEnter} 
+        onMouseLeave={handleMouseLeave}
+        className="px-6 py-2 bg-white text-black text-xs font-bold rounded uppercase tracking-widest"
+      >
+        Magnet A
+      </button>
+      <button 
+        onMouseEnter={handleMouseEnter} 
+        onMouseLeave={handleMouseLeave}
+        className="px-6 py-2 border border-white text-white text-xs font-bold rounded uppercase tracking-widest"
+      >
+        Magnet B
+      </button>
+    </div>
+  );
+}
+
+// 13. SpotlightCursor implementation
+export function SpotlightCursor() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [pos, setPos] = useState({ x: -100, y: -100 });
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  };
+
+  return (
+    <div 
+      onMouseMove={handleMouseMove}
+      className="relative w-full h-full min-h-[300px] overflow-hidden bg-zinc-900 rounded-xl border border-white/5 flex items-center justify-center select-none cursor-none"
+    >
+      <div className="grid grid-cols-4 gap-4 p-8">
+        {Array.from({ length: 8 }).map((_, i) => (
+          <div key={i} className="w-16 h-16 bg-zinc-800 rounded-lg border border-zinc-700" />
+        ))}
+      </div>
+      <div 
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: `radial-gradient(circle 100px at ${pos.x}px ${pos.y}px, transparent, rgba(0,0,0,0.9))`
+        }}
+      />
+      <div className="absolute inset-0 pointer-events-none border-2 border-white/20 rounded-xl" />
+    </div>
+  );
+}
+
+// 14. DirectionalArrow implementation
+export function DirectionalArrow() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const lastPos = useRef({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = container.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const dx = x - lastPos.current.x;
+      const dy = y - lastPos.current.y;
+      const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+
+      if (cursorRef.current) {
+        gsap.to(cursorRef.current, {
+          x,
+          y,
+          rotation: angle,
+          duration: 0.1,
+          ease: "power2.out"
+        });
+      }
+      lastPos.current = { x, y };
+    };
+
+    container.addEventListener('mousemove', handleMouseMove);
+    return () => container.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  return (
+    <div ref={containerRef} className="relative w-full h-full min-h-[300px] overflow-hidden bg-zinc-950 rounded-xl border border-white/5 cursor-none select-none">
+      <div ref={cursorRef} className="absolute top-0 left-0 pointer-events-none -translate-x-1/2 -translate-y-1/2">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </div>
+    </div>
+  );
+}
+
+// 15. CircleExpansion implementation
+export function CircleExpansion() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const cursorRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = container.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      if (cursorRef.current) {
+        gsap.to(cursorRef.current, {
+          x,
+          y,
+          duration: 0.15,
+          ease: "power2.out"
+        });
+      }
+    };
+
+    container.addEventListener('mousemove', handleMouseMove);
+    return () => container.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  return (
+    <div ref={containerRef} className="relative w-full h-full min-h-[300px] overflow-hidden bg-yellow-400 rounded-xl border border-black/10 cursor-none select-none flex items-center justify-center">
+      <div className="text-black font-black text-6xl opacity-10">NEO-MEMPHIS</div>
+      <div ref={cursorRef} className="absolute top-0 left-0 pointer-events-none -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
+        <div className="absolute w-8 h-8 bg-blue-500 rounded-full animate-ping opacity-75" />
+        <div className="absolute w-4 h-4 bg-black rounded-full" />
+      </div>
+    </div>
+  );
+}
+
+// 16. MorphingCursor implementation
+export function MorphingCursor() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const [isSquare, setIsSquare] = useState(false);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = container.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      if (cursorRef.current) {
+        gsap.to(cursorRef.current, {
+          x,
+          y,
+          duration: 0.2,
+          ease: "power3.out"
+        });
+      }
+    };
+
+    const interval = setInterval(() => {
+      setIsSquare(prev => !prev);
+    }, 2000);
+
+    container.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      container.removeEventListener('mousemove', handleMouseMove);
+      clearInterval(interval);
+    };
+  }, []);
+
+  return (
+    <div ref={containerRef} className="relative w-full h-full min-h-[300px] overflow-hidden bg-rose-950/20 rounded-xl border border-rose-500/20 cursor-none select-none flex items-center justify-center">
+      <div className="text-rose-500/20 font-bold text-4xl">CLAY MORPH</div>
+      <div 
+        ref={cursorRef} 
+        className={`absolute top-0 left-0 w-10 h-10 bg-rose-500 pointer-events-none -translate-x-1/2 -translate-y-1/2 transition-all duration-700 ease-in-out shadow-lg shadow-rose-500/40 ${isSquare ? 'rounded-lg rotate-45' : 'rounded-full rotate-0'}`}
+      />
+    </div>
+  );
+}
+
+// 17. ElasticRing implementation
+export function ElasticRing() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const ringRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = container.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      if (cursorRef.current) {
+        gsap.to(cursorRef.current, { x, y, duration: 0.1, ease: "none" });
+      }
+      if (ringRef.current) {
+        gsap.to(ringRef.current, { x, y, duration: 0.4, ease: "power2.out" });
+      }
+    };
+
+    container.addEventListener('mousemove', handleMouseMove);
+    return () => container.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  return (
+    <div ref={containerRef} className="relative w-full h-full min-h-[300px] overflow-hidden bg-zinc-950 rounded-xl border border-white/10 cursor-none select-none">
+      <div ref={ringRef} className="absolute top-0 left-0 w-12 h-12 border-2 border-white/30 rounded-full -translate-x-1/2 -translate-y-1/2 pointer-events-none blur-[1px]" />
+      <div ref={cursorRef} className="absolute top-0 left-0 w-2 h-2 bg-white rounded-full -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+    </div>
+  );
+}
+
+// 18. GhostPointer implementation
+export function GhostPointer() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [ghosts, setGhosts] = useState<{ id: number; x: number; y: number }[]>([]);
+  const nextId = useRef(0);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const id = nextId.current++;
+    setGhosts(prev => [...prev.slice(-10), { id, x, y }]);
+  };
+
+  return (
+    <div 
+      onMouseMove={handleMouseMove}
+      className="relative w-full h-full min-h-[300px] overflow-hidden bg-zinc-900 rounded-xl border border-white/5 cursor-none select-none flex items-center justify-center"
+    >
+      <div className="font-mono text-white/10 text-8xl uppercase tracking-tighter">Ghost</div>
+      {ghosts.map((g, i) => (
+        <div 
+          key={g.id}
+          className="absolute pointer-events-none font-mono text-white transition-opacity duration-500"
+          style={{ 
+            left: g.x, 
+            top: g.y, 
+            opacity: i / ghosts.length,
+            transform: 'translate(-50%, -50%)',
+            fontSize: '14px'
+          }}
+        >
+          { g.id % 2 === 0 ? '<GHOST/>' : '{...}' }
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// 19. BentoFocus implementation
+export function BentoFocus() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [activeCell, setActiveCell] = useState<number | null>(null);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    const col = Math.floor(x / (rect.width / 4));
+    const row = Math.floor(y / (rect.height / 3));
+    setActiveCell(row * 4 + col);
+  };
+
+  return (
+    <div 
+      onMouseMove={handleMouseMove}
+      onMouseLeave={() => setActiveCell(null)}
+      className="relative w-full h-full min-h-[300px] bg-zinc-950 rounded-xl border border-white/5 p-4 grid grid-cols-4 grid-rows-3 gap-2 cursor-none select-none"
+    >
+      {Array.from({ length: 12 }).map((_, i) => (
+        <div 
+          key={i} 
+          className={`rounded-lg border transition-all duration-300 ${activeCell === i ? 'bg-white/10 border-white/40 scale-[1.02]' : 'bg-white/5 border-white/5'}`}
+        />
+      ))}
+      <div className="absolute top-4 left-4 text-[10px] font-mono text-white/40 pointer-events-none uppercase tracking-widest">Bento Grid Focus</div>
+    </div>
+  );
+}
+
+// 20. AuraPulse implementation
+export function AuraPulse() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const cursorRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = container.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      if (cursorRef.current) {
+        gsap.to(cursorRef.current, {
+          x,
+          y,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      }
+    };
+
+    container.addEventListener('mousemove', handleMouseMove);
+    return () => container.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  return (
+    <div ref={containerRef} className="relative w-full h-full min-h-[300px] overflow-hidden bg-emerald-950/20 rounded-xl border border-emerald-500/20 cursor-none select-none flex items-center justify-center">
+      <div className="text-emerald-500/10 font-bold text-6xl italic">SOLAR PULSE</div>
+      <div ref={cursorRef} className="absolute top-0 left-0 pointer-events-none -translate-x-1/2 -translate-y-1/2">
+        <div className="w-32 h-32 bg-emerald-500/20 rounded-full blur-2xl animate-pulse" />
+        <div className="absolute top-1/2 left-1/2 w-4 h-4 bg-emerald-400 rounded-full -translate-x-1/2 -translate-y-1/2 shadow-[0_0_20px_rgba(52,211,153,0.6)]" />
+      </div>
+    </div>
+  );
+}
+
 // Group all Cursor variants together
 export const CursorVariants = {
   BlobCursor: () => (
@@ -492,5 +1145,65 @@ export const CursorVariants = {
         </div>
       </MagneticElement>
     </div>
+  ),
+
+  HUDScanner: () => (
+    <HUDScanner />
+  ),
+
+  ColorInvert: () => (
+    <ColorInvert />
+  ),
+
+  SquishyFollower: () => (
+    <SquishyFollower />
+  ),
+
+  PixelCursor: () => (
+    <PixelCursor />
+  ),
+
+  GlitchPointer: () => (
+    <GlitchPointer />
+  ),
+
+  FluidTrail: () => (
+    <FluidTrail />
+  ),
+
+  MagnetLink: () => (
+    <MagnetLink />
+  ),
+
+  SpotlightCursor: () => (
+    <SpotlightCursor />
+  ),
+
+  DirectionalArrow: () => (
+    <DirectionalArrow />
+  ),
+
+  CircleExpansion: () => (
+    <CircleExpansion />
+  ),
+
+  MorphingCursor: () => (
+    <MorphingCursor />
+  ),
+
+  ElasticRing: () => (
+    <ElasticRing />
+  ),
+
+  GhostPointer: () => (
+    <GhostPointer />
+  ),
+
+  BentoFocus: () => (
+    <BentoFocus />
+  ),
+
+  AuraPulse: () => (
+    <AuraPulse />
   )
 };

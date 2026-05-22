@@ -10,7 +10,6 @@ const MOVEMENT_DAMPING = 1400
 const GLOBE_CONFIG: COBEOptions = {
   width: 800,
   height: 800,
-  onRender: () => {},
   devicePixelRatio: 2,
   phi: 0,
   theta: 0.3,
@@ -93,13 +92,13 @@ export function Globe({
         ...config,
         width: width * 2,
         height: width * 2,
-        onRender: (state) => {
+        onRender: (state: any) => {
           if (!pointerInteracting.current) phiRef.current += 0.005
           state.phi = phiRef.current + rs.get()
           state.width = width * 2
           state.height = width * 2
         },
-      })
+      } as any)
       
       canvasRef.current.style.opacity = "1"
     }

@@ -19,7 +19,12 @@ import {
   Paintbrush,
   Pointer,
   Box,
-  Sliders
+  Sliders,
+  Brain,
+  Layout,
+  Terminal,
+  BarChart3,
+  Gamepad2
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useImageMode } from '@/context/ImageContext';
@@ -37,7 +42,12 @@ import {
   TEXT_EFFECT_STYLES,
   CURSOR_STYLES,
   THREED_STYLES,
-  PRIMITIVE_STYLES
+  PRIMITIVE_STYLES,
+  AIDRIVEN_STYLES,
+  CREATIVE_LANDING_STYLES,
+  ASCII_RETRO_STYLES,
+  DATA_VIZ_STYLES,
+  PLAYFUL_UI_STYLES
 } from '@/lib/component-styles';
 
 const menuItems = [
@@ -166,6 +176,51 @@ const menuItems = [
     subItems: Object.keys(PRIMITIVE_STYLES).map(style => ({
       name: style,
       href: `/primitives?style=${style}`
+    }))
+  },
+  { 
+    name: 'AI-Driven', 
+    href: '/ai-driven', 
+    icon: Brain,
+    subItems: Object.keys(AIDRIVEN_STYLES).map(style => ({
+      name: style,
+      href: `/ai-driven?style=${style}`
+    }))
+  },
+  { 
+    name: 'Landing', 
+    href: '/creative-landing', 
+    icon: Layout,
+    subItems: Object.keys(CREATIVE_LANDING_STYLES).map(style => ({
+      name: style,
+      href: `/creative-landing?style=${style}`
+    }))
+  },
+  { 
+    name: 'ASCII Retro', 
+    href: '/ascii-retro', 
+    icon: Terminal,
+    subItems: Object.keys(ASCII_RETRO_STYLES).map(style => ({
+      name: style,
+      href: `/ascii-retro?style=${style}`
+    }))
+  },
+  { 
+    name: 'Data Viz', 
+    href: '/data-viz', 
+    icon: BarChart3,
+    subItems: Object.keys(DATA_VIZ_STYLES).map(style => ({
+      name: style,
+      href: `/data-viz?style=${style}`
+    }))
+  },
+  { 
+    name: 'Playful UI', 
+    href: '/playful-ui', 
+    icon: Gamepad2,
+    subItems: Object.keys(PLAYFUL_UI_STYLES).map(style => ({
+      name: style,
+      href: `/playful-ui?style=${style}`
     }))
   },
 ];
